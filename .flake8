@@ -1,0 +1,3 @@
+[flake8]
+exclude = .git,sigi_op,manage.py,ipa
+max_complexity = 10
