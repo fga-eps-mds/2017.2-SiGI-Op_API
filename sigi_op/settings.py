@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
+    'rest_framework',
+    'underground_box.apps.UndergroundBoxConfig',
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
