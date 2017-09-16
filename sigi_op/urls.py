@@ -19,9 +19,10 @@ from django.contrib import admin
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'underground_box', views.UndergroundBoxViewSet)
+router.register(r'undergroundbox', views.UndergroundBoxViewSet)
+router.register(r'undergroudboxtype',views.UndergroundBoxTypeViewSet)
 
 urlpatterns = [
-        url(r'^', include(router.urls)),
+    url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
 ]
