@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOWED_HOSTS	../sigi_op/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:28
+AUTH_PASSWORD_VALIDATORS	../sigi_op/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:95
+BASE_DIR	../sigi_op/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../sigi_op/settings.py	/^DATABASES = {$/;"	kind:variable	line:84
+DEBUG	../sigi_op/settings.py	/^DEBUG = True$/;"	kind:variable	line:26
+INSTALLED_APPS	../sigi_op/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:33
+IpaConfig	../ipa/apps.py	/^class IpaConfig(AppConfig):$/;"	kind:class	line:4
+LANGUAGE_CODE	../sigi_op/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:114
+MIDDLEWARE	../sigi_op/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:50
+NOSE_ARGS	../sigi_op/settings.py	/^NOSE_ARGS = [$/;"	kind:variable	line:45
+ROOT_URLCONF	../sigi_op/settings.py	/^ROOT_URLCONF = 'sigi_op.urls'$/;"	kind:variable	line:60
+STATIC_URL	../sigi_op/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:128
+TEMPLATES	../sigi_op/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:62
+TEST_RUNNER	../sigi_op/settings.py	/^TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'$/;"	kind:variable	line:43
+TIME_ZONE	../sigi_op/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:116
+USE_I18N	../sigi_op/settings.py	/^USE_I18N = True$/;"	kind:variable	line:118
+USE_L10N	../sigi_op/settings.py	/^USE_L10N = True$/;"	kind:variable	line:120
+USE_TZ	../sigi_op/settings.py	/^USE_TZ = True$/;"	kind:variable	line:122
+WSGI_APPLICATION	../sigi_op/settings.py	/^WSGI_APPLICATION = 'sigi_op.wsgi.application'$/;"	kind:variable	line:78
+__init__.py	../ipa/__init__.py	1;"	kind:file	line:1
+__init__.py	../ipa/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../sigi_op/__init__.py	1;"	kind:file	line:1
+admin.py	../ipa/admin.py	1;"	kind:file	line:1
+application	../sigi_op/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../ipa/apps.py	1;"	kind:file	line:1
+manage.py	../manage.py	1;"	kind:file	line:1
+models.py	../ipa/models.py	1;"	kind:file	line:1
+name	../ipa/apps.py	/^    name = 'ipa'$/;"	kind:variable	line:5
+settings.py	../sigi_op/settings.py	1;"	kind:file	line:1
+tests.py	../ipa/tests.py	1;"	kind:file	line:1
+urlpatterns	../sigi_op/urls.py	/^urlpatterns = [$/;"	kind:variable	line:19
+urls.py	../sigi_op/urls.py	1;"	kind:file	line:1
+views.py	../ipa/views.py	1;"	kind:file	line:1
+wsgi.py	../sigi_op/wsgi.py	1;"	kind:file	line:1

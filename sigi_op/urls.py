@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include,url
+from ipa.views import  IpaListViewSet, IpaTypeListViewSet
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
+router.register(r'ipas', IpaListViewSet, base_name='ipa')
+router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    #  url(r'^ipas/$', IpaList.as_view()),
+    # url(r'^ipas/(?P<pk>[0-9]+)/$', IpaDetail.as_view()),
+    url(r'^', include(router.urls)),
 ]
