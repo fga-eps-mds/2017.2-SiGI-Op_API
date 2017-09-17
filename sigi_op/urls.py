@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include,url
+from dgo.views import GODListViewSet
+from rest_framework.routers import DefaultRouter
 
+router = DefaultRouter()
+router.register(r'dgos', GODListViewSet, base_name='dgo')
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    #  url(r'^dgos/$', GODList.as_view()),
+        url(r'^', include(router.urls)),
 ]
