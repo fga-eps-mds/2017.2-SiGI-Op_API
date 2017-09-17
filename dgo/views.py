@@ -5,7 +5,6 @@ from sigi_op.serializers import GODSerializer
 from .models import GOD
 
 # Create your views here.
-
 class GODListViewSet(viewsets.ModelViewSet):
     queryset = GOD.objects.all()
     serializer_class = GODSerializer
