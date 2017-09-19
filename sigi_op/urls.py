@@ -20,7 +20,7 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
-router.register(r'undergroudboxtype',views.UndergroundBoxTypeViewSet)
+router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
