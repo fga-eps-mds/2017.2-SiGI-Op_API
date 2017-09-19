@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UndergroundBoxType',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False,
+                                        verbose_name='ID')),
                 ('type_id', models.IntegerField()),
                 ('name', models.CharField(max_length=100)),
             ],
@@ -24,6 +26,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='undergroundbox',
             name='box_type',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='underground_box.UndergroundBoxType'),
+            field=models.ForeignKey(on_delete=django.
+                                    db.models.deletion.CASCADE,
+                                    to='underground_box.UndergroundBoxType'),
         ),
     ]
