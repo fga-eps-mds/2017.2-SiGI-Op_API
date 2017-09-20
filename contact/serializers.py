@@ -7,12 +7,15 @@ class ContactTypeSerializer(serializers.ModelSerializer):
         model = models.ContactType
         fields = ['id', 'name']
 
+    def __str__(self, value):
+        return '%s' % (self.name)
+
 
 class ContactSerializer(serializers.ModelSerializer):
-    contact_type = ContactTypeSerializer()
 
     class Meta:
         model = models.Contact
+        contact_type = ContactTypeSerializer(many=True, read_only=True)
         fields = [
                     'id',
                     'name',
@@ -20,10 +23,3 @@ class ContactSerializer(serializers.ModelSerializer):
                     'email',
                     'priority',
                     'contact_type']
-
-    def create(self, validated_data):
-        contact_type_data = validated_data.pop('contact_type')
-        contact_type = models.ContactType.objects.create(**contact_type_data)
-        contact = models.Contact.objects.create(contact_type=contact_type,
-                                                **validated_data)
-        return contact

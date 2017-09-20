@@ -21,5 +21,5 @@ class Contact(models.Model):
     contact_type = models.ForeignKey(
                                 ContactType,
                                 related_name='contact_type',
-                                on_delete=models.SET_NULL,
-                                null=True)
+                                null=False,
+                                default=None)
