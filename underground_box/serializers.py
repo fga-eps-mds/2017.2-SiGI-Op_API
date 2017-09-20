@@ -6,7 +6,7 @@ class UndergroundBoxTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UndergroundBoxType
         fields = [
-            'type_id',
+            'id',
             'name',
         ]
 
@@ -16,7 +16,7 @@ class UndergroundBoxSerializer(serializers.ModelSerializer):
         model = UndergroundBox
         box_type = UndergroundBoxTypeSerializer(many=True, read_only=True)
         fields = [
-                'box_id',
+                'id',
                 'box_type',
                 'latitude',
                 'cover_type',
