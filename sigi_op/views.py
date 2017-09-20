@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 from rest_framework import status, viewsets
 from rest_framework.response import Response
-from sigi_op.serializers import ParticipantInstitutionSerializer, ParticipantInstitutionTypeSerializer
-from .models import InstitutionType, ParticipantInstitution
+from .serializers import ParticipantInstitutionSerializer, ParticipantInstitutionTypeSerializer
+from ipa.models import InstitutionType, ParticipantInstitution
 
 # Create your views here.
 

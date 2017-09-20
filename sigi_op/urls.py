@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include,url
-from ipa.views import  IpaListViewSet, IpaTypeListViewSet
+from .views import  IpaListViewSet, IpaTypeListViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()

@@ -7,7 +7,7 @@ class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = InstitutionType
         fields = [
-            'id_type',
+            'id',
             'description',
         ]
 
@@ -16,7 +16,7 @@ class ParticipantInstitutionSerializer(serializers.ModelSerializer):
         model = ParticipantInstitution
         institution_type = ParticipantInstitutionTypeSerializer(many=True, read_only=True)
         fields = [
-            'id_ipa',
+            'id',
             'name',
             'institution_type',
         ]
