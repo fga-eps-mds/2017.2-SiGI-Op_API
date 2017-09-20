@@ -7,8 +7,8 @@ class SiteTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = SiteType
         fields = [
-            'type_id',
-            'name',
+            'id',
+            'description',
         ]
 
 class SiteSerializer(serializers.ModelSerializer):
@@ -16,11 +16,11 @@ class SiteSerializer(serializers.ModelSerializer):
         model = Site
         site_type = SiteTypeSerializer(many=True, read_only=True)
         fields = [
-            'site_id',
+            'id',
             'name',
             'lattitude',
             'longitude',
             'bandwidth',
-            'IPa_code',
-            'type_site',
+            'ipa_code',
+            'site_type',
         ]
