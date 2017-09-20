@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_nose',
     'ipa',
+    'rest_framework',
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
