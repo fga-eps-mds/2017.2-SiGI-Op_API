@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from ipa import views
+from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'site', views.SiteListViewSet)
-router.register(r'sitetype', views.SiteTypeListViewSet)
+router.register(r'site', SiteListViewSet, base_name="site")
+router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^admin/', admin.site.urls),
+    #url(r'^admin/', admin.site.urls),
 ]
