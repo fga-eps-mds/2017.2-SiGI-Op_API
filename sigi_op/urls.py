@@ -17,12 +17,16 @@ from django.conf.urls import url, include
 from underground_box import views
 from django.contrib import admin
 from rest_framework.routers import DefaultRouter
+from dgo.views import GODListViewSet
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
 router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
+router.register(r'dgos', GODListViewSet, base_name='dgo')
 
 urlpatterns = [
+    #  url(r'^dgos/$', GODList.as_view()),
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^',include('contact.urls'))
 ]
