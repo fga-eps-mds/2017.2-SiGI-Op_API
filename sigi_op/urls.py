@@ -14,13 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from underground_box import views
 from django.contrib import admin
-from django.conf.urls import include,url
-from dgo.views import GODListViewSet
 from rest_framework.routers import DefaultRouter
+from dgo.views import GODListViewSet
 
 router = DefaultRouter()
+router.register(r'undergroundbox', views.UndergroundBoxViewSet)
+router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
+
 urlpatterns = [
     #  url(r'^dgos/$', GODList.as_view()),
     url(r'^', include(router.urls)),
