@@ -8,6 +8,22 @@
 <img src="https://github.com/fga-gpp-mds/2017.2-SiGI-Op_API/wiki/logo_gigacandanga.png" alt="GigaCandanga logo">
 </p>
 
+### O Que é a GigaCandanga
+<p align=justify>
+A GigaCandanga, rede metropolitana de educação e pesquisa, integra instituições de pesquisa e de ensino superior no Distrito Federal. É baseada numa infraestrutura de fibras ópticas própria, gerenciada em condomínio pelas instituições participantes. Começou a operar em 18 de dezembro de 2007, contando com a adesão até 2016 de 33 instituições.
+</p>
+
+### Qual Objetivo
+<p align=justify>
+O objetivo de promover a implantação de uma infraestrutura de fibras ópticas adequada à demanda de alta capacidade e atualização tecnológica, característica das instituições de pesquisa e de ensino superior. 
+</p>
+
+### Como Funciona
+<p align=justify>
+A rede é baseada numa infraestrutura de fibras ópticas própria. Isto permite que as instituições de pesquisa e ensino superior explorem o potencial de conectividade em um patamar que não é oferecido pelos serviços comerciais. A capacidade mínima de qualquer conexão é de 1GB, podendo ser expandida facilmente conforme a demanda. Esta conectividade de alta capacidade permite que as instituições compartilhem aplicações e serviços inovadores, participando das redes acadêmicas avançadas, no país e no mundo. Por ser administrada na forma de consórcio, não só a capacidade é muito superior, como também os custos envolvidos são significativamente menores.
+</p>
+
+### O que será feito
 <p align=justify>
 O projeto Sistema de Gerenciamento de Infraestrutura (SiGI) consiste do desenvolvimento de uma aplicação com o objetivo de subsidiar a operação e a gestão da rede GigaCandanga.
 </p>
