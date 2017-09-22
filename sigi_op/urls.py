@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from underground_box import views
 from django.contrib import admin
+from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import  IpaListViewSet, IpaTypeListViewSet
 from dgo.views import GODListViewSet
 
@@ -26,6 +27,8 @@ router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'site', SiteListViewSet, base_name="site")
+router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
 
 urlpatterns = [
     url(r'^', include(router.urls)),
