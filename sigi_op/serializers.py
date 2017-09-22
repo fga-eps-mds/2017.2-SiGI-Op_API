@@ -1,4 +1,5 @@
 from ipa.models import InstitutionType, ParticipantInstitution
+from dgo.models import GOD
 from rest_framework import serializers
 
 
@@ -19,4 +20,14 @@ class ParticipantInstitutionSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'institution_type',
+        ]
+
+
+class GODSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GOD
+        fields = [
+            'code',
+            'fabricant',
+            'port_quantity',
         ]

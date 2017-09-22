@@ -13,17 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
-from django.conf.urls import include,url
-from .views import  IpaListViewSet, IpaTypeListViewSet
+from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
+from underground_box import views
+from django.contrib import admin
+from .views import  IpaListViewSet, IpaTypeListViewSet
+from dgo.views import GODListViewSet
 
 router = DefaultRouter()
+router.register(r'undergroundbox', views.UndergroundBoxViewSet)
+router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
+router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+
 urlpatterns = [
-    #  url(r'^ipas/$', IpaList.as_view()),
-    # url(r'^ipas/(?P<pk>[0-9]+)/$', IpaDetail.as_view()),
     url(r'^', include(router.urls)),
+    url(r'^admin/', admin.site.urls),
+    url(r'^',include('contact.urls'))
 ]

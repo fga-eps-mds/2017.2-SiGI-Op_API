@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'ipa'
+    'underground_box',
+    'dgo',
+    'contact',
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -64,6 +67,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'sigi_op.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
