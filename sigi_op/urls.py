@@ -19,6 +19,7 @@ from underground_box import views
 from django.contrib import admin
 from ipa.views import  IpaListViewSet, IpaTypeListViewSet
 from dgo.views import GODListViewSet
+from technical_reserve.views import TechnicalReserveListViewSet
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
@@ -26,6 +27,7 @@ router.register(r'undergroundboxtype',views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'technicalreserves', TechnicalReserveListViewSet, base_name='technical_reserve')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
