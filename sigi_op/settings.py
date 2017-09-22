@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
-    'ipa',
+    'corsheaders',
     'rest_framework',
+    'underground_box',
+    'dgo',
+    'contact',
+    'ipa'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -52,17 +56,19 @@ NOSE_ARGS = [
 CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
-'django.middleware.security.SecurityMiddleware',
-'django.contrib.sessions.middleware.SessionMiddleware',
-'corsheaders.middleware.CorsMiddleware',
-'django.middleware.common.CommonMiddleware',
-'django.middleware.csrf.CsrfViewMiddleware',
-'django.contrib.auth.middleware.AuthenticationMiddleware',
-'django.contrib.messages.middleware.MessageMiddleware',
-'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'sigi_op.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
