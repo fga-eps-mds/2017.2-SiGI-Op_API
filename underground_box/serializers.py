@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from underground_box.models import UndergroundBox, UndergroundBoxType
+from .models import UndergroundBox, UndergroundBoxType
 
 
 class UndergroundBoxTypeSerializer(serializers.ModelSerializer):

@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
-    'underground_box.apps.UndergroundBoxConfig',
-    'dgo',
+    'corsheaders',
     'rest_framework',
+    'underground_box',
+    'dgo',
     'contact',
+    'ipa'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -50,6 +52,8 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=ipa'
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

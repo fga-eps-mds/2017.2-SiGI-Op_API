@@ -1,5 +1,5 @@
-from underground_box.views import UndergroundBoxViewSet
-from underground_box.views import UndergroundBoxTypeViewSet
+from .views import UndergroundBoxViewSet
+from .views import UndergroundBoxTypeViewSet
 
 undergroundboxlist = UndergroundBoxViewSet.as_view({
     'get': 'list',
