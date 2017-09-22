@@ -1,7 +1,7 @@
 # from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 # from rest_framework.response import Response
-from sigi_op.serializers import GODSerializer
+from .serializers import GODSerializer
 from .models import GOD
 
 

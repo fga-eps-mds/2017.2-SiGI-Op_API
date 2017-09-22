@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from underground_box import views
 from django.contrib import admin
-from .views import  IpaListViewSet, IpaTypeListViewSet
+from ipa.views import  IpaListViewSet, IpaTypeListViewSet
 from dgo.views import GODListViewSet
 
 router = DefaultRouter()

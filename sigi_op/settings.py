@@ -40,10 +40,10 @@ INSTALLED_APPS = [
     'django_nose',
     'corsheaders',
     'rest_framework',
-    'ipa'
-    'underground_box.apps.UndergroundBoxConfig',
+    'underground_box',
     'dgo',
     'contact',
+    'ipa'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
