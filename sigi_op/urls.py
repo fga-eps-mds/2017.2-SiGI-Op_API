@@ -20,6 +20,7 @@ from django.contrib import admin
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import  IpaListViewSet, IpaTypeListViewSet
 from dgo.views import GODListViewSet
+from .views import login
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
@@ -33,5 +34,6 @@ router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^',include('contact.urls'))
+    url(r'^',include('contact.urls')),
+    url(r'^login', login)
 ]
