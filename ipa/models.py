@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import EmailValidator
 
 # Create your models here.
 
@@ -23,3 +24,17 @@ class Site(models.Model):
     bandwidth = models.PositiveIntegerField(blank=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
     site_type = models.ForeignKey(SiteType, null=False)
+
+
+class ContactType(models.Model):
+    description = models.CharField(max_length=40)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=40)
+    phone_number = models.CharField(max_length=15)
+    email_validator = EmailValidator()
+    email = models.CharField(validators=[email_validator], max_length=40)
+    priority = models.IntegerField()
+    contact_type = models.ForeignKey(ContactType, null=False)
+    ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
