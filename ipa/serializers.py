@@ -1,6 +1,7 @@
 from .models import InstitutionType, ParticipantInstitution
 from rest_framework import serializers
 
+
 class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = InstitutionType
@@ -9,10 +10,12 @@ class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
             'description',
         ]
 
+
 class ParticipantInstitutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParticipantInstitution
-        institution_type = ParticipantInstitutionTypeSerializer(many=True, read_only=True)
+        institution_type = ParticipantInstitutionTypeSerializer(many=True,
+                                                                read_only=True)
         fields = [
             'id',
             'name',
