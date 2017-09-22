@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'ipa'
-    'underground_box',
+    'underground_box.apps.UndergroundBoxConfig',
     'dgo',
     'contact',
 ]
