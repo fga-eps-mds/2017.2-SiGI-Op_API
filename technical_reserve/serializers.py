@@ -6,8 +6,8 @@ class TechnicalReserveSerializer(serializers.ModelSerializer):
         model = TechnicalReserve
         fields = [
             'id',
+            'code',
             'length',
             'latitude',
             'longitude',
-            'infrastructure',
         ]
