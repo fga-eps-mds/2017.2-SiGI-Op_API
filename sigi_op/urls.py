@@ -21,6 +21,7 @@ from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet
 from dgo.views import GODListViewSet
+from .views import login, create_auth
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
@@ -36,4 +37,8 @@ router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+#    url(r'^',include(contact.urls)),
+#    url(r'^',include(contact.urls)),
+    url(r'^login', login),
+    url(r'^users/register', create_auth)
 ]
