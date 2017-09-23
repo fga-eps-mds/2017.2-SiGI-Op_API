@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'underground_box',
     'dgo',
     'contact',
-    'ipa'
+    'ipa',
+    'uplink'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

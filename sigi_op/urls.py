@@ -20,6 +20,7 @@ from django.contrib import admin
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import  IpaListViewSet, IpaTypeListViewSet
 from dgo.views import GODListViewSet
+from uplink.views import UplinkViewSet
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
@@ -29,6 +30,7 @@ router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
 router.register(r'site', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
+router.register(r'uplink', UplinkViewSet, base_name = 'uplink')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
