@@ -49,7 +49,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa'
+    '--cover-package=ipa,underground_box,dgo,sigi_op'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
