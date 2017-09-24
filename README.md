@@ -46,24 +46,18 @@ $ [sudo] pip install -r requirements.txt
 
 A versão do python padrão do projeto é a `3.5` caso queira executar o projeto com o `virtualenv` crie passando como parâmetro o `python3.5`
 
-Caso não tenha instalado o `virtualenv`:
+Para utilizar o docker, basta usar o seguinte comando:
 
 ```
-$ [sudo] pip install virtualenv
+$ [sudo] docker build -t my_env .
 ```
 
-Criando um ambiente com o nome `my_env`:
+E para abrir o terminal do container:
 
 ```
-$ virtualenv -p python3.5 my_env
-$ source my_env/bin/activate
+$ docker run -it my_env /bin/bash
 ```
 
-Para sair da virtualenv:
-
-```
-$ deactivate
-```
 
 # Subindo o servidor
 
