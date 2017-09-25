@@ -55,7 +55,7 @@ $ [sudo] docker build -t my_env .
 E para abrir o terminal do container:
 
 ```
-$ docker run -it my_env /bin/bash
+$ [sudo] docker run -it my_env /bin/bash
 ```
 
 
