@@ -26,6 +26,7 @@ class SiteSerializer(serializers.ModelSerializer):
             'site_type',
         ]
 
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -34,5 +35,3 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'password'
         ]
-
-

@@ -6,6 +6,7 @@ from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
 
+
 @api_view(['POST'])
 def create_auth(request):
     serialized = UserSerializer(data=request.data)
@@ -16,8 +17,8 @@ def create_auth(request):
                                  serialized.data['password']
                                  )
         return Response({'username': serialized.data['username'],
-                         'email': serialized.data['email']},
-                         status=status.HTTP_201_CREATED)
+                        'email': serialized.data['email']},
+                        status=status.HTTP_201_CREATED)
     else:
         return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
 
