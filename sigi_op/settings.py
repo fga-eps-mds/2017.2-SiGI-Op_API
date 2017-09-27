@@ -37,21 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     'django_nose',
     'corsheaders',
     'rest_framework',
     'underground_box',
     'dgo',
-    'contact',
     'ipa',
-    'emendation_box'
+    'emendation_box',
+    'uplink',
+    'technical_reserve',
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa'
+    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -103,6 +105,13 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
