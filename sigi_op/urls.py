@@ -21,6 +21,9 @@ from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet
 from dgo.views import GODListViewSet
+from emendation_box.views import EmendationBoxListViewSet
+from emendation_box.views import EmendationBoxTypeListViewSet
+from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
@@ -32,6 +35,12 @@ router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'emendation_box',
+                EmendationBoxListViewSet, base_name='emendation_box')
+router.register(r'emendation_box_type',
+                EmendationBoxTypeListViewSet, base_name='type')
+router.register(r'emendation_box_structure',
+                EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 router.register(r'site', SiteListViewSet, base_name="site")

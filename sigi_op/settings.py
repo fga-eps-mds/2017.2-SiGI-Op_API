@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'underground_box',
     'dgo',
     'ipa',
+    'emendation_box',
     'uplink',
     'technical_reserve',
 ]
