@@ -21,8 +21,10 @@ from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet
 from dgo.views import GODListViewSet
+from uplink.views import UplinkViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
+
 
 router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
@@ -34,6 +36,7 @@ router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 router.register(r'site', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
+router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
 
