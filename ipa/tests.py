@@ -7,6 +7,7 @@ from .models import Site
 from .models import ContactType
 from .models import Contact
 from technical_reserve.models import TechnicalReserve
+from technical_reserve.views import TechnicalReserveListViewSet
 from .views import IpaTypeListViewSet
 from .views import IpaListViewSet
 from .views import SiteTypeListViewSet
