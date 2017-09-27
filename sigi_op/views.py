@@ -35,4 +35,4 @@ def login(request):
                         status=status.HTTP_401_UNAUTHORIZED)
 
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({"username": username,"token": token.key})
+    return Response({"username": username, "token": token.key})
