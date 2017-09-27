@@ -1,6 +1,6 @@
 from ipa.models import Site, SiteType
 from rest_framework import serializers
-
+from django.contrib.auth.models import User
 
 
 class SiteTypeSerializer(serializers.ModelSerializer):
@@ -10,6 +10,7 @@ class SiteTypeSerializer(serializers.ModelSerializer):
             'id',
             'description',
         ]
+
 
 class SiteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -23,4 +24,14 @@ class SiteSerializer(serializers.ModelSerializer):
             'bandwidth',
             'ipa_code',
             'site_type',
+        ]
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'password'
         ]
