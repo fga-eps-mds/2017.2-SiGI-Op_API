@@ -36,7 +36,7 @@ router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 router.register(r'site', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
-router.register(r'uplink', UplinkViewSet, base_name = 'uplink')
+router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
 

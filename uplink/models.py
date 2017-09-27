@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
+
 # Create your models here.
 class Uplink(models.Model):
     name_vlan = models.CharField(blank=False, max_length=50)

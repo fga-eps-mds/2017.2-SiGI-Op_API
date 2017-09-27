@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'underground_box',
     'dgo',
-    'contact',
     'ipa',
     'uplink',
     'technical_reserve',

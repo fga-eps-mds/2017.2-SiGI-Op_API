@@ -1,8 +1,8 @@
 from .views import UplinkViewSet
 
 uplinklist = UplinkViewSet.as_view({
-    'get' : 'list'
-    'post' : 'create'
+    'get': 'list',
+    'post': 'create'
 })
 
 uplinkdetail = UplinkViewSet.as_view({
