@@ -2,10 +2,10 @@ from .models import Segment
 from rest_framework import serializers
 
 
-class SegmentSerializer(serializers.ModelSerializer):
+class Segments_serializer_class(serializers.ModelSerializer):
     class Meta:
         model = Segment
         fields = [
-            'cableLength',
+            'cable_length',
             'dgo',
         ]
