@@ -21,6 +21,7 @@ from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet
 from dgo.views import GODListViewSet
+from segments.views import SegmentViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -48,6 +49,7 @@ router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
+router.register(r'segments', SegmentViewSet, base_name="segment")
 
 urlpatterns = [
     url(r'^', include(router.urls)),
