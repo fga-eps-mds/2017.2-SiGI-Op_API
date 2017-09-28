@@ -24,6 +24,7 @@ from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
+from segments.views import SegmentViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -57,6 +58,7 @@ router.register(r'switch', SwitchViewSet, base_name='switch')
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
+router.register(r'segments', SegmentViewSet, base_name="segment")
 
 urlpatterns = [
     url(r'^', include(router.urls)),
