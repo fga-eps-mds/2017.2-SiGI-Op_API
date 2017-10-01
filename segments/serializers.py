@@ -7,5 +7,5 @@ class Segments_serializer_class(serializers.ModelSerializer):
         model = Segment
         fields = [
             'cable_length',
-            'dgo',
+            'segment_number',
         ]
