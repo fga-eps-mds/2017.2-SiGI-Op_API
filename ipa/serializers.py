@@ -50,7 +50,6 @@ class ContactSerializer(serializers.ModelSerializer):
 
 class SwitchSerializer(serializers.ModelSerializer):
 
-
     class Meta:
         model = Switch
         fields = [
@@ -58,5 +57,5 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'fabricant',
                 'qtd_slots',
                 'patrimony_number',
-                'site_id',
+                'site_type',
         ]
