@@ -6,6 +6,7 @@ from .models import SiteType
 from .models import Site
 from .models import ContactType
 from .models import Contact
+from .models import Switch
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import IpaTypeListViewSet
@@ -14,6 +15,7 @@ from .views import SiteTypeListViewSet
 from .views import SiteListViewSet
 from .views import ContactTypeViewSet
 from .views import ContactViewSet
+from .views import SwitchViewSet
 # from technical_reserve.views import TechnicalReserveListViewSet
 
 # Create your tests here.
@@ -84,4 +86,16 @@ class ViewSetTest(TestCase):
         contact = Contact.objects.create(name='john', phone_number='99999999', email='john@smith.com', priority=1, contact_type=contact_type, ipa_code=ipa)
 
         response = view(request, pk=contact.pk)
+        self.assertEqual(response.status_code, 200)
+
+    def test_switch_view_set(self):
+        request = APIRequestFactory().get("")
+        view = SwitchViewSet.as_view(actions={'get': 'retrieve'})
+        site_type = SiteType.objects.create(description="RandomSiteType")
+        switch = Switch.objects.create(serial_number='AAAAA11111',
+                                       fabricant='RandomFabricant',
+                                       qtd_slots='500',
+                                       patrimony_number='AAAAA11111',
+                                       site_type=site_type)
+        response = view(request, pk=switch.pk)
         self.assertEqual(response.status_code, 200)

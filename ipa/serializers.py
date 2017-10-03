@@ -50,7 +50,6 @@ class ContactSerializer(serializers.ModelSerializer):
 
 class SwitchSerializer(serializers.ModelSerializer):
 
-
     class Meta:
         model = Switch
         fields = [
