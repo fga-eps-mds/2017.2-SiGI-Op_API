@@ -1,5 +1,5 @@
 from .views import SiteListViewSet, SiteTypeListViewSet
-
+from .views import SwitchViewSet
 # from rest_framework import renderers
 
 site = SiteListViewSet.as_view({
@@ -19,4 +19,9 @@ sitetype = SiteTypeListViewSet.as_view({
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
+})
+
+switch = SwitchViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
 })

@@ -48,7 +48,7 @@ class ContactSerializer(serializers.ModelSerializer):
                 ]
 
 
-class SwitchSerializer(serializer.ModelSerializer):
+class SwitchSerializer(serializers.ModelSerializer):
 
 
     class Meta:
