@@ -38,3 +38,9 @@ class Contact(models.Model):
     priority = models.IntegerField()
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
+
+class NoBreak(models.Model):
+    power = models.FloatField(max_length=6, null=False)
+    proprietary = models.CharField(max_length=50)
+    patrimony_number = models.CharField(max_length=20)
+    site_id = models.ForeignKey(Site, on_delete=models.CASCADE)

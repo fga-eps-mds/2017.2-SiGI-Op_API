@@ -20,3 +20,8 @@ sitetype = SiteTypeListViewSet.as_view({
     'put': 'update',
     'delete': 'destroy',
 })
+
+nobreak = NoBreakViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+})

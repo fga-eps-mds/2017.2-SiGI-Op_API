@@ -20,6 +20,7 @@ from underground_box import views
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet
+from ipa.views import NoBreakViewSet
 from dgo.views import GODListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
@@ -45,6 +46,7 @@ router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 router.register(r'site', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
+router.register(r'nobreak', NoBreakViewSet, base_name='nobreak')
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
