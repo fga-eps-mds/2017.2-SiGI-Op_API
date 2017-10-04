@@ -34,11 +34,11 @@ router.register(r'undergroundbox', views.UndergroundBoxViewSet)
 router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
-router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'ipas-type', IpaTypeListViewSet, base_name='ipatype')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
 router.register(r'emendation_box_type',
-                EmendationBoxTypeListViewSet, base_name='type')
+                EmendationBoxTypeListViewSet, base_name='emendationboxtype')
 router.register(r'emendation_box_structure',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
