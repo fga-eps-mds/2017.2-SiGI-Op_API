@@ -1,5 +1,6 @@
-from .models import InstitutionType, ParticipantInstitution, ContactType
+from .models import InstitutionType, ParticipantInstitution, ContactType, Generator
 from .models import Contact
+from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
 
 
@@ -44,4 +45,17 @@ class ContactSerializer(serializers.ModelSerializer):
                     'priority',
                     'contact_type',
                     'ipa_code',
+                ]
+
+class GeneratorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Generator
+        site = SiteSerializer(many=True, read_only=True)
+        fields = [
+                    'id',
+                    'potency',
+                    'manufacturer',
+                    'patrimony',
+                    'site',
                 ]

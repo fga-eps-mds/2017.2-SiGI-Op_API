@@ -19,7 +19,7 @@ from rest_framework.routers import DefaultRouter
 from underground_box import views
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
-from ipa.views import ContactViewSet, ContactTypeViewSet
+from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorViewSet
 from dgo.views import GODListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
@@ -35,10 +35,11 @@ router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'generator', GeneratorViewSet, base_name='generator')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
 router.register(r'emendation_box_type',
-                EmendationBoxTypeListViewSet, base_name='type')
+                EmendationBoxTypeListViewSet, base_name='emendation_type')
 router.register(r'emendation_box_structure',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,

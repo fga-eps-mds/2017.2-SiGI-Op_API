@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
-from .serializers import ContactSerializer, ContactTypeSerializer
+from .serializers import ContactSerializer, ContactTypeSerializer, GeneratorSerializer
 from .models import InstitutionType, ParticipantInstitution, Site, SiteType
-from .models import Contact, ContactType
+from .models import Contact, ContactType, Generator
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 
 # Create your views here.
@@ -37,3 +37,7 @@ class ContactViewSet(viewsets.ModelViewSet):
 class ContactTypeViewSet(viewsets.ModelViewSet):
     queryset = ContactType.objects.all()
     serializer_class = ContactTypeSerializer
+
+class GeneratorViewSet(viewsets.ModelViewSet):
+    queryset = Generator.objects.all()
+    serializer_class = GeneratorSerializer

@@ -38,3 +38,11 @@ class Contact(models.Model):
     priority = models.IntegerField()
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
+
+class Generator(models.Model):
+    potency = models.FloatField(blank=False)
+    manufacturer = models.CharField(max_length=50, blank=False)
+    patrimony = models.CharField(max_length=20, blank=False)
+    site = models.ForeignKey(Site, null=False)
+
+
