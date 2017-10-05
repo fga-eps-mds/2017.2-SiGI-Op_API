@@ -91,11 +91,21 @@ class ViewSetTest(TestCase):
     def test_switch_view_set(self):
         request = APIRequestFactory().get("")
         view = SwitchViewSet.as_view(actions={'get': 'retrieve'})
+        instituion_type = InstitutionType.objects.create(
+                                            description="RandomInstitution")
+        ipa = ParticipantInstitution.objects.create(name='UnB',
+                                            institution_type=instituion_type)
         site_type = SiteType.objects.create(description="RandomSiteType")
+        site_id = Site.objects.create(name='RandomSite',
+                                      lattitude=42,
+                                      longitude=42,
+                                      bandwidth=42,
+                                      ipa_code=ipa,
+                                      site_type=site_type)
         switch = Switch.objects.create(serial_number='AAAAA11111',
                                        fabricant='RandomFabricant',
                                        qtd_slots='500',
                                        patrimony_number='AAAAA11111',
-                                       site_type=site_type)
+                                       site_id=site_id)
         response = view(request, pk=switch.pk)
         self.assertEqual(response.status_code, 200)

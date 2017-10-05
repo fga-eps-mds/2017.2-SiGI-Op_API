@@ -45,4 +45,4 @@ class Switch(models.Model):
     fabricant = models.CharField(max_length=30)
     qtd_slots = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30)
-    site_type = models.ForeignKey(SiteType, null=False)
+    site_id = models.ForeignKey(Site, null=False)

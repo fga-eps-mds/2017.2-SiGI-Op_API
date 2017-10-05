@@ -57,5 +57,5 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'fabricant',
                 'qtd_slots',
                 'patrimony_number',
-                'site_type',
+                'site_id',
         ]
