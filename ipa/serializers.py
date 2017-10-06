@@ -54,7 +54,7 @@ class GeneratorSerializer(serializers.ModelSerializer):
         site = SiteSerializer(many=True, read_only=True)
         fields = [
                     'id',
-                    'potency',
+                    'power',
                     'manufacturer',
                     'patrimony',
                     'site',

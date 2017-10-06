@@ -38,6 +38,6 @@ class ContactTypeViewSet(viewsets.ModelViewSet):
     queryset = ContactType.objects.all()
     serializer_class = ContactTypeSerializer
 
-class GeneratorViewSet(viewsets.ModelViewSet):
+class GeneratorListViewSet(viewsets.ModelViewSet):
     queryset = Generator.objects.all()
     serializer_class = GeneratorSerializer
