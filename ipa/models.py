@@ -38,3 +38,11 @@ class Contact(models.Model):
     priority = models.IntegerField()
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
+
+
+class Switch(models.Model):
+    serial_number = models.CharField(max_length=30, null=False)
+    fabricant = models.CharField(max_length=30)
+    slots_quantity = models.PositiveIntegerField(blank=False)
+    patrimony_number = models.CharField(max_length=30)
+    site_id = models.ForeignKey(Site, null=False)

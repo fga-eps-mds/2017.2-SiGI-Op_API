@@ -1,4 +1,5 @@
 from .models import InstitutionType, ParticipantInstitution, ContactType
+from .models import Switch
 from .models import Contact
 from rest_framework import serializers
 
@@ -45,3 +46,16 @@ class ContactSerializer(serializers.ModelSerializer):
                     'contact_type',
                     'ipa_code',
                 ]
+
+
+class SwitchSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Switch
+        fields = [
+                'serial_number',
+                'fabricant',
+                'slots_quantity',
+                'patrimony_number',
+                'site_id',
+        ]
