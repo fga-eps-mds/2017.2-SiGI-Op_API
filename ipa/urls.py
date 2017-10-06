@@ -1,7 +1,7 @@
-from .views import SiteListViewSet, SiteTypeListViewSet
+from .views import SiteListViewSet
+from .views import SiteTypeListViewSet
 from .views import NoBreakViewSet
-
-# from rest_framework import renderers
+from .views import SwitchViewSet
 
 site = SiteListViewSet.as_view({
     'get': 'list',
@@ -25,4 +25,10 @@ sitetype = SiteTypeListViewSet.as_view({
 nobreak = NoBreakViewSet.as_view({
     'get': 'list',
     'post': 'create',
+})
+
+switch = SwitchViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+    'delete': 'destroy',
 })

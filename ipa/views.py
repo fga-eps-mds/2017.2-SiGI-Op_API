@@ -2,10 +2,12 @@ from rest_framework import viewsets
 from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer, ContactTypeSerializer
+from .serializers import SwitchSerializer
 from .serializers import NoBreakSerializer
 from .models import InstitutionType, ParticipantInstitution, Site, SiteType
 from .models import Contact, ContactType
 from .models import NoBreak
+from .models import Switch
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 
 # Create your views here.
@@ -44,3 +46,8 @@ class ContactTypeViewSet(viewsets.ModelViewSet):
 class NoBreakViewSet(viewsets.ModelViewSet):
     queryset = NoBreak.objects.all()
     serializer_class = NoBreakSerializer
+
+
+class SwitchViewSet(viewsets.ModelViewSet):
+    queryset = Switch.objects.all()
+    serializer_class = SwitchSerializer
