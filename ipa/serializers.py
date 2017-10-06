@@ -1,4 +1,5 @@
 from .models import InstitutionType, ParticipantInstitution, ContactType
+from .models import NoBreak
 from .models import Switch
 from .models import Contact
 from rest_framework import serializers
@@ -46,6 +47,19 @@ class ContactSerializer(serializers.ModelSerializer):
                     'contact_type',
                     'ipa_code',
                 ]
+
+
+class NoBreakSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = NoBreak
+        fields = [
+                'id',
+                'power',
+                'proprietary',
+                'patrimony_number',
+                'site_id',
+        ]
 
 
 class SwitchSerializer(serializers.ModelSerializer):

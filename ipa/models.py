@@ -40,6 +40,13 @@ class Contact(models.Model):
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
 
+class NoBreak(models.Model):
+    power = models.FloatField(max_length=6, null=False)
+    proprietary = models.CharField(max_length=50)
+    patrimony_number = models.CharField(max_length=20)
+    site_id = models.ForeignKey(Site, on_delete=models.CASCADE)
+
+
 class Switch(models.Model):
     serial_number = models.CharField(max_length=30, null=False)
     fabricant = models.CharField(max_length=30)

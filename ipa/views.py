@@ -3,8 +3,10 @@ from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer, ContactTypeSerializer
 from .serializers import SwitchSerializer
+from .serializers import NoBreakSerializer
 from .models import InstitutionType, ParticipantInstitution, Site, SiteType
 from .models import Contact, ContactType
+from .models import NoBreak
 from .models import Switch
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 
@@ -39,6 +41,11 @@ class ContactViewSet(viewsets.ModelViewSet):
 class ContactTypeViewSet(viewsets.ModelViewSet):
     queryset = ContactType.objects.all()
     serializer_class = ContactTypeSerializer
+
+
+class NoBreakViewSet(viewsets.ModelViewSet):
+    queryset = NoBreak.objects.all()
+    serializer_class = NoBreakSerializer
 
 
 class SwitchViewSet(viewsets.ModelViewSet):
