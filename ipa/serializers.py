@@ -55,7 +55,7 @@ class SwitchSerializer(serializers.ModelSerializer):
         fields = [
                 'serial_number',
                 'fabricant',
-                'qtd_slots',
+                'slots_quantity',
                 'patrimony_number',
                 'site_id',
         ]

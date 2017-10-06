@@ -104,7 +104,7 @@ class ViewSetTest(TestCase):
                                       site_type=site_type)
         switch = Switch.objects.create(serial_number='AAAAA11111',
                                        fabricant='RandomFabricant',
-                                       qtd_slots='500',
+                                       slots_quantity='500',
                                        patrimony_number='AAAAA11111',
                                        site_id=site_id)
         response = view(request, pk=switch.pk)

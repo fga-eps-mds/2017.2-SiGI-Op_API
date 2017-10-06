@@ -43,6 +43,6 @@ class Contact(models.Model):
 class Switch(models.Model):
     serial_number = models.CharField(max_length=30, null=False)
     fabricant = models.CharField(max_length=30)
-    qtd_slots = models.PositiveIntegerField(blank=False)
+    slots_quantity = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30)
     site_id = models.ForeignKey(Site, null=False)
