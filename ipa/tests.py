@@ -6,6 +6,7 @@ from .models import SiteType
 from .models import Site
 from .models import ContactType
 from .models import Contact
+from .models import NoBreak
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import IpaTypeListViewSet
@@ -14,6 +15,7 @@ from .views import SiteTypeListViewSet
 from .views import SiteListViewSet
 from .views import ContactTypeViewSet
 from .views import ContactViewSet
+from .views import NoBreakViewSet
 # from technical_reserve.views import TechnicalReserveListViewSet
 
 # Create your tests here.
@@ -85,3 +87,16 @@ class ViewSetTest(TestCase):
 
         response = view(request, pk=contact.pk)
         self.assertEqual(response.status_code, 200)
+
+    def test_no_break_view_set(self):
+        request = APIRequestFactory().get("")
+        view = NoBreakViewSet.as_view(actions={'get': 'retrieve'})
+        site_type = SiteType.objects.create(description="RandomSiteType")
+        instituion_type = InstitutionType.objects.create(description="RandomInstitution")
+        ipa = ParticipantInstitution.objects.create(name='UnB', institution_type=instituion_type)
+        site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
+        no_break = NoBreak.objects.create(power=1, proprietary='john', patrimony_number='01', site_id=site)
+
+        response = view(request, pk=no_break.pk)
+        self.assertEqual(response.status_code, 200)
+

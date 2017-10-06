@@ -47,6 +47,7 @@ class ContactSerializer(serializers.ModelSerializer):
                     'ipa_code',
                 ]
 
+
 class NoBreakSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -57,4 +58,4 @@ class NoBreakSerializer(serializers.ModelSerializer):
                 'proprietary',
                 'patrimony_number',
                 'site_id',
-]
+        ]

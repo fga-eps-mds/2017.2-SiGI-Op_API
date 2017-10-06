@@ -39,6 +39,7 @@ class Contact(models.Model):
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
+
 class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
     proprietary = models.CharField(max_length=50)
