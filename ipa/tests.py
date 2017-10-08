@@ -1,6 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
-from .models import InstitutionType
+from .models import InstitutionType, Generator
 from .models import ParticipantInstitution
 from .models import SiteType
 from .models import Site
@@ -10,7 +10,7 @@ from .models import NoBreak
 from .models import Switch
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
-from .views import IpaTypeListViewSet
+from .views import IpaTypeListViewSet, GeneratorListViewSet
 from .views import IpaListViewSet
 from .views import SiteTypeListViewSet
 from .views import SiteListViewSet
@@ -90,6 +90,17 @@ class ViewSetTest(TestCase):
         response = view(request, pk=contact.pk)
         self.assertEqual(response.status_code, 200)
 
+    def test_generator_view_set(self):
+        request = APIRequestFactory().get("")
+        view = GeneratorListViewSet.as_view(actions={'get': 'retrieve'})
+        site_type = SiteType.objects.create(description="RandomSiteType")
+        instituion_type = InstitutionType.objects.create(description="RandomInstitution")
+        ipa = ParticipantInstitution.objects.create(
+            name='UnB', institution_type=instituion_type)
+        site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
+        generator = Generator.objects.create(power=123.3, manufacturer='Fabricante1', patrimony='Patrimonio1', site=site)
+        response = view(request, pk=generator.pk)
+        self.assertEqual(response.status_code, 200)
     def test_no_break_view_set(self):
         request = APIRequestFactory().get("")
         view = NoBreakViewSet.as_view(actions={'get': 'retrieve'})
