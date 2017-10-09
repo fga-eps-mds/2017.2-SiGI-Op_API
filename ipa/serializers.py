@@ -1,5 +1,9 @@
-from .models import InstitutionType, ParticipantInstitution, ContactType
+from .models import InstitutionType, ParticipantInstitution
+from .models import ContactType, Generator
+from .models import NoBreak
+from .models import Switch
 from .models import Contact
+from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
 
 
@@ -45,3 +49,43 @@ class ContactSerializer(serializers.ModelSerializer):
                     'contact_type',
                     'ipa_code',
                 ]
+
+
+class GeneratorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Generator
+        site = SiteSerializer(many=True, read_only=True)
+        fields = [
+                    'id',
+                    'power',
+                    'manufacturer',
+                    'patrimony',
+                    'site',
+                ]
+
+
+class NoBreakSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = NoBreak
+        fields = [
+                'id',
+                'power',
+                'proprietary',
+                'patrimony_number',
+                'site_id',
+        ]
+
+
+class SwitchSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Switch
+        fields = [
+                'serial_number',
+                'fabricant',
+                'slots_quantity',
+                'patrimony_number',
+                'site_id',
+        ]

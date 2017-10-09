@@ -19,7 +19,9 @@ from rest_framework.routers import DefaultRouter
 from underground_box import views
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
-from ipa.views import ContactViewSet, ContactTypeViewSet
+from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
+from ipa.views import NoBreakViewSet
+from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
@@ -39,16 +41,19 @@ router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
                 base_name='god_port_connection')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
+router.register(r'generator', GeneratorListViewSet, base_name='generator')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
 router.register(r'emendation_box_type',
-                EmendationBoxTypeListViewSet, base_name='type')
+                EmendationBoxTypeListViewSet, base_name='emendation_type')
 router.register(r'emendation_box_structure',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 router.register(r'site', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
+router.register(r'nobreak', NoBreakViewSet, base_name='nobreak')
+router.register(r'switch', SwitchViewSet, base_name='switch')
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
