@@ -23,6 +23,7 @@ from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
 from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
+from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -35,6 +36,9 @@ router = DefaultRouter()
 router.register(r'undergroundbox', views.UndergroundBoxViewSet)
 router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
+router.register(r'god_port', GODPortListViewSet, base_name='god_port')
+router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
+                base_name='god_port_connection')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
 router.register(r'generator', GeneratorListViewSet, base_name='generator')
