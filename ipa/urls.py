@@ -24,5 +24,6 @@ sitetype = SiteTypeListViewSet.as_view({
 switch = SwitchViewSet.as_view({
     'get': 'list',
     'post': 'create',
+    'put' : 'update',
     'delete': 'destroy',
 })
