@@ -35,7 +35,7 @@ router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
 router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
-router.register(r'generator', GeneratorListViewSet, base_name='generator')
+router.register(r'generators', GeneratorListViewSet, base_name='generator')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
 router.register(r'emendation_box_type',
@@ -44,7 +44,7 @@ router.register(r'emendation_box_structure',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
-router.register(r'site', SiteListViewSet, base_name="site")
+router.register(r'sites', SiteListViewSet, base_name="site")
 router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
