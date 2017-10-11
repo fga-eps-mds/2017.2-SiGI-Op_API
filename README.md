@@ -32,21 +32,7 @@ O projeto Sistema de Gerenciamento de Infraestrutura (SiGI) consiste do desenvol
 
 # Instalação
 
-Todas as depedências estão contidas no arquivo `requirements.txt`, assim é possível fazer a instalação das depedências de maneira instantânea, para instalar o pip:
-
-```
-$ [sudo] apt-get install python3-dev python3-pip
-```
-
-Com o `pip` instalado, para a instalação das demais depedências execute:
-
-```
-$ [sudo] pip install -r requirements.txt
-```
-
-A versão do python padrão do projeto é a `3.5` caso queira executar o projeto com o `virtualenv` crie passando como parâmetro o `python3.5`
-
-Para utilizar o docker, basta usar o seguinte comando:
+É utilizado o docker como forma de configuração de ambiente. Para utilizar o docker basta executar a seguinte linha de código:
 
 ```
 $ [sudo] docker build -t my_env .
@@ -61,14 +47,10 @@ $ [sudo] docker run -it my_env /bin/bash
 
 # Subindo o servidor
 
-```
-$ python manage.py runserver
-```
-
-Por padrão a aplicação estará disponível no localhost na porta 8000 (127.0.0.1:8000), seguindo o exemplo acima, porém isso pode ser modificado, no exemplo abaixo o servidor estará disponível no endereço `0.0.0.0` e na porta 3000:
+Para subir a aplicação no endereço `0.0.0.0` e na porta 8000 utilize o seguinte comando:
 
 ```
-$ python manage.py runserver 0.0.0.0:3000
+$ [sudo] docker run -it -p 8000:8000 my_env python3 sigiop-API/manage.py runserver 0.0.0.0:8000
 ```
 
 # Testes
@@ -76,13 +58,13 @@ $ python manage.py runserver 0.0.0.0:3000
 Para executar todos os testes habilitados pelas flags contidas na lista `NOSE_ARGS` do arquivo `sigi_op/settings.py` basta executar:
 
 ```
-$ python manage.py test
+$ [sudo] docker run -it my_env python3 sigiop-API/manage.py test
 ```
 
 Caso queira executar apenas os testes de um app específico:
 
 ```
-$ python manage.py test app_name
+$ [sudo] docker run -it my_env python3 sigiop-API/manage.py test app_name
 ```
 
 # Folha de Estilo

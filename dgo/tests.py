@@ -1,8 +1,8 @@
 
 from django.test import TestCase
-from .models import GOD
+from .models import GOD, GODPort, GODPortConnectionType
 from rest_framework.test import APIRequestFactory
-from .views import GODListViewSet
+from .views import GODListViewSet, GODPortConnectionTypeListViewSet, GODPortListViewSet
 
 class GODTest(TestCase):
 
@@ -21,3 +21,37 @@ class GODTest(TestCase):
         GODtest2.delete()
         response = GOD_detail(request,pk=primaryKey)
         self.assertEqual(response.status_code,404)
+
+    def test_GODPort_view_set(self):
+        request = APIRequestFactory().get("")
+        GODPort_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
+        tipo = GODPortConnectionType.objects.create(code = "abcd")
+        GODtest = GOD.objects.create(code=1, fabricant='Potato Bread', port_quantity=4)
+        GODPorttest = GODPort.objects.create(code=1, connection_type= tipo, god_id=GODtest)
+        response = GODPort_detail(request, pk=GODtest.pk)
+        self.assertEqual(response.status_code, 200)
+
+    def test_wrong_GODPort_view_set(self):
+        request = APIRequestFactory().get("")
+        GODPort_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
+        tipo = GODPortConnectionType.objects.create(code = "abcd")
+        dgo = GOD.objects.create(code = 198, fabricant="HotAntardida", port_quantity=42)
+        GODPorttest2 = GODPort.objects.create(code =999, connection_type= tipo, god_id = dgo)
+        GODPorttest2.delete()
+        response = GODPort_detail(request, pk=GODPorttest2.pk)
+        self.assertEqual(response.status_code, 404)
+
+    def test_GODPortConnectionType(self):
+        request = APIRequestFactory().get("")
+        GODPortConnectionType_detail = GODPortConnectionTypeListViewSet.as_view(actions={'get':'retrieve'})
+        GODPortConnectionTypetest = GODPortConnectionType.objects.create(code = 100)
+        response = GODPortConnectionType_detail(request, pk = GODPortConnectionTypetest.pk)
+        self.assertEqual(response.status_code, 200)
+
+    def test_wrong_GODPortConnectionType(self):
+        request = APIRequestFactory().get("")
+        GODPortConnectionType_detail = GODPortConnectionTypeListViewSet.as_view(actions={'get':'retrieve'})
+        GODPortConnectionTypetest2 = GODPortConnectionType.objects.create(code = 100)
+        GODPortConnectionTypetest2.delete()
+        response = GODPortConnectionType_detail(request, pk = GODPortConnectionTypetest2.pk)
+        self.assertEqual(response.status_code, 404)
