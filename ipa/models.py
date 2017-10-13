@@ -40,6 +40,13 @@ class Contact(models.Model):
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
 
+class Generator(models.Model):
+    power = models.FloatField(blank=False)
+    manufacturer = models.CharField(max_length=50, blank=False)
+    patrimony = models.CharField(max_length=20, blank=False)
+    site = models.ForeignKey(Site, null=False)
+
+
 class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
     proprietary = models.CharField(max_length=50)
