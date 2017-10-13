@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'underground_box',
     'dgo',
+    'gbic',
     'ipa',
     'emendation_box',
     'uplink',
@@ -52,7 +53,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve'
+    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
