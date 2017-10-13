@@ -25,11 +25,7 @@ SECRET_KEY = 'p_pj322n&jokp&qs!=btz=6a@q#%vuc%0$n&ap*2ouk7c*%4ou'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'obscure-escarpment-75407.herokuapp.com',
-    'localhost',
-]
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
