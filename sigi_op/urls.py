@@ -43,10 +43,10 @@ router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
 router.register(r'gbic', GBICListViewSet, base_name='gbic')
 router.register(r'gbic_type', GBIC_TypeListViewSet, base_name='gbic_type')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
-router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
-router.register(r'generator', GeneratorListViewSet, base_name='generator')
+router.register(r'ipas-type', IpaTypeListViewSet, base_name='ipatype')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
+router.register(r'generator', GeneratorListViewSet, base_name='generator')
 router.register(r'emendation_box_type',
                 EmendationBoxTypeListViewSet, base_name='emendation_type')
 router.register(r'emendation_box_structure',

@@ -2,6 +2,9 @@ Django==1.11.4
 djangorestframework==3.6.4
 django-nose==1.4.5
 coverage==4.4.1
+dj-database-url
 flake8==3.4.1
+gunicorn
+psycopg2
 coveralls
 django-cors-headers

@@ -92,14 +92,18 @@ RUN set -ex; \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py
 
-RUN pip3 install django
-
 RUN apt-get update
 
 RUN apt-get install npm -y
 
 RUN npm install vue
 
-RUN pip3 install djangorestframework
+ADD / sigiop-API/
 
-CMD ["python3"]
+RUN ls -la sigiop-API
+
+RUN pip3 install -r sigiop-API/requirements.txt
+
+RUN cd sigiop-API/ && python3 manage.py makemigrations && python3 manage.py migrate
+
+EXPOSE 8000
