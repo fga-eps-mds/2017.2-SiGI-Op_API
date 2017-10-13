@@ -27,6 +27,7 @@ from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
+from post.views import PostListViewSet
 from uplink.views import UplinkViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
@@ -57,6 +58,7 @@ router.register(r'switch', SwitchViewSet, base_name='switch')
 router.register(r'uplink', UplinkViewSet, base_name='uplink')
 router.register(r'contact', ContactViewSet, base_name="contact")
 router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
+router.register(r'posts', PostListViewSet, base_name='post')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

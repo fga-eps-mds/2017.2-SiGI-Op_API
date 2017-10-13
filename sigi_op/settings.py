@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'emendation_box',
     'uplink',
     'technical_reserve',
+    'post',
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
