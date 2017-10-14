@@ -24,6 +24,7 @@ from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
+from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -40,11 +41,13 @@ router.register(r'dgos', GODListViewSet, base_name='dgo')
 router.register(r'god_port', GODPortListViewSet, base_name='god_port')
 router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
                 base_name='god_port_connection')
+router.register(r'gbic', GBICListViewSet, base_name='gbic')
+router.register(r'gbic_type', GBIC_TypeListViewSet, base_name='gbic_type')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
-router.register(r'ipas-type', IpaTypeListViewSet, base_name='type')
-router.register(r'generator', GeneratorListViewSet, base_name='generator')
+router.register(r'ipas-type', IpaTypeListViewSet, base_name='ipatype')
 router.register(r'emendation_box',
                 EmendationBoxListViewSet, base_name='emendation_box')
+router.register(r'generator', GeneratorListViewSet, base_name='generator')
 router.register(r'emendation_box_type',
                 EmendationBoxTypeListViewSet, base_name='emendation_type')
 router.register(r'emendation_box_structure',
