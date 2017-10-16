@@ -1,5 +1,5 @@
 from django.db import models
-# import gbic #<--- Consertar
+from gbic.models import GBIC #<--- Consertar
 
 # Create your models here.
 
@@ -18,4 +18,4 @@ class GODPort(models.Model):
     code = models.CharField(blank=False, max_length=50)
     connection_type = models.ForeignKey(GODPortConnectionType)
     god_id = models.ForeignKey(GOD, null=False)
-    # gbic_id = models.ForeignKey(GBIC, null=False)
+    gbic_id = models.ForeignKey(GBIC, null=False)

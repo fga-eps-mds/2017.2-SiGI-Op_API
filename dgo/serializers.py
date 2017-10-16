@@ -19,7 +19,7 @@ class GODPortSerializer(serializers.ModelSerializer):
             'code',
             'connection_type',
             'god_id',
-            # 'gbic_id',
+            'gbic_id',
         ]
 
 
