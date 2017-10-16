@@ -1,5 +1,5 @@
 from django.db import models
-from gbic.models import GBIC #<--- Consertar
+from gbic.models import GBIC  # <--- Consertar
 
 # Create your models here.
 
