@@ -6,7 +6,7 @@
 # Icon must end with two \r
 Icon
 
-*/migrations/
+migrations/
 
 # Thumbnails
 ._*
@@ -27,7 +27,7 @@ Temporary Items
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-
+*.pyc
 # C extensions
 *.so
 

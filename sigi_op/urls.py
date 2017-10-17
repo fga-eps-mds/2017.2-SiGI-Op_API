@@ -24,6 +24,7 @@ from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
+from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -33,30 +34,32 @@ from .views import login, create_auth
 
 
 router = DefaultRouter()
-router.register(r'undergroundbox', views.UndergroundBoxViewSet)
-router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
+router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
+router.register(r'undergroundboxtypes', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
-router.register(r'god_port', GODPortListViewSet, base_name='god_port')
-router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
+router.register(r'god_ports', GODPortListViewSet, base_name='god_port')
+router.register(r'god_port_types', GODPortConnectionTypeListViewSet,
                 base_name='god_port_connection')
+router.register(r'gbics', GBICListViewSet, base_name='gbic')
+router.register(r'gbic_types', GBIC_TypeListViewSet, base_name='gbic_type')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
-router.register(r'ipas-type', IpaTypeListViewSet, base_name='ipatype')
-router.register(r'emendation_box',
+router.register(r'generators', GeneratorListViewSet, base_name='generator')
+router.register(r'ipa-types', IpaTypeListViewSet, base_name='ipatype')
+router.register(r'emendation_boxes',
                 EmendationBoxListViewSet, base_name='emendation_box')
-router.register(r'generator', GeneratorListViewSet, base_name='generator')
-router.register(r'emendation_box_type',
+router.register(r'emendation_box_types',
                 EmendationBoxTypeListViewSet, base_name='emendation_type')
-router.register(r'emendation_box_structure',
+router.register(r'emendation_box_structures',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
-router.register(r'site', SiteListViewSet, base_name="site")
-router.register(r'sitetype', SiteTypeListViewSet, base_name="sitetype")
-router.register(r'nobreak', NoBreakViewSet, base_name='nobreak')
-router.register(r'switch', SwitchViewSet, base_name='switch')
-router.register(r'uplink', UplinkViewSet, base_name='uplink')
-router.register(r'contact', ContactViewSet, base_name="contact")
-router.register(r'contacttype', ContactTypeViewSet, base_name="contacttype")
+router.register(r'sites', SiteListViewSet, base_name="site")
+router.register(r'sitetypes', SiteTypeListViewSet, base_name="sitetype")
+router.register(r'nobreaks', NoBreakViewSet, base_name='nobreak')
+router.register(r'switches', SwitchViewSet, base_name='switch')
+router.register(r'uplinks', UplinkViewSet, base_name='uplink')
+router.register(r'contacts', ContactViewSet, base_name="contact")
+router.register(r'contacttypes', ContactTypeViewSet, base_name="contacttype")
 
 urlpatterns = [
     url(r'^', include(router.urls)),

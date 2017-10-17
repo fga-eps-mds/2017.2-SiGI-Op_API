@@ -2,6 +2,7 @@
 from django.test import TestCase
 from .models import GOD, GODPort, GODPortConnectionType
 from rest_framework.test import APIRequestFactory
+from gbic.models import GBIC, GBIC_Type
 from .views import GODListViewSet, GODPortConnectionTypeListViewSet, GODPortListViewSet
 
 class GODTest(TestCase):
@@ -26,8 +27,10 @@ class GODTest(TestCase):
         request = APIRequestFactory().get("")
         GODPort_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
         tipo = GODPortConnectionType.objects.create(code = "abcd")
+        gbictipo = GBIC_Type.objects.create(description = "testechato")
+        gbic = GBIC.objects.create(serial = "huehue", patrimony_number = "123", gbic_type = gbictipo)
         GODtest = GOD.objects.create(code=1, fabricant='Potato Bread', port_quantity=4)
-        GODPorttest = GODPort.objects.create(code=1, connection_type= tipo, god_id=GODtest)
+        GODPorttest = GODPort.objects.create(code=1, connection_type= tipo, god_id=GODtest, gbic_id = gbic)
         response = GODPort_detail(request, pk=GODtest.pk)
         self.assertEqual(response.status_code, 200)
 
@@ -35,8 +38,10 @@ class GODTest(TestCase):
         request = APIRequestFactory().get("")
         GODPort_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
         tipo = GODPortConnectionType.objects.create(code = "abcd")
+        gbictipo = GBIC_Type.objects.create(description = "testechato")
+        gbic = GBIC.objects.create(serial = "huehue", patrimony_number = "123", gbic_type = gbictipo)
         dgo = GOD.objects.create(code = 198, fabricant="HotAntardida", port_quantity=42)
-        GODPorttest2 = GODPort.objects.create(code =999, connection_type= tipo, god_id = dgo)
+        GODPorttest2 = GODPort.objects.create(code =999, connection_type= tipo, god_id = dgo, gbic_id = gbic)
         GODPorttest2.delete()
         response = GODPort_detail(request, pk=GODPorttest2.pk)
         self.assertEqual(response.status_code, 404)
