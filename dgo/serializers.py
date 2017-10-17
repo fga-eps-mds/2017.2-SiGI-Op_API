@@ -9,6 +9,7 @@ class GODSerializer(serializers.ModelSerializer):
             'code',
             'fabricant',
             'port_quantity',
+            'site_id',
         ]
 
 

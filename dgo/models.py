@@ -1,5 +1,6 @@
 from django.db import models
-from gbic.models import GBIC  # <--- Consertar
+from gbic.models import GBIC
+from ipa.models import Site
 
 # Create your models here.
 
@@ -8,6 +9,7 @@ class GOD(models.Model):
     code = models.IntegerField(default=0)
     fabricant = models.CharField(max_length=50)
     port_quantity = models.IntegerField(default=1)
+    site_id = models.ForeignKey(Site, null=False)
 
 
 class GODPortConnectionType(models.Model):
