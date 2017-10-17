@@ -25,6 +25,7 @@ from ipa.views import SwitchViewSet
 from dgo.views import GODListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from segments.views import SegmentViewSet
+from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
@@ -34,20 +35,22 @@ from .views import login, create_auth
 
 
 router = DefaultRouter()
-router.register(r'undergroundbox', views.UndergroundBoxViewSet)
-router.register(r'undergroundboxtype', views.UndergroundBoxTypeViewSet)
+router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
+router.register(r'undergroundboxtypes', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
-router.register(r'god_port', GODPortListViewSet, base_name='god_port')
-router.register(r'god_port_type', GODPortConnectionTypeListViewSet,
+router.register(r'god_ports', GODPortListViewSet, base_name='god_port')
+router.register(r'god_port_types', GODPortConnectionTypeListViewSet,
                 base_name='god_port_connection')
+router.register(r'gbics', GBICListViewSet, base_name='gbic')
+router.register(r'gbic_types', GBIC_TypeListViewSet, base_name='gbic_type')
 router.register(r'ipas', IpaListViewSet, base_name='ipa')
-router.register(r'ipas-type', IpaTypeListViewSet, base_name='ipatype')
-router.register(r'emendation_box',
+router.register(r'generators', GeneratorListViewSet, base_name='generator')
+router.register(r'ipa-types', IpaTypeListViewSet, base_name='ipatype')
+router.register(r'emendation_boxes',
                 EmendationBoxListViewSet, base_name='emendation_box')
-router.register(r'generator', GeneratorListViewSet, base_name='generator')
-router.register(r'emendation_box_type',
+router.register(r'emendation_box_types',
                 EmendationBoxTypeListViewSet, base_name='emendation_type')
-router.register(r'emendation_box_structure',
+router.register(r'emendation_box_structures',
                 EmendationBoxStructureListViewSet, base_name='structure')
 router.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
