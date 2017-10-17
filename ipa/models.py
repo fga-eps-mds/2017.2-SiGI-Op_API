@@ -39,6 +39,7 @@ class Contact(models.Model):
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
+
 class Generator(models.Model):
     power = models.FloatField(blank=False)
     manufacturer = models.CharField(max_length=50, blank=False)
@@ -46,3 +47,16 @@ class Generator(models.Model):
     site = models.ForeignKey(Site, null=False)
 
 
+class NoBreak(models.Model):
+    power = models.FloatField(max_length=6, null=False)
+    proprietary = models.CharField(max_length=50)
+    patrimony_number = models.CharField(max_length=20)
+    site_id = models.ForeignKey(Site, on_delete=models.CASCADE)
+
+
+class Switch(models.Model):
+    serial_number = models.CharField(max_length=30, null=False)
+    fabricant = models.CharField(max_length=30)
+    slots_quantity = models.PositiveIntegerField(blank=False)
+    patrimony_number = models.CharField(max_length=30)
+    site_id = models.ForeignKey(Site, null=False)
