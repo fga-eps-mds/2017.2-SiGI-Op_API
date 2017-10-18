@@ -19,3 +19,8 @@ class GODPort(models.Model):
     connection_type = models.ForeignKey(GODPortConnectionType)
     god_id = models.ForeignKey(GOD, null=False)
     gbic_id = models.ForeignKey(GBIC, null=False)
+
+
+class Jumper(models.Model):
+    god_port1 = models.ForeignKey(GODPort, null=False, related_name="godport1")
+    god_port2 = models.ForeignKey(GODPort, null=False, related_name="godport2")
