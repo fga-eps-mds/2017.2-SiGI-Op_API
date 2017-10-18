@@ -1,5 +1,5 @@
 from .views import GODListViewSet, GODPortListViewSet
-from .views import GODPortConnectionTypeListViewSet, JumperViewSet
+from .views import GODPortConnectionTypeListViewSet
 
 god = GODListViewSet.as_view({
     'get': 'list',
@@ -14,13 +14,6 @@ god_port = GODPortListViewSet.as_view({
 })
 
 god_port_connection_type = GODPortConnectionTypeListViewSet.as_view({
-    'get': 'list',
-    'patch': 'partial_update',
-    'put': 'update',
-    'delete': 'destroy',
-})
-
-jumper = JumperViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
