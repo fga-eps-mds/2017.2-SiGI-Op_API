@@ -35,6 +35,7 @@ class JumperSerializer(serializers.ModelSerializer):
     class Meta:
         model = Jumper
         fields = [
+            'id',
             'god_port1',
             'god_port2',
         ]
