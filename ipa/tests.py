@@ -7,11 +7,12 @@ from .models import Site
 from .models import ContactType
 from .models import Contact
 from .models import NoBreak
-from .models import Switch
+from .models import Switch, AccessCable
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
+from dgo.models import GOD
 from .views import IpaTypeListViewSet, GeneratorListViewSet
-from .views import IpaListViewSet
+from .views import IpaListViewSet, AccessCableListViewSet
 from .views import SiteTypeListViewSet
 from .views import SiteListViewSet
 from .views import ContactTypeViewSet
@@ -134,3 +135,32 @@ class ViewSetTest(TestCase):
                                        site_id=site_id)
         response = view(request, pk=switch.pk)
         self.assertEqual(response.status_code, 200)
+    
+    def test_acess_cable_view_set(self):
+        request = APIRequestFactory().get("")
+        view = AccessCableListViewSet.as_view(actions={'get': 'list'})
+        site_type = SiteType.objects.create(description="RandomSiteType")
+        instituion_type = InstitutionType.objects.create(description="RandomInstitution")
+        ipa = ParticipantInstitution.objects.create(name='UnB', institution_type=instituion_type)
+        site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
+        god = GOD.objects.create(code=1, fabricant="FabricanteTeste", port_quantity="10")
+        access_cable = AccessCable.objects.create(cod=1, length=120, fiber_quantity=10, god_id=god, site_id=site)
+
+        response = view(request, pk=access_cable.pk)
+        self.assertEqual(response.status_code, 200)
+
+    def test_access_cable_post(self):
+        view = AccessCableListViewSet.as_view(actions={'get': 'list'})
+        factory = APIRequestFactory()
+        site_type = SiteType.objects.create(description="RandomSiteType")
+        instituion_type = InstitutionType.objects.create(description="RandomInstitution")
+        ipa = ParticipantInstitution.objects.create(name='UnB', institution_type=instituion_type)
+        site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
+        god = GOD.objects.create(code=1, fabricant="FabricanteTeste", port_quantity="10")
+        access_cable = AccessCable.objects.create(cod=1, length=120, fiber_quantity=10, god_id=god, site_id=site)
+        request = factory.get('/access-cables/')
+        response = view(request)
+        items = response.data[0]
+        self.assertEqual(list(items.values())[1], 120)
+
+    
