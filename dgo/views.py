@@ -1,9 +1,9 @@
 # from django.shortcuts import get_object_or_404, render
 from rest_framework import viewsets
 # from rest_framework.response import Response
-from .serializers import GODSerializer, GODPortSerializer
+from .serializers import GODSerializer, GODPortSerializer, JumperSerializer
 from .serializers import GODPortConnectionTypeSerializer
-from .models import GOD, GODPort, GODPortConnectionType
+from .models import GOD, GODPort, GODPortConnectionType, Jumper
 
 
 # Create your views here.
@@ -22,3 +22,8 @@ class GODPortListViewSet(viewsets.ModelViewSet):
 class GODPortConnectionTypeListViewSet(viewsets.ModelViewSet):
     queryset = GODPortConnectionType.objects.all()
     serializer_class = GODPortConnectionTypeSerializer
+
+
+class JumperViewSet(viewsets.ModelViewSet):
+    queryset = Jumper.objects.all()
+    serializer_class = JumperSerializer

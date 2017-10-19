@@ -1,4 +1,4 @@
-from .models import GOD, GODPort, GODPortConnectionType
+from .models import GOD, GODPort, GODPortConnectionType, Jumper
 from rest_framework import serializers
 
 
@@ -28,4 +28,14 @@ class GODPortConnectionTypeSerializer(serializers.ModelSerializer):
         model = GODPortConnectionType
         fields = [
             'code'
+        ]
+
+
+class JumperSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Jumper
+        fields = [
+            'id',
+            'god_port1',
+            'god_port2',
         ]
