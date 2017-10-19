@@ -1,9 +1,7 @@
 from django.db import models
-from django.utils import timezone
-# from ../technical_reserve/models import TechnicalReserve
-# from ../emendation_box/models import EmendationBox
 from emendation_box.models import EmendationBox
 from technical_reserve.models import TechnicalReserve
+
 
 class UndergroundBoxType(models.Model):
     name = models.CharField(blank=False, max_length=100)
@@ -15,6 +13,5 @@ class UndergroundBox(models.Model):
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)
     cover_type = models.CharField(max_length=20, blank=False)
-    emendation_box = models.ForeignKey(EmendationBox,null=False)
-    technical_reserve = models.ForeignKey(TechnicalReserve,null=False)
-    
+    emendation_box = models.ForeignKey(EmendationBox, null=False)
+    technical_reserve = models.ForeignKey(TechnicalReserve, null=False)
