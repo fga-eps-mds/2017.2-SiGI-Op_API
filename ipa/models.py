@@ -60,3 +60,9 @@ class Switch(models.Model):
     slots_quantity = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30)
     site_id = models.ForeignKey(Site, null=False)
+
+
+class SlotPort(models.Model):
+    #slot_id = models.ForeignKey(Slots, null=False)
+    type_slot = models.CharField(max_length=10)
+    port = models.CharField(max_length=20, null=False)

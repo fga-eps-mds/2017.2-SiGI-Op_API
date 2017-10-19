@@ -3,6 +3,7 @@ from .models import ContactType, Generator
 from .models import NoBreak
 from .models import Switch
 from .models import Contact
+from .models import SlotPort
 from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
 
@@ -88,4 +89,15 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'slots_quantity',
                 'patrimony_number',
                 'site_id',
+        ]
+
+
+class SlotPortSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SlotPort
+        fields = [
+            #'slot_id',
+            'type_slot',
+            'port',
         ]

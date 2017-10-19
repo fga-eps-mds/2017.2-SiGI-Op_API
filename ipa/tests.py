@@ -8,6 +8,7 @@ from .models import ContactType
 from .models import Contact
 from .models import NoBreak
 from .models import Switch
+from .models import SlotPort
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import IpaTypeListViewSet, GeneratorListViewSet
@@ -18,6 +19,7 @@ from .views import ContactTypeViewSet
 from .views import ContactViewSet
 from .views import NoBreakViewSet
 from .views import SwitchViewSet
+from .views import SlotPortViewSet
 # from technical_reserve.views import TechnicalReserveListViewSet
 
 # Create your tests here.
@@ -101,6 +103,7 @@ class ViewSetTest(TestCase):
         generator = Generator.objects.create(power=123.3, manufacturer='Fabricante1', patrimony='Patrimonio1', site=site)
         response = view(request, pk=generator.pk)
         self.assertEqual(response.status_code, 200)
+    
     def test_no_break_view_set(self):
         request = APIRequestFactory().get("")
         view = NoBreakViewSet.as_view(actions={'get': 'retrieve'})
