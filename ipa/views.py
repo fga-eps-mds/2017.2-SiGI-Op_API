@@ -4,9 +4,9 @@ from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer
 from .serializers import ContactTypeSerializer, GeneratorSerializer
 from .models import InstitutionType, ParticipantInstitution, Site, SiteType
-from .models import Contact, ContactType, Generator
+from .models import Contact, ContactType, Generator, AccessCable
 from .serializers import SwitchSerializer
-from .serializers import NoBreakSerializer
+from .serializers import NoBreakSerializer, AccessCableSerializer
 from .models import NoBreak
 from .models import Switch
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
@@ -57,3 +57,8 @@ class NoBreakViewSet(viewsets.ModelViewSet):
 class SwitchViewSet(viewsets.ModelViewSet):
     queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
+
+
+class AccessCableListViewSet(viewsets.ModelViewSet):
+    queryset = AccessCable.objects.all()
+    serializer_class = AccessCableSerializer
