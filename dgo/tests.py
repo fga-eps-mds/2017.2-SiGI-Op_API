@@ -1,9 +1,9 @@
-
 from django.test import TestCase
-from .models import GOD, GODPort, GODPortConnectionType
+from .models import GOD, GODPort, GODPortConnectionType, Jumper
 from rest_framework.test import APIRequestFactory
 from gbic.models import GBIC, GBIC_Type
 from .views import GODListViewSet, GODPortConnectionTypeListViewSet, GODPortListViewSet
+from .views import JumperViewSet
 
 class GODTest(TestCase):
 
@@ -59,4 +59,34 @@ class GODTest(TestCase):
         GODPortConnectionTypetest2 = GODPortConnectionType.objects.create(code = 100)
         GODPortConnectionTypetest2.delete()
         response = GODPortConnectionType_detail(request, pk = GODPortConnectionTypetest2.pk)
+        self.assertEqual(response.status_code, 404)
+
+class JumperTest(TestCase):
+
+    def test_jumper_view_set(self):
+        request = APIRequestFactory().get("")
+        jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
+        tipo = GODPortConnectionType.objects.create(code = "abcd")
+        gbictipo = GBIC_Type.objects.create(description = "tipoteste")
+        gbic = GBIC.objects.create(serial = "huehue", patrimony_number = "123", gbic_type = gbictipo)
+        dgo = GOD.objects.create(code = 198, fabricant="HotAntardida", port_quantity=42)
+        GODPorttest1 = GODPort.objects.create(code=999, connection_type=tipo, god_id=dgo, gbic_id=gbic)
+        GODPorttest2 = GODPort.objects.create(code=109, connection_type=tipo, god_id=dgo, gbic_id=gbic)
+        jumper_test = Jumper.objects.create(god_port1=GODPorttest1, god_port2=GODPorttest2)
+        response = jumper_detail(request, pk=jumper_test.pk)
+        self.assertEqual(response.status_code, 200)
+
+    def test_wrong_jumper_view_set(self):
+        request = APIRequestFactory().get("")
+        jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
+        tipo = GODPortConnectionType.objects.create(code = "abcd")
+        gbictipo = GBIC_Type.objects.create(description = "tipoteste")
+        gbic = GBIC.objects.create(serial = "huehue", patrimony_number = "123", gbic_type = gbictipo)
+        dgo = GOD.objects.create(code = 198, fabricant="HotAntardida", port_quantity=42)
+        GODPorttest1 = GODPort.objects.create(code=999, connection_type=tipo, god_id=dgo, gbic_id=gbic)
+        GODPorttest2 = GODPort.objects.create(code=109, connection_type=tipo, god_id=dgo, gbic_id=gbic)
+        jumper_test = Jumper.objects.create(god_port1=GODPorttest1, god_port2=GODPorttest2)
+        pk = jumper_test.pk
+        jumper_test.delete()
+        response = jumper_detail(request, pk=jumper_test.pk)
         self.assertEqual(response.status_code, 404)
