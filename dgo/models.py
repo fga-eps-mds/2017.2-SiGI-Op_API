@@ -26,3 +26,11 @@ class GODPort(models.Model):
 class Jumper(models.Model):
     god_port1 = models.ForeignKey(GODPort, null=False, related_name="godport1")
     god_port2 = models.ForeignKey(GODPort, null=False, related_name="godport2")
+
+
+class AccessCable(models.Model):
+    cod = models.CharField(null=False, max_length=50)
+    length = models.FloatField(blank=False)
+    fiber_quantity = models.IntegerField(default=1)
+    god_id = models.ForeignKey(GOD, null=False)
+    site_id = models.ForeignKey(Site, null=False)

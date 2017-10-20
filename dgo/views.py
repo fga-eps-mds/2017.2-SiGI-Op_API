@@ -2,8 +2,8 @@
 from rest_framework import viewsets
 # from rest_framework.response import Response
 from .serializers import GODSerializer, GODPortSerializer, JumperSerializer
-from .serializers import GODPortConnectionTypeSerializer
-from .models import GOD, GODPort, GODPortConnectionType, Jumper
+from .serializers import GODPortConnectionTypeSerializer, AccessCableSerializer
+from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
 
 
 # Create your views here.
@@ -27,3 +27,8 @@ class GODPortConnectionTypeListViewSet(viewsets.ModelViewSet):
 class JumperViewSet(viewsets.ModelViewSet):
     queryset = Jumper.objects.all()
     serializer_class = JumperSerializer
+
+
+class AccessCableListViewSet(viewsets.ModelViewSet):
+    queryset = AccessCable.objects.all()
+    serializer_class = AccessCableSerializer
