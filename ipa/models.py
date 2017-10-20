@@ -5,11 +5,11 @@ from dgo.models import GOD
 
 
 class InstitutionType(models.Model):
-    description = models.CharField(max_length=200)
+    description = models.CharField(max_length=200, null=False)
 
 
 class ParticipantInstitution(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, null=False)
     institution_type = models.ForeignKey(InstitutionType, null=False)
 
 
@@ -35,7 +35,7 @@ class Contact(models.Model):
     phone_number = models.CharField(max_length=15)
     email_validator = EmailValidator()
     email = models.CharField(validators=[email_validator], max_length=40)
-    priority = models.IntegerField()
+    priority = models.IntegerField(blank=False)
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
@@ -49,16 +49,16 @@ class Generator(models.Model):
 
 class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
-    proprietary = models.CharField(max_length=50)
-    patrimony_number = models.CharField(max_length=20)
-    site_id = models.ForeignKey(Site, on_delete=models.CASCADE)
+    proprietary = models.CharField(max_length=50, null=False)
+    patrimony_number = models.CharField(max_length=20, null=False)
+    site_id = models.ForeignKey(Site, on_delete=models.CASCADE, null=False)
 
 
 class Switch(models.Model):
     serial_number = models.CharField(max_length=30, null=False)
-    fabricant = models.CharField(max_length=30)
+    fabricant = models.CharField(max_length=30, null=False)
     slots_quantity = models.PositiveIntegerField(blank=False)
-    patrimony_number = models.CharField(max_length=30)
+    patrimony_number = models.CharField(max_length=30, null=False)
     site_id = models.ForeignKey(Site, null=False)
 
 
