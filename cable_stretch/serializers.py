@@ -16,5 +16,5 @@ class CableStretchSerializer(serializers.ModelSerializer):
             # segmento
             'access',
             'creation_date',
-            'extinction_date',
+            'updated_date',
         ]
