@@ -20,9 +20,9 @@ from underground_box import views
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
-from ipa.views import NoBreakViewSet, AccessCableListViewSet
+from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
-from dgo.views import GODListViewSet, JumperViewSet
+from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet

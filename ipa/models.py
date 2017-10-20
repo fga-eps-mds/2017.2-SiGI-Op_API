@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import EmailValidator
-from dgo.models import GOD
 # Create your models here.
 
 
@@ -59,12 +58,4 @@ class Switch(models.Model):
     fabricant = models.CharField(max_length=30)
     slots_quantity = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30)
-    site_id = models.ForeignKey(Site, null=False)
-
-
-class AccessCable(models.Model):
-    cod = models.CharField(null=False, max_length=50)
-    length = models.FloatField(blank=False)
-    fiber_quantity = models.IntegerField(default=1)
-    god_id = models.ForeignKey(GOD, null=False)
     site_id = models.ForeignKey(Site, null=False)
