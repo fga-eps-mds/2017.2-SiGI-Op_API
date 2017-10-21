@@ -56,7 +56,7 @@ class NoBreak(models.Model):
 
 class Switch(models.Model):
     serial_number = models.CharField(max_length=30, null=False)
-    fabricant = models.CharField(max_length=30, null=False)
+    manufacturer = models.CharField(max_length=30, null=False)
     slots_quantity = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30, null=False)
     site_id = models.ForeignKey(Site, null=False)

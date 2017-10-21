@@ -5,7 +5,7 @@ from gbic.models import GBIC  # <--- Consertar
 
 
 class GOD(models.Model):
-    code = models.IntegerField(default=0)
+    code = models.IntegerField(default=0, unique=True)
     fabricant = models.CharField(max_length=50)
     port_quantity = models.IntegerField(default=1)
 
@@ -18,7 +18,7 @@ class GODPort(models.Model):
     code = models.CharField(blank=False, max_length=50)
     connection_type = models.ForeignKey(GODPortConnectionType)
     god_id = models.ForeignKey(GOD, null=False)
-    gbic_id = models.ForeignKey(GBIC, null=False)
+    gbic_id = models.ForeignKey(GBIC, null=True)
 
 
 class Jumper(models.Model):
