@@ -43,27 +43,27 @@ class Contact(models.Model):
 class Generator(models.Model):
     power = models.FloatField(blank=False)
     manufacturer = models.CharField(max_length=50, blank=False)
-    patrimony = models.CharField(max_length=20, blank=False)
+    patrimony = models.CharField(max_length=20, blank=False, unique=True)
     site = models.ForeignKey(Site, null=False)
 
 
 class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
     proprietary = models.CharField(max_length=50, null=False)
-    patrimony_number = models.CharField(max_length=20, null=False)
+    patrimony_number = models.CharField(max_length=20, null=False, unique=True)
     site_id = models.ForeignKey(Site, on_delete=models.CASCADE, null=False)
 
 
 class Switch(models.Model):
-    serial_number = models.CharField(max_length=30, null=False)
+    serial_number = models.CharField(max_length=30, null=False, unique=True)
     manufacturer = models.CharField(max_length=30, null=False)
     slots_quantity = models.PositiveIntegerField(blank=False)
-    patrimony_number = models.CharField(max_length=30, null=False)
+    patrimony_number = models.CharField(max_length=30, null=False, unique=True)
     site_id = models.ForeignKey(Site, null=False)
 
 
 class AccessCable(models.Model):
-    cod = models.CharField(null=False, max_length=50)
+    cod = models.CharField(null=False, max_length=50, unique=True)
     length = models.FloatField(blank=False)
     fiber_quantity = models.IntegerField(default=1)
     god_id = models.ForeignKey(GOD, null=False)
