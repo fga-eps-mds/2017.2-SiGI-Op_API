@@ -1,6 +1,8 @@
 from django.test import TestCase
 from .models import CableStretch, CableStretchType
+from .models import Tubeloose
 from .views import CableStretchListViewSet
+from .views import TubelooseListViewSet
 from rest_framework.test import APIRequestFactory
 
 
@@ -39,3 +41,21 @@ class CableStretchTest(TestCase):
         CableStretchtest.delete()
         response = cable_stretch_detail(request,pk=primaryKey)
         self.assertEqual(response.status_code,404)
+
+def test_Tubeloose_view_set(self):
+    request = APIRequestFactory().get("")
+    tubeloose_detail = TubelooseListViewSet.as_view(actions={'get':'retrieve'})
+    Tubeloosetest = Tubeloose.objects.create(number=1010,
+                                             stretch_id=stretch_id)
+    response = stretch_id(request, pk=primaryKey)
+    self.assertEqual(response.status_code,404)
+
+def test_wrong_Tubeloose_view_set(self):
+    request = APIRequestFactory().get("")
+    tubeloose_detail = TubelooseListViewSet.as_view(actions={'get':'retrieve'})
+    Tubeloosetest = Tubeloose.objects.create(number=1010,
+                                             stretch_id=stretch_id)
+    primaryKey = Tubeloosetest.pk
+    Tubeloosetest.delete()
+    response = tubeloose_detail(request,pk=primaryKey)
+    self.assertEqual(response.status_code,404)
