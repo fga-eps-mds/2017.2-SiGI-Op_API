@@ -24,4 +24,4 @@ class CableStretch(models.Model):
 
 class Tubeloose(models.Model):
     number = models.IntegerField(blank=False)
-    stretch_id = models.ForeignKey(CableStretchType, null=False)
+    stretch_id = models.ForeignKey(CableStretch, null=False)
