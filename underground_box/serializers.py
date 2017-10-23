@@ -5,6 +5,7 @@ from .models import UndergroundBox, UndergroundBoxType
 from emendation_box.serializers import EmendationBoxSerializer
 from technical_reserve.serializers import TechnicalReserveSerializer
 
+
 class UndergroundBoxTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UndergroundBoxType
@@ -19,7 +20,8 @@ class UndergroundBoxSerializer(serializers.ModelSerializer):
         model = UndergroundBox
         box_type = UndergroundBoxTypeSerializer(many=True, read_only=True)
         emendation_box = EmendationBoxSerializer(many=True, read_only=True)
-        technical_reserve = TechnicalReserveSerializer(many=True, read_only=True)
+        technical_reserve = TechnicalReserveSerializer(many=True,
+                                                       read_only=True)
         fields = [
                 'id',
                 'code',
