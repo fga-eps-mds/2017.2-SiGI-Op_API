@@ -1,7 +1,5 @@
 from django.db import models
 from django.utils import timezone
-# from ../technical_reserve/models import TechnicalReserve
-# from ../emendation_box/models import EmendationBox
 from emendation_box.models import EmendationBox
 from technical_reserve.models import TechnicalReserve
 
@@ -17,4 +15,3 @@ class UndergroundBox(models.Model):
     cover_type = models.CharField(max_length=20, blank=False)
     emendation_box = models.ForeignKey(EmendationBox,null=False)
     technical_reserve = models.ForeignKey(TechnicalReserve,null=False)
-    
