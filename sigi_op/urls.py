@@ -31,6 +31,7 @@ from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
 from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
+from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
 
@@ -67,6 +68,8 @@ router.register(r'cable_stretches', CableStretchListViewSet,
                 base_name='cablestretch')
 router.register(r'cable_stretch_types', CableStretchTypeListViewSet,
                 base_name='cablestretchtype')
+router.register(r'tubelooses', TubelooseListViewSet,
+                base_name='tubeloose')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
