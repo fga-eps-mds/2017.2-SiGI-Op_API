@@ -22,7 +22,7 @@ from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
 from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
-from dgo.views import GODListViewSet, JumperViewSet
+from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
@@ -60,6 +60,8 @@ router.register(r'switches', SwitchViewSet, base_name='switch')
 router.register(r'uplinks', UplinkViewSet, base_name='uplink')
 router.register(r'contacts', ContactViewSet, base_name="contact")
 router.register(r'contacttypes', ContactTypeViewSet, base_name="contacttype")
+router.register(r'access-cables', AccessCableListViewSet,
+                base_name="accesscables")
 router.register(r'jumpers', JumperViewSet, base_name='jumper')
 
 urlpatterns = [

@@ -10,6 +10,7 @@ from .models import NoBreak
 from .models import Switch
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
+from dgo.models import GOD
 from .views import IpaTypeListViewSet, GeneratorListViewSet
 from .views import IpaListViewSet
 from .views import SiteTypeListViewSet

@@ -1,5 +1,4 @@
 from django.db import models
-# from django.utils import timezone
 from emendation_box.models import EmendationBox
 from technical_reserve.models import TechnicalReserve
 

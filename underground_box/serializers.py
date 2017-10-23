@@ -1,7 +1,5 @@
 from rest_framework import serializers
 from .models import UndergroundBox, UndergroundBoxType
-# from ../emendation_box/serializers import EmendationBoxSerializer
-# from ../technical_reserve/serializers import TechnicalReserveSerializer
 from emendation_box.serializers import EmendationBoxSerializer
 from technical_reserve.serializers import TechnicalReserveSerializer
 
