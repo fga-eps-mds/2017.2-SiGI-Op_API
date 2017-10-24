@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'emendation_box',
     'uplink',
     'technical_reserve',
+    'cable_stretch'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
