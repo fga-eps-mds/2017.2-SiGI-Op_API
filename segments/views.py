@@ -1,6 +1,9 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+from rest_framework import viewsets
+from .serializers import SegmentsSerializer
+from .models import Segments
 
-from django.shortcuts import render
 
 # Create your views here.
+class SegmentsListViewSet(viewsets.ModelViewSet):
+    queryset = Segments.objects.all()
+    serializer_class = SegmentsSerializer
