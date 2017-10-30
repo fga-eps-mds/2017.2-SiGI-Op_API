@@ -18,8 +18,8 @@ class UndergroundBoxSerializer(serializers.ModelSerializer):
         model = UndergroundBox
         box_type = UndergroundBoxTypeSerializer(many=True, read_only=True)
         emendation_box = EmendationBoxSerializer(many=True, read_only=True)
-        technical_reserve = TechnicalReserveSerializer(
-            many=True, read_only=True)
+        technical_reserve = TechnicalReserveSerializer(many=True,
+                                                       read_only=True)
         fields = [
                 'id',
                 'code',

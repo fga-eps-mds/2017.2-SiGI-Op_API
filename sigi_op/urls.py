@@ -20,15 +20,18 @@ from underground_box import views
 from ipa.views import SiteListViewSet, SiteTypeListViewSet
 from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
-from ipa.views import NoBreakViewSet, AccessCableListViewSet
+from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
-from dgo.views import GODListViewSet, JumperViewSet
+from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
+from cable_stretch.views import CableStretchListViewSet
+from cable_stretch.views import CableStretchTypeListViewSet
+from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
 
@@ -63,6 +66,12 @@ router.register(r'contacttypes', ContactTypeViewSet, base_name="contacttype")
 router.register(r'access-cables', AccessCableListViewSet,
                 base_name="accesscables")
 router.register(r'jumpers', JumperViewSet, base_name='jumper')
+router.register(r'cable_stretches', CableStretchListViewSet,
+                base_name='cablestretch')
+router.register(r'cable_stretch_types', CableStretchTypeListViewSet,
+                base_name='cablestretchtype')
+router.register(r'tubelooses', TubelooseListViewSet,
+                base_name='tubeloose')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
