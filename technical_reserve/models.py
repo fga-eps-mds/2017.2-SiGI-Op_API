@@ -5,7 +5,7 @@ from django.db import models
 
 
 class TechnicalReserve(models.Model):
-    code = models.IntegerField(null=False, default=0)
+    code = models.IntegerField(null=False, default=0, unique=True)
     length = models.FloatField(blank=False)
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)

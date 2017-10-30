@@ -83,8 +83,9 @@ class SwitchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Switch
         fields = [
+                'id',
                 'serial_number',
-                'fabricant',
+                'manufacturer',
                 'slots_quantity',
                 'patrimony_number',
                 'site_id',
