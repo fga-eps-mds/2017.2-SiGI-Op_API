@@ -129,7 +129,7 @@ class ViewSetTest(TestCase):
                                       ipa_code=ipa,
                                       site_type=site_type)
         switch = Switch.objects.create(serial_number='AAAAA11111',
-                                       fabricant='RandomFabricant',
+                                       manufacturer='RandomManufacturer',
                                        slots_quantity='500',
                                        patrimony_number='AAAAA11111',
                                        site_id=site_id)
