@@ -6,4 +6,5 @@ from django.core.validators import MinValueValidator
 class Uplink(models.Model):
     name_vlan = models.CharField(blank=False, max_length=50)
     band = models.FloatField(blank=False)
-    code = models.IntegerField(blank=False, validators=[MinValueValidator(0)], unique=True)
+    code = models.IntegerField(blank=False, validators=[MinValueValidator(0)],
+                               unique=True)
