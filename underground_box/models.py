@@ -8,7 +8,8 @@ class UndergroundBoxType(models.Model):
 
 
 class UndergroundBox(models.Model):
-    code = models.CharField(max_length=200, blank=False, default='none')
+    code = models.CharField(max_length=200, blank=False, default='none',
+                            unique=True)
     box_type = models.ForeignKey(UndergroundBoxType, null=False)
     latitude = models.FloatField(blank=False)
     longitude = models.FloatField(blank=False)

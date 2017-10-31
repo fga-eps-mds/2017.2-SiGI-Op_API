@@ -18,7 +18,7 @@ class GODPortSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODPort
         fields = [
-            'code',
+            'id',
             'connection_type',
             'god_id',
             'gbic_id',
