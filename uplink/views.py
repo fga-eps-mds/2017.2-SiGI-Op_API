@@ -1,10 +1,8 @@
 from rest_framework import viewsets
-from uplink.models import Uplink
-from uplink.serializers import UplinkSerializer
+from .serializers import UplinkSerializer
+from .models import Uplink
 
-# Create your views here.
-
-
+# Create your views here
 class UplinkViewSet(viewsets.ModelViewSet):
     queryset = Uplink.objects.all()
     serializer_class = UplinkSerializer
