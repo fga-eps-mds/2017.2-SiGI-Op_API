@@ -6,6 +6,11 @@ from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
 
+from emendation_box.models import EmendationBox
+from ipa.models import Site
+from technical_reserve.models import TechnicalReserve
+from underground_box.models import UndergroundBox
+
 
 @api_view(['POST'])
 def create_auth(request):
@@ -36,3 +41,27 @@ def login(request):
 
     token, _ = Token.objects.get_or_create(user=user)
     return Response({"username": username, "token": token.key})
+
+
+@api_view(['GET'])
+def networkmap(request):
+    emendation_box = {
+        'latitude': [emendation_box.lattitude for emendation_box in EmendationBox.objects.all()],
+        'longitude': [emendation_box.longitude for emendation_box in EmendationBox.objects.all()],
+    }
+    sites = {
+        'latitude': [site.lattitude for site in Site.objects.all()],
+        'longitude': [site.longitude for site in Site.objects.all()],
+    }
+    technical_reserves = {
+        'latitude': [technical_reserve.lattitude for technical_reserve in TechnicalReserve.objects.all()],
+        'longitude': [technical_reserve.longitude for technical_reserve in TechnicalReserve.objects.all()],
+    }
+    underground_boxes = {
+        'latitude': [underground_box.lattitude for underground_box in UndergroundBox.objects.all()],
+        'longitude': [underground_box.longitude for underground_box in UndergroundBox.objects.all()],
+    }
+
+    response = {'emendation_box': emendation_box, 'site': sites, 'technical_reserve': technical_reserves, 'underground_box': underground_boxes}
+
+    return Response(response)

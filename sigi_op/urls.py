@@ -33,7 +33,7 @@ from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
-from .views import login, create_auth
+from .views import login, create_auth, networkmap
 
 
 router = DefaultRouter()
@@ -77,5 +77,6 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^login', login),
-    url(r'^users/register', create_auth)
+    url(r'^users/register', create_auth),
+    url(r'^networkmap/', networkmap),
 ]
