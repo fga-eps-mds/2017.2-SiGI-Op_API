@@ -5,6 +5,7 @@ from .models import Switch
 from .models import Contact
 from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
+from django.contrib.auth.models import User, Group, Permission
 
 
 class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
@@ -89,4 +90,49 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'slots_quantity',
                 'patrimony_number',
                 'site_id',
+        ]
+
+
+class PermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permission
+
+        fields = [
+            'id',
+            'name',
+            'content_type',
+            'codename',
+        ]
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        permissions = PermissionSerializer(many=True, read_only=True)
+
+        fields = [
+            'id',
+            'name',
+            'permissions',
+        ]
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        permissions = PermissionSerializer(many=True, read_only=True)
+        groups = GroupSerializer(many=True, read_only=True)
+        
+        fields = [
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+            'groups',
+            'user_permissions',
+            'is_staff',
+            'is_active',
+            'is_superuser',
+            'last_login',
+            'date_joined',
         ]

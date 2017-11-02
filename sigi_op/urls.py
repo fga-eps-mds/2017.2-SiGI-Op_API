@@ -22,6 +22,7 @@ from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
 from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
+from ipa.views import UserViewSet, GroupViewSet
 from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
@@ -37,6 +38,8 @@ from .views import login, create_auth
 
 
 router = DefaultRouter()
+router.register(r'users', UserViewSet, base_name='users')
+router.register(r'groups', GroupViewSet, base_name='groups')
 router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
 router.register(r'undergroundboxtypes', views.UndergroundBoxTypeViewSet)
 router.register(r'dgos', GODListViewSet, base_name='dgo')
