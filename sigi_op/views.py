@@ -46,22 +46,38 @@ def login(request):
 @api_view(['GET'])
 def networkmap(request):
     emendation_box = {
-        'latitude': [emendation_box.lattitude for emendation_box in EmendationBox.objects.all()],
-        'longitude': [emendation_box.longitude for emendation_box in EmendationBox.objects.all()],
+        'lattitude':
+        [emendation_box.lattitude
+            for emendation_box in EmendationBox.objects.all()],
+        'longitude':
+        [emendation_box.longitude
+            for emendation_box in EmendationBox.objects.all()],
     }
     sites = {
-        'latitude': [site.lattitude for site in Site.objects.all()],
+        'lattitude': [site.lattitude for site in Site.objects.all()],
         'longitude': [site.longitude for site in Site.objects.all()],
     }
     technical_reserves = {
-        'latitude': [technical_reserve.lattitude for technical_reserve in TechnicalReserve.objects.all()],
-        'longitude': [technical_reserve.longitude for technical_reserve in TechnicalReserve.objects.all()],
+        'lattitude':
+        [technical_reserve.lattitude
+            for technical_reserve in TechnicalReserve.objects.all()],
+        'longitude':
+        [technical_reserve.longitude
+            for technical_reserve in TechnicalReserve.objects.all()],
     }
     underground_boxes = {
-        'latitude': [underground_box.lattitude for underground_box in UndergroundBox.objects.all()],
-        'longitude': [underground_box.longitude for underground_box in UndergroundBox.objects.all()],
+        'lattitude':
+        [underground_box.lattitude
+            for underground_box in UndergroundBox.objects.all()],
+        'longitude':
+        [underground_box.longitude
+            for underground_box in UndergroundBox.objects.all()],
     }
 
-    response = {'emendation_box': emendation_box, 'site': sites, 'technical_reserve': technical_reserves, 'underground_box': underground_boxes}
+    response = {
+        'emendation_box': emendation_box,
+        'site': sites,
+        'technical_reserve': technical_reserves,
+        'underground_box': underground_boxes}
 
     return Response(response)
