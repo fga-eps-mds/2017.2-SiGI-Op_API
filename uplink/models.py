@@ -8,3 +8,7 @@ class Uplink(models.Model):
     band = models.FloatField(blank=False)
     code = models.IntegerField(blank=False, validators=[MinValueValidator(0)],
                                unique=True)
+
+class Segments(models.Model):
+    number = models.IntegerField(null=False)
+    length = models.FloatField(default=0)
