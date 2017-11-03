@@ -2,7 +2,7 @@ from .views import SiteListViewSet
 from .views import SiteTypeListViewSet
 from .views import NoBreakViewSet
 from .views import SwitchViewSet
-from .views import UserViewSet, GroupViewSet
+from .views import UserViewSet, GroupViewSet, PermissionViewSet
 
 site = SiteListViewSet.as_view({
     'get': 'list',
@@ -40,6 +40,11 @@ user = UserViewSet.as_view({
     })
 
 group = GroupViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+    })
+
+permission = PermissionViewSet.as_view({
     'get': 'list',
     'post': 'create'
     })
