@@ -13,6 +13,7 @@ class UplinkSerializer(serializers.ModelSerializer):
             'code',
         ]
 
+
 class SegmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Segments

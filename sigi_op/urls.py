@@ -36,8 +36,6 @@ from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
 
-
-
 router = DefaultRouter()
 router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
 router.register(r'undergroundboxtypes', views.UndergroundBoxTypeViewSet)

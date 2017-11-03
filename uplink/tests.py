@@ -24,10 +24,10 @@ class UplinkTest(TestCase):
 
     def test_Uplink_view_set(self):
         request = APIRequestFactory().get("")
-        uplink_detail = UplinkListViewSet.as_view(actions={'get': 'retrieve'})
+        uplink_detail = UplinkViewSet.as_view(actions={'get': 'retrieve'})
         Uplinktest = Uplink.objects.create(
-            name_vlan = 'xablau'
-            band = '66'
+            name_vlan = 'xablau',
+            band = '66',
             code = '42'
     )
         response = uplink_detail(request, pk=Uplinktest.pk)
