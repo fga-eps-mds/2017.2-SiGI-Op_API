@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'ipa',
     'emendation_box',
     'uplink',
-    'segments',
     'technical_reserve',
     'cable_stretch'
 ]

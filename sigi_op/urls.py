@@ -29,12 +29,13 @@ from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
+from uplink.views import SegmentsListViewSet 
 from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
-from segments.views import SegmentsListViewSet
+
 
 
 router = DefaultRouter()
