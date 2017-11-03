@@ -27,7 +27,7 @@ class UplinkTest(TestCase):
         uplink_detail = UplinkListViewSet.as_view(actions={'get': 'retrieve'})
         Uplinktest = Uplink.objects.create(
             name_vlan = 'xablau'
-            band = '666'
+            band = '66'
             code = '42'
     )
         response = uplink_detail(request, pk=Uplinktest.pk)
