@@ -15,45 +15,45 @@ from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 
 
 class IpaListViewSet(viewsets.ModelViewSet):
-    queryset = ParticipantInstitution.objects.all()
+    queryset = ParticipantInstitution.objects.all().order_by('name')
     serializer_class = ParticipantInstitutionSerializer
 
 
 class IpaTypeListViewSet(viewsets.ModelViewSet):
-    queryset = InstitutionType.objects.all()
+    queryset = InstitutionType.objects.all().order_by('description')
     serializer_class = ParticipantInstitutionTypeSerializer
 
 
 class SiteListViewSet(viewsets.ModelViewSet):
-    queryset = Site.objects.all()
+    queryset = Site.objects.all().order_by('name')
     serializer_class = SiteSerializer
 
 
 class SiteTypeListViewSet(viewsets.ModelViewSet):
-    queryset = SiteType.objects.all()
+    queryset = SiteType.objects.all().order_by('description')
     serializer_class = SiteTypeSerializer
 
 
 class ContactViewSet(viewsets.ModelViewSet):
-    queryset = Contact.objects.all()
+    queryset = Contact.objects.all().order_by('name')
     serializer_class = ContactSerializer
 
 
 class ContactTypeViewSet(viewsets.ModelViewSet):
-    queryset = ContactType.objects.all()
+    queryset = ContactType.objects.all().order_by('description')
     serializer_class = ContactTypeSerializer
 
 
 class GeneratorListViewSet(viewsets.ModelViewSet):
-    queryset = Generator.objects.all()
+    queryset = Generator.objects.all().order_by('site_id')
     serializer_class = GeneratorSerializer
 
 
 class NoBreakViewSet(viewsets.ModelViewSet):
-    queryset = NoBreak.objects.all()
+    queryset = NoBreak.objects.all().order_by('site_id')
     serializer_class = NoBreakSerializer
 
 
 class SwitchViewSet(viewsets.ModelViewSet):
-    queryset = Switch.objects.all()
+    queryset = Switch.objects.all().order_by('site_id')
     serializer_class = SwitchSerializer

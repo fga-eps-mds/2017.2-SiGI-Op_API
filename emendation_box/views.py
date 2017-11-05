@@ -7,15 +7,15 @@ from .models import EmendationBoxStructure, EmendationBoxType, EmendationBox
 
 # Create your views here.
 class EmendationBoxListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBox.objects.all()
+    queryset = EmendationBox.objects.all().order_by('designNumber')
     serializer_class = EmendationBoxSerializer
 
 
 class EmendationBoxTypeListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBoxType.objects.all()
+    queryset = EmendationBoxType.objects.all().order_by('description')
     serializer_class = EmendationBoxTypeSerializer
 
 
 class EmendationBoxStructureListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBoxStructure.objects.all()
+    queryset = EmendationBoxStructure.objects.all().order_by('description')
     serializer_class = EmendationBoxStructureSerializer

@@ -6,5 +6,5 @@ from uplink.serializers import UplinkSerializer
 
 
 class UplinkViewSet(viewsets.ModelViewSet):
-    queryset = Uplink.objects.all()
+    queryset = Uplink.objects.all().order_by('name_vlan')
     serializer_class = UplinkSerializer

@@ -7,5 +7,5 @@ from .models import TechnicalReserve
 
 
 class TechnicalReserveListViewSet(viewsets.ModelViewSet):
-    queryset = TechnicalReserve.objects.all()
+    queryset = TechnicalReserve.objects.all().order_by('code')
     serializer_class = TechnicalReserveSerializer

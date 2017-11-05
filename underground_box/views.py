@@ -5,10 +5,10 @@ from underground_box.serializers import UndergroundBoxTypeSerializer
 
 
 class UndergroundBoxTypeViewSet(viewsets.ModelViewSet):
-    queryset = UndergroundBoxType.objects.all()
+    queryset = UndergroundBoxType.objects.all().order_by('name')
     serializer_class = UndergroundBoxTypeSerializer
 
 
 class UndergroundBoxViewSet(viewsets.ModelViewSet):
-    queryset = UndergroundBox.objects.all()
+    queryset = UndergroundBox.objects.all().order_by('emendation_box')
     serializer_class = UndergroundBoxSerializer
