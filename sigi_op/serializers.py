@@ -25,13 +25,3 @@ class SiteSerializer(serializers.ModelSerializer):
             'ipa_code',
             'site_type',
         ]
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = [
-            'username',
-            'email',
-            'password'
-        ]
