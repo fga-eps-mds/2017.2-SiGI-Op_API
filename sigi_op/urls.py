@@ -30,12 +30,12 @@ from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
+from uplink.views import SegmentsListViewSet
 from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth
-
 
 router = DefaultRouter()
 router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
@@ -74,6 +74,7 @@ router.register(r'cable_stretch_types', CableStretchTypeListViewSet,
                 base_name='cablestretchtype')
 router.register(r'tubelooses', TubelooseListViewSet,
                 base_name='tubeloose')
+router.register(r'segments', SegmentsListViewSet, base_name='segments')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
