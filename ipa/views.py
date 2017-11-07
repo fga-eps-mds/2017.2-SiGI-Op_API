@@ -7,8 +7,10 @@ from .models import InstitutionType, ParticipantInstitution, Site, SiteType
 from .models import Contact, ContactType, Generator
 from .serializers import SwitchSerializer
 from .serializers import NoBreakSerializer
+from .serializers import SlotSerializer
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 
 # Create your views here.
@@ -57,3 +59,8 @@ class NoBreakViewSet(viewsets.ModelViewSet):
 class SwitchViewSet(viewsets.ModelViewSet):
     queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
+
+
+class SlotViewSet(viewsets.ModelViewSet):
+    queryset = Slot.objects.all()
+    serializer_class = SlotSerializer

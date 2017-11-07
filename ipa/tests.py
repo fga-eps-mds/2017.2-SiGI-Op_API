@@ -8,6 +8,7 @@ from .models import ContactType
 from .models import Contact
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
 from technical_reserve.models import TechnicalReserve
 from technical_reserve.views import TechnicalReserveListViewSet
 from dgo.models import GOD
@@ -19,6 +20,7 @@ from .views import ContactTypeViewSet
 from .views import ContactViewSet
 from .views import NoBreakViewSet
 from .views import SwitchViewSet
+from .views import SlotViewSet
 # from technical_reserve.views import TechnicalReserveListViewSet
 
 # Create your tests here.
@@ -135,3 +137,31 @@ class ViewSetTest(TestCase):
                                        site_id=site_id)
         response = view(request, pk=switch.pk)
         self.assertEqual(response.status_code, 200)
+
+        def test_slot_view_set(self):
+            request = APIRequestFactory().get("")
+            view = SlotViewSet.as_view(actions={'get': 'retrieve'})
+            instituion_type = InstitutionType.objects.create(
+                                                description="RandomInstitution")
+            ipa = ParticipantInstitution.objects.create(name='UnB',
+                                                institution_type=instituion_type)
+            site_type = SiteType.objects.create(description="RandomSiteType")
+            site_id = Site.objects.create(name='RandomSite',
+                                          lattitude=42,
+                                          longitude=42,
+                                          bandwidth=42,
+                                          ipa_code=ipa,
+                                          site_type=site_type)
+            switch = Switch.objects.create(serial_number='AAAAA11111',
+                                           manufacturer='RandomManufacturer',
+                                           slots_quantity='500',
+                                           patrimony_number='AAAAA11111',
+                                           site_id=site_id)
+            slot = Slot.objects.create(serie='AAAAA11111',
+                                       number=1,
+                                       patrimony='500',
+                                       port_quantity=3,
+                                       band = 2,
+                                       switch_id=switch)
+            response = view(request, pk=slot.pk)
+            self.assertEqual(response.status_code, 200)

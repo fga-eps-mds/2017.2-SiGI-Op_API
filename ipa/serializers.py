@@ -2,6 +2,7 @@ from .models import InstitutionType, ParticipantInstitution
 from .models import ContactType, Generator
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
 from .models import Contact
 from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
@@ -89,4 +90,19 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'slots_quantity',
                 'patrimony_number',
                 'site_id',
+        ]
+
+
+class SlotSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Slot
+        fields = [
+                'id',
+                'serie',
+                'number',
+                'patrimony',
+                'port_quantity',
+                'band',
+                'switch_id',
         ]
