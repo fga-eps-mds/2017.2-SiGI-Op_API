@@ -48,7 +48,7 @@ def networkmap(request):
     emendation_boxes = []
     for emendation_box in EmendationBox.objects.all():
         emendation_box_dic = {}
-        emendation_box_dic['name'] = emendation_box.code
+        emendation_box_dic['name'] = emendation_box.designNumber
         emendation_box_dic['lattitude'] = emendation_box.lattitude
         emendation_box_dic['longitude'] = emendation_box.longitude
         emendation_boxes.append(emendation_box_dic)
