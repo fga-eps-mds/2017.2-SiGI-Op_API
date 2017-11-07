@@ -7,8 +7,10 @@ from .models import InstitutionType, ParticipantInstitution, Site, SiteType
 from .models import Contact, ContactType, Generator
 from .serializers import SwitchSerializer
 from .serializers import NoBreakSerializer
+from .serializers import SlotSerializer
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 from django.contrib.auth.models import User, Group, Permission
 from .serializers import GroupSerializer, PermissionSerializer
@@ -75,3 +77,8 @@ class PermissionViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class SlotViewSet(viewsets.ModelViewSet):
+    queryset = Slot.objects.all()
+    serializer_class = SlotSerializer

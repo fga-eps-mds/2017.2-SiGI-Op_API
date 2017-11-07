@@ -2,7 +2,11 @@ from .views import SiteListViewSet
 from .views import SiteTypeListViewSet
 from .views import NoBreakViewSet
 from .views import SwitchViewSet
+<<<<<<< HEAD
 from .views import UserViewSet, GroupViewSet, PermissionViewSet
+=======
+from .views import SlotViewSet
+>>>>>>> upstream/master
 
 site = SiteListViewSet.as_view({
     'get': 'list',
@@ -48,3 +52,9 @@ permission = PermissionViewSet.as_view({
     'get': 'list',
     'post': 'create'
     })
+
+slot = SlotViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+    'delete': 'destroy',
+})
