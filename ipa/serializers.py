@@ -110,7 +110,6 @@ class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         permissions = PermissionSerializer(many=True, read_only=True)
-
         fields = [
             'id',
             'name',
