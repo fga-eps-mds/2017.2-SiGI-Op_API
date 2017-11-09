@@ -48,7 +48,7 @@ class ViewSetTest(TestCase):
     def test_technical_reserve_view_set(self):
         request = APIRequestFactory().get("")
         view = TechnicalReserveListViewSet.as_view(actions={'get': 'retrieve'})
-        technica_reserve = TechnicalReserve.objects.create(code=999, length=15, latitude=123.2, longitude=421.6)
+        technica_reserve = TechnicalReserve.objects.create(code=999, length=15, lattitude=123.2, longitude=421.6)
         response = view(request, pk=technica_reserve.pk)
         self.assertEqual(response.status_code, 200)
 
