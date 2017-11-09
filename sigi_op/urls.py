@@ -22,6 +22,7 @@ from ipa.views import IpaListViewSet, IpaTypeListViewSet
 from ipa.views import ContactViewSet, ContactTypeViewSet, GeneratorListViewSet
 from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
+from ipa.views import SlotViewSet
 from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
@@ -29,12 +30,12 @@ from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
 from uplink.views import UplinkViewSet
+from uplink.views import SegmentsListViewSet
 from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth, networkmap
-
 
 router = DefaultRouter()
 router.register(r'undergroundboxes', views.UndergroundBoxViewSet)
@@ -60,6 +61,7 @@ router.register(r'sites', SiteListViewSet, base_name="site")
 router.register(r'sitetypes', SiteTypeListViewSet, base_name="sitetype")
 router.register(r'nobreaks', NoBreakViewSet, base_name='nobreak')
 router.register(r'switches', SwitchViewSet, base_name='switch')
+router.register(r'slots', SlotViewSet, base_name='slot')
 router.register(r'uplinks', UplinkViewSet, base_name='uplink')
 router.register(r'contacts', ContactViewSet, base_name="contact")
 router.register(r'contacttypes', ContactTypeViewSet, base_name="contacttype")
@@ -72,6 +74,7 @@ router.register(r'cable_stretch_types', CableStretchTypeListViewSet,
                 base_name='cablestretchtype')
 router.register(r'tubelooses', TubelooseListViewSet,
                 base_name='tubeloose')
+router.register(r'segments', SegmentsListViewSet, base_name='segments')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
