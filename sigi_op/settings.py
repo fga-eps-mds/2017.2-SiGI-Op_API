@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_nose',
     'corsheaders',
+    'url_filter',
     'rest_framework',
     'underground_box',
     'dgo',
@@ -113,7 +114,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 25
+    'PAGE_SIZE': 2
 }
 
 import dj_database_url

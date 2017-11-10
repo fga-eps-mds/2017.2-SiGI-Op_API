@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, pagination, response
 from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer
@@ -18,6 +18,15 @@ class IpaListViewSet(viewsets.ModelViewSet):
     queryset = ParticipantInstitution.objects.all().order_by('name')
     serializer_class = ParticipantInstitutionSerializer
 
+    def list(self, request):
+        queryset = ParticipantInstitution.objects.all().order_by('name')
+        
+        if request.GET.get('page'):
+            self.pagination_class = None 
+
+        serializer = ParticipantInstitutionSerializer(queryset, many=True)
+
+        return response.Response(serializer.data)
 
 class IpaTypeListViewSet(viewsets.ModelViewSet):
     queryset = InstitutionType.objects.all().order_by('description')
