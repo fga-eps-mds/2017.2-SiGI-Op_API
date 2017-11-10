@@ -24,7 +24,7 @@ class UndergroundBoxSerializer(serializers.ModelSerializer):
                 'id',
                 'code',
                 'box_type',
-                'latitude',
+                'lattitude',
                 'longitude',
                 'cover_type',
                 'emendation_box',

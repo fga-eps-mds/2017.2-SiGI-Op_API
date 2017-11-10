@@ -9,6 +9,6 @@ class TechnicalReserveSerializer(serializers.ModelSerializer):
             'id',
             'code',
             'length',
-            'latitude',
+            'lattitude',
             'longitude',
         ]
