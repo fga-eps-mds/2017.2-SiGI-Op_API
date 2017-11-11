@@ -24,6 +24,7 @@ from ipa.views import NoBreakViewSet
 from ipa.views import SwitchViewSet
 from ipa.views import UserViewSet, GroupViewSet, PermissionViewSet
 from ipa.views import SlotViewSet
+from ipa.views import SlotPortViewSet
 from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
 from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
@@ -66,6 +67,7 @@ router.register(r'sitetypes', SiteTypeListViewSet, base_name="sitetype")
 router.register(r'nobreaks', NoBreakViewSet, base_name='nobreak')
 router.register(r'switches', SwitchViewSet, base_name='switch')
 router.register(r'slots', SlotViewSet, base_name='slot')
+router.register(r'slotPorts', SlotPortViewSet, base_name='slotport')
 router.register(r'uplinks', UplinkViewSet, base_name='uplink')
 router.register(r'contacts', ContactViewSet, base_name="contact")
 router.register(r'contacttypes', ContactTypeViewSet, base_name="contacttype")
