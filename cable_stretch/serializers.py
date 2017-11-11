@@ -17,6 +17,7 @@ class CableStretchSerializer(serializers.ModelSerializer):
         model = CableStretch
         fields = [
             'id',
+            'cod',
             'length',
             'manufacturing_year',
             'infrastructure',

@@ -8,14 +8,15 @@ class CableStretchType(models.Model):
 
 
 class CableStretch(models.Model):
-    length = models.FloatField(blank=False)
-    manufacturing_year = models.IntegerField(default=0)
-    infrastructure = models.CharField(max_length=100)
-    owner = models.CharField(max_length=100)
-    fabricant = models.CharField(max_length=100)
-    cable_stretch_type = models.ForeignKey(CableStretchType, null=False)
-    access = models.BooleanField(blank=False)
-    creation_date = models.DateField(blank=False)
+    cod = models.CharField(max_length=20)
+    length = models.FloatField(null=True)
+    manufacturing_year = models.IntegerField(null=True,default=0)
+    infrastructure = models.CharField(null=True,max_length=100)
+    owner = models.CharField(null=True,max_length=100)
+    fabricant = models.CharField(null=True,max_length=100)
+    cable_stretch_type = models.ForeignKey(CableStretchType, null=True)
+    access = models.NullBooleanField()
+    creation_date = models.DateField(null=True)
     updated_date = models.DateField(null=True)
     # dgo some pk issue to solve
     # segment
