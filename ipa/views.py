@@ -20,13 +20,19 @@ class IpaListViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         queryset = ParticipantInstitution.objects.all().order_by('name')
-        
-        if request.GET.get('page'):
-            self.pagination_class = None 
+        if request.GET.get('all'):
+            self.pagination_class = None
+            serializer = ParticipantInstitutionSerializer(queryset, many=True)
+            return response.Response(serializer.data)
+        else:
+            paginator = pagination.PageNumberPagination()
+            queryset = paginator.paginate_queryset(
+                queryset=queryset,
+                request=request
+                )
+            serializer = ParticipantInstitutionSerializer(queryset, many=True)
+            return paginator.get_paginated_response(serializer.data)
 
-        serializer = ParticipantInstitutionSerializer(queryset, many=True)
-
-        return response.Response(serializer.data)
 
 class IpaTypeListViewSet(viewsets.ModelViewSet):
     queryset = InstitutionType.objects.all().order_by('description')
