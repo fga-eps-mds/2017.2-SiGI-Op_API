@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 # from dgo.models import GOD
 
 
@@ -16,11 +17,18 @@ class CableStretch(models.Model):
     fabricant = models.CharField(null=True,max_length=100)
     cable_stretch_type = models.ForeignKey(CableStretchType, null=True)
     access = models.NullBooleanField()
-    creation_date = models.DateField(null=True)
-    updated_date = models.DateField(null=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
     # dgo some pk issue to solve
     # segment
     # access cable
+    def save(self, *args, **kwargs):
+        print("Debugging")
+        ''' On save, update timestamps '''
+        if not self.id:
+            self.creation_date = timezone.now()
+        self.updated_date = timezone.now()
+        return super(CableStretch, self).save(*args, **kwargs)
 
 
 class Tubeloose(models.Model):
