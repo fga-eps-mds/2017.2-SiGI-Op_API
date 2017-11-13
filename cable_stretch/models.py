@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from dgo.models import GOD, AccessCable
+from uplink.models import Segments
+
 # from dgo.models import GOD
 
 
@@ -10,15 +13,18 @@ class CableStretchType(models.Model):
 
 class CableStretch(models.Model):
     cod = models.CharField(max_length=20)
-    length = models.FloatField(null=True)
-    manufacturing_year = models.IntegerField(null=True,default=0)
-    infrastructure = models.CharField(null=True,max_length=100)
-    owner = models.CharField(null=True,max_length=100)
-    fabricant = models.CharField(null=True,max_length=100)
-    cable_stretch_type = models.ForeignKey(CableStretchType, null=True)
-    access = models.NullBooleanField()
-    creation_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
+    length = models.FloatField(blank=True, null=True)
+    manufacturing_year = models.IntegerField(blank=True,null=True,default=0)
+    infrastructure = models.CharField(blank=True,null=True,max_length=100)
+    owner = models.CharField(blank=True,null=True,max_length=100)
+    fabricant = models.CharField(blank=True,null=True,max_length=100)
+    cable_stretch_type = models.ForeignKey(CableStretchType,blank=True, null=True)
+    access = models.NullBooleanField(blank=True)
+    god_id = models.ForeignKey(GOD, null=True,blank=True)
+    segment_id = models.ForeignKey(Segments, null=True,blank=True)
+    access_cable_id = models.ForeignKey(AccessCable, null=True,blank=True)
+    creation_date = models.DateTimeField(null=True, auto_now_add=True,blank=True)
+    updated_date = models.DateTimeField(null=True, auto_now=True,blank=True)
     # dgo some pk issue to solve
     # segment
     # access cable
