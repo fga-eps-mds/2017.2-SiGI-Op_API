@@ -24,7 +24,9 @@ class CableStretchSerializer(serializers.ModelSerializer):
             'owner',
             'fabricant',
             'cable_stretch_type',
-            # segmento
+            'god_id',
+            'segment_id',
+            'access_cable_id',
             'access',
             'creation_date',
             'updated_date',
