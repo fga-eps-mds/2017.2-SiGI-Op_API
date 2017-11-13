@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from rest_framework import viewsets
+from sigi_op.views import CustomViewSet
 from .serializers import TechnicalReserveSerializer
 from .models import TechnicalReserve
 
 
-class TechnicalReserveListViewSet(viewsets.ModelViewSet):
+class TechnicalReserveListViewSet(CustomViewSet):
     queryset = TechnicalReserve.objects.all().order_by('code')
     serializer_class = TechnicalReserveSerializer

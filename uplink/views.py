@@ -1,10 +1,10 @@
-from rest_framework import viewsets
+from sigi_op.views import CustomViewSet
 from uplink.models import Uplink
 from uplink.serializers import UplinkSerializer
 
 # Create your views here.
 
 
-class UplinkViewSet(viewsets.ModelViewSet):
+class UplinkViewSet(CustomViewSet):
     queryset = Uplink.objects.all().order_by('name_vlan')
     serializer_class = UplinkSerializer
