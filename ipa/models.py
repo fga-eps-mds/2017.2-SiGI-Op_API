@@ -59,3 +59,18 @@ class Switch(models.Model):
     slots_quantity = models.PositiveIntegerField(blank=False)
     patrimony_number = models.CharField(max_length=30, null=False, unique=True)
     site_id = models.ForeignKey(Site, null=False)
+
+
+class Slot(models.Model):
+    serie = models.CharField(max_length=50, null=False)
+    number = models.IntegerField(blank=False)
+    patrimony = models.CharField(max_length=30)
+    port_quantity = models.IntegerField()
+    band = models.CharField(max_length=20)
+    switch_id = models.ForeignKey(Switch, null=False)
+
+
+class SlotPort(models.Model):
+    type = models.CharField(max_length=10)
+    port = models.CharField(max_length=50, null=False)
+    slot_id = models.ForeignKey(Slot, null=False)

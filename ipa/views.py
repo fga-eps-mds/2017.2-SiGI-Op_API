@@ -6,10 +6,17 @@ from .models import InstitutionType, ParticipantInstitution, Site, SiteType
 from .models import Contact, ContactType, Generator
 from .serializers import SwitchSerializer
 from .serializers import NoBreakSerializer
+from .serializers import SlotSerializer
+from .serializers import SlotPortSerializer
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
+from .models import SlotPort
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
 from sigi_op.views import CustomViewSet
+from django.contrib.auth.models import User, Group, Permission
+from .serializers import GroupSerializer, PermissionSerializer
+from sigi_op.serializers import UserSerializer
 
 # Create your views here.
 
@@ -57,3 +64,28 @@ class NoBreakViewSet(CustomViewSet):
 class SwitchViewSet(CustomViewSet):
     queryset = Switch.objects.all().order_by('site_id')
     serializer_class = SwitchSerializer
+
+
+class GroupViewSet(CustomViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+
+class PermissionViewSet(CustomViewSet):
+    queryset = Permission.objects.all()
+    serializer_class = PermissionSerializer
+
+
+class UserViewSet(CustomViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class SlotViewSet(CustomViewSet):
+    queryset = Slot.objects.all().order_by('serie')
+    serializer_class = SlotSerializer
+
+
+class SlotPortViewSet(CustomViewSet):
+    queryset = SlotPort.objects.all().order_by('type')
+    serializer_class = SlotPortSerializer

@@ -2,9 +2,12 @@ from .models import InstitutionType, ParticipantInstitution
 from .models import ContactType, Generator
 from .models import NoBreak
 from .models import Switch
+from .models import Slot
+from .models import SlotPort
 from .models import Contact
 from sigi_op.serializers import SiteSerializer
 from rest_framework import serializers
+from django.contrib.auth.models import Group, Permission
 
 
 class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
@@ -89,4 +92,54 @@ class SwitchSerializer(serializers.ModelSerializer):
                 'slots_quantity',
                 'patrimony_number',
                 'site_id',
+        ]
+
+
+class PermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Permission
+
+        fields = [
+            'id',
+            'name',
+            'content_type',
+            'codename',
+        ]
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        permissions = PermissionSerializer(many=True, read_only=True)
+        fields = [
+            'id',
+            'name',
+            'permissions',
+        ]
+
+
+class SlotSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Slot
+        fields = [
+                'id',
+                'serie',
+                'number',
+                'patrimony',
+                'port_quantity',
+                'band',
+                'switch_id',
+        ]
+
+
+class SlotPortSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = SlotPort
+        fields = [
+                'id',
+                'type',
+                'port',
+                'slot_id',
         ]

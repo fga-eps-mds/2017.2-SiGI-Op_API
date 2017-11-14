@@ -39,13 +39,13 @@ class UndergroundBoxTest(TestCase):
         reserve = TechnicalReserve.objects.create(
             code=666,
             length=8008.5,
-            latitude=8001,
+            lattitude=8001,
             longitude=9001
         )
         undergroundbox = UndergroundBox.objects.create(
             box_type=undergroundbox_type,
             code=123,
-            latitude=123,
+            lattitude=123,
             cover_type="Cover type",
             longitude=321,
             emendation_box=emendationbox,
@@ -73,12 +73,12 @@ class UndergroundBoxTest(TestCase):
             emendation_type=emendation_box_type,emendation_structure=emendation_box_structure)
 
         technical_reserve = TechnicalReserve.objects.create(code=1212,length=12,
-            latitude=13,longitude=13)
+            lattitude=13,longitude=13)
 
         undergroundbox_detail = UndergroundBoxViewSet.as_view(actions={'get':'retrieve'})
         undergroundbox_type = UndergroundBoxType.objects.create(name="Random undergroundBox")
-        undergroundbox = UndergroundBox.objects.create(code="123code",box_type=undergroundbox_type, 
-                latitude=123,longitude=321,cover_type="Cover type",emendation_box=emendation_box,
+        undergroundbox = UndergroundBox.objects.create(code="123code",box_type=undergroundbox_type,
+                lattitude=123,longitude=321,cover_type="Cover type",emendation_box=emendation_box,
                 technical_reserve=technical_reserve)
         response = undergroundbox_detail(request, pk=undergroundbox.pk)
         self.assertEqual(response.status_code, 200)
@@ -92,7 +92,7 @@ class UndergroundBoxTest(TestCase):
             emendation_type=emendation_box_type,emendation_structure=emendation_box_structure)
 
         technical_reserve = TechnicalReserve.objects.create(code=1212,length=12,
-            latitude=13,longitude=13)
+            lattitude=13,longitude=13)
 
         undergroundbox_detail = UndergroundBoxViewSet.as_view(actions={'get':'retrieve'})
         undergroundbox_type = UndergroundBoxType.objects.create(name="Random undergroundBox")
@@ -111,13 +111,13 @@ class UndergroundBoxTest(TestCase):
         reserve = TechnicalReserve.objects.create(
             code=666,
             length=8008.5,
-            latitude=8001,
+            lattitude=8001,
             longitude=9001
         )
         undergroundbox = UndergroundBox.objects.create(
             box_type=undergroundbox_type,
             code=123,
-            latitude=123,
+            lattitude=123,
             cover_type="Cover type",
             longitude=321,
             emendation_box=emendationbox,

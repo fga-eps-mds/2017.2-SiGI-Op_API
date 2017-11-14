@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'django_nose',
     'corsheaders',
-    'url_filter',
     'rest_framework',
     'underground_box',
     'dgo',
@@ -55,7 +54,7 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic'
+    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic, segments'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
