@@ -1,10 +1,19 @@
+"""
+This module manages the serialization of the CableStretchType, CableStretch and Tubeloose objects.
+"""
+from rest_framework import serializers
 from .models import CableStretch, CableStretchType
 from .models import Tubeloose
-from rest_framework import serializers
 
 
 class CableStretchTypeSerializer(serializers.ModelSerializer):
-    class Meta:
+    """
+    This class manages the serialization of the CableStretchType objects.
+    """
+    class Meta(object):
+        """
+        This class manages the metadata of CableStretch.
+        """
         model = CableStretchType
         fields = [
             'id',
@@ -13,7 +22,13 @@ class CableStretchTypeSerializer(serializers.ModelSerializer):
 
 
 class CableStretchSerializer(serializers.ModelSerializer):
-    class Meta:
+    """
+    This class manages the serialization of the CableStretch objects.
+    """
+    class Meta(object):
+        """
+        This class manages the metadata of CableStretch.
+        """
         model = CableStretch
         fields = [
             'id',
@@ -34,9 +49,16 @@ class CableStretchSerializer(serializers.ModelSerializer):
 
 
 class TubelooseSerializer(serializers.ModelSerializer):
-    class Meta:
+    """
+    This class manages the serialization of the Tubeloose objects.
+    """
+    class Meta(object):
+        """
+        This class manages the metadata of Tubeloose.
+        """
         model = Tubeloose
         fields = [
+            'id',
             'number',
             'stretch_id',
         ]

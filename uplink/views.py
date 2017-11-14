@@ -7,7 +7,7 @@ from cable_stretch.models import CableStretch
 from rest_framework.response import Response
 from rest_framework import status
 
-# Create your views here
+
 class UplinkViewSet(viewsets.ModelViewSet):
     queryset = Uplink.objects.all()
     serializer_class = UplinkSerializer
@@ -29,10 +29,10 @@ class SegmentsListViewSet(viewsets.ModelViewSet):
             stretch_list = []
             for i in range(cable_stretch_quantity):
                 stretch_list.append(CableStretch(cod=str(number)+"_"+str(i)))
-            CableStretch.objects.bulk_create(stretch_list) #Saves a list of cable stretch
+            CableStretch.objects.bulk_create(stretch_list)
+            # Saves a list of cable stretch
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-            
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
