@@ -163,13 +163,14 @@ class AccessCableTest(TestCase):
 
     def test_acess_cable_view_set(self):
         request = APIRequestFactory().get("")
-        view = AccessCableListViewSet.as_view(actions={'get': 'retrieve'})
+        view = AccessCableListViewSet.as_view(actions={'get': 'list'})
         site_type = SiteType.objects.create(description="RandomSiteType")
         instituion_type = InstitutionType.objects.create(description="RandomInstitution")
         ipa = ParticipantInstitution.objects.create(name='UnB', institution_type=instituion_type)
         site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
         god = GOD.objects.create(code=1, fabricant="FabricanteTeste", port_quantity="10", site_id=site)
         access_cable = AccessCable.objects.create(cod=1, length=120, fiber_quantity=10, god_id=god, site_id=site)
+
         response = view(request, pk=access_cable.pk)
         self.assertEqual(response.status_code, 200)
 
@@ -182,7 +183,7 @@ class AccessCableTest(TestCase):
         site = Site.objects.create(name='RandomSite', lattitude=42, longitude=42, bandwidth=42, ipa_code=ipa, site_type=site_type)
         god = GOD.objects.create(code=1, fabricant="FabricanteTeste", port_quantity="10",site_id=site)
         access_cable = AccessCable.objects.create(cod=1, length=120, fiber_quantity=10, god_id=god, site_id=site)
-        request = factory.get('/access-cables/?all=1')
+        request = factory.get('/access-cables/')
         response = view(request)
         items = response.data[0]
         self.assertEqual(list(items.values())[1], 120)

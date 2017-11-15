@@ -1,5 +1,5 @@
 # from django.shortcuts import get_object_or_404, render
-from sigi_op.views import CustomViewSet
+from rest_framework import viewsets
 # from rest_framework.response import Response
 from .serializers import GODSerializer, GODPortSerializer, JumperSerializer
 from .serializers import GODPortConnectionTypeSerializer, AccessCableSerializer
@@ -9,26 +9,26 @@ from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
 # Create your views here.
 
 
-class GODListViewSet(CustomViewSet):
-    queryset = GOD.objects.all().order_by('site_id')
+class GODListViewSet(viewsets.ModelViewSet):
+    queryset = GOD.objects.all()
     serializer_class = GODSerializer
 
 
-class GODPortListViewSet(CustomViewSet):
-    queryset = GODPort.objects.all().order_by('god_id')
+class GODPortListViewSet(viewsets.ModelViewSet):
+    queryset = GODPort.objects.all()
     serializer_class = GODPortSerializer
 
 
-class GODPortConnectionTypeListViewSet(CustomViewSet):
-    queryset = GODPortConnectionType.objects.all().order_by('code')
+class GODPortConnectionTypeListViewSet(viewsets.ModelViewSet):
+    queryset = GODPortConnectionType.objects.all()
     serializer_class = GODPortConnectionTypeSerializer
 
 
-class JumperViewSet(CustomViewSet):
-    queryset = Jumper.objects.all().order_by('god_port1')
+class JumperViewSet(viewsets.ModelViewSet):
+    queryset = Jumper.objects.all()
     serializer_class = JumperSerializer
 
 
-class AccessCableListViewSet(CustomViewSet):
-    queryset = AccessCable.objects.all().order_by('site_id')
+class AccessCableListViewSet(viewsets.ModelViewSet):
+    queryset = AccessCable.objects.all()
     serializer_class = AccessCableSerializer

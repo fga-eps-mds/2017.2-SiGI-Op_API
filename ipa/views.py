@@ -1,3 +1,4 @@
+from rest_framework import viewsets
 from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer
@@ -13,7 +14,6 @@ from .models import Switch
 from .models import Slot
 from .models import SlotPort
 from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
-from sigi_op.views import CustomViewSet
 from django.contrib.auth.models import User, Group, Permission
 from .serializers import GroupSerializer, PermissionSerializer
 from sigi_op.serializers import UserSerializer
@@ -21,71 +21,71 @@ from sigi_op.serializers import UserSerializer
 # Create your views here.
 
 
-class IpaListViewSet(CustomViewSet):
-    queryset = ParticipantInstitution.objects.all().order_by('name')
+class IpaListViewSet(viewsets.ModelViewSet):
+    queryset = ParticipantInstitution.objects.all()
     serializer_class = ParticipantInstitutionSerializer
 
 
-class IpaTypeListViewSet(CustomViewSet):
-    queryset = InstitutionType.objects.all().order_by('description')
+class IpaTypeListViewSet(viewsets.ModelViewSet):
+    queryset = InstitutionType.objects.all()
     serializer_class = ParticipantInstitutionTypeSerializer
 
 
-class SiteListViewSet(CustomViewSet):
-    queryset = Site.objects.all().order_by('name')
+class SiteListViewSet(viewsets.ModelViewSet):
+    queryset = Site.objects.all()
     serializer_class = SiteSerializer
 
 
-class SiteTypeListViewSet(CustomViewSet):
-    queryset = SiteType.objects.all().order_by('description')
+class SiteTypeListViewSet(viewsets.ModelViewSet):
+    queryset = SiteType.objects.all()
     serializer_class = SiteTypeSerializer
 
 
-class ContactViewSet(CustomViewSet):
-    queryset = Contact.objects.all().order_by('name')
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
     serializer_class = ContactSerializer
 
 
-class ContactTypeViewSet(CustomViewSet):
-    queryset = ContactType.objects.all().order_by('description')
+class ContactTypeViewSet(viewsets.ModelViewSet):
+    queryset = ContactType.objects.all()
     serializer_class = ContactTypeSerializer
 
 
-class GeneratorListViewSet(CustomViewSet):
-    queryset = Generator.objects.all().order_by('site_id')
+class GeneratorListViewSet(viewsets.ModelViewSet):
+    queryset = Generator.objects.all()
     serializer_class = GeneratorSerializer
 
 
-class NoBreakViewSet(CustomViewSet):
-    queryset = NoBreak.objects.all().order_by('site_id')
+class NoBreakViewSet(viewsets.ModelViewSet):
+    queryset = NoBreak.objects.all()
     serializer_class = NoBreakSerializer
 
 
-class SwitchViewSet(CustomViewSet):
-    queryset = Switch.objects.all().order_by('site_id')
+class SwitchViewSet(viewsets.ModelViewSet):
+    queryset = Switch.objects.all()
     serializer_class = SwitchSerializer
 
 
-class GroupViewSet(CustomViewSet):
+class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
 
-class PermissionViewSet(CustomViewSet):
+class PermissionViewSet(viewsets.ModelViewSet):
     queryset = Permission.objects.all()
     serializer_class = PermissionSerializer
 
 
-class UserViewSet(CustomViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class SlotViewSet(CustomViewSet):
-    queryset = Slot.objects.all().order_by('serie')
+class SlotViewSet(viewsets.ModelViewSet):
+    queryset = Slot.objects.all()
     serializer_class = SlotSerializer
 
 
-class SlotPortViewSet(CustomViewSet):
-    queryset = SlotPort.objects.all().order_by('type')
+class SlotPortViewSet(viewsets.ModelViewSet):
+    queryset = SlotPort.objects.all()
     serializer_class = SlotPortSerializer

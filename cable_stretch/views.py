@@ -1,5 +1,5 @@
 # from django.shortcuts import render
-from sigi_op.views import CustomViewSet
+from rest_framework import viewsets
 from .serializers import CableStretchSerializer
 from .serializers import CableStretchTypeSerializer
 from .serializers import TubelooseSerializer
@@ -8,16 +8,16 @@ from .models import Tubeloose
 
 
 # Create your views here.
-class CableStretchTypeListViewSet(CustomViewSet):
-    queryset = CableStretchType.objects.all().order_by('description')
+class CableStretchTypeListViewSet(viewsets.ModelViewSet):
+    queryset = CableStretchType.objects.all()
     serializer_class = CableStretchTypeSerializer
 
 
-class CableStretchListViewSet(CustomViewSet):
-    queryset = CableStretch.objects.all().order_by('fabricant')
+class CableStretchListViewSet(viewsets.ModelViewSet):
+    queryset = CableStretch.objects.all()
     serializer_class = CableStretchSerializer
 
 
-class TubelooseListViewSet(CustomViewSet):
-    queryset = Tubeloose.objects.all().order_by('stretch_id')
+class TubelooseListViewSet(viewsets.ModelViewSet):
+    queryset = Tubeloose.objects.all()
     serializer_class = TubelooseSerializer

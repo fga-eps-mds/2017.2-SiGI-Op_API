@@ -1,14 +1,14 @@
-from sigi_op.views import CustomViewSet
+from rest_framework import viewsets
 from underground_box.models import UndergroundBox, UndergroundBoxType
 from underground_box.serializers import UndergroundBoxSerializer
 from underground_box.serializers import UndergroundBoxTypeSerializer
 
 
-class UndergroundBoxTypeViewSet(CustomViewSet):
-    queryset = UndergroundBoxType.objects.all().order_by('name')
+class UndergroundBoxTypeViewSet(viewsets.ModelViewSet):
+    queryset = UndergroundBoxType.objects.all()
     serializer_class = UndergroundBoxTypeSerializer
 
 
-class UndergroundBoxViewSet(CustomViewSet):
-    queryset = UndergroundBox.objects.all().order_by('emendation_box')
+class UndergroundBoxViewSet(viewsets.ModelViewSet):
+    queryset = UndergroundBox.objects.all()
     serializer_class = UndergroundBoxSerializer
