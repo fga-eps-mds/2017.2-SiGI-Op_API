@@ -7,6 +7,7 @@ class GODSerializer(serializers.ModelSerializer):
     class Meta:
         model = GOD
         fields = [
+            'id',
             'code',
             'fabricant',
             'port_quantity',

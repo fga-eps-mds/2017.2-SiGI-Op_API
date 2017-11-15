@@ -12,7 +12,8 @@ class CableStretchTest(TestCase):
         request = APIRequestFactory().get("")
         cable_stretch_detail = CableStretchListViewSet.as_view(actions={'get':'retrieve'})
         cabletype = CableStretchType.objects.create(description="random")
-        CableStretchtest = CableStretch.objects.create(length=1,
+        CableStretchtest = CableStretch.objects.create(cod=1,
+                                                       length=1,
                                                        manufacturing_year=2012,
                                                        infrastructure="random",
                                                        owner="random",
@@ -29,6 +30,7 @@ class CableStretchTest(TestCase):
         cable_stretch_detail = CableStretchListViewSet.as_view(actions={'get':'retrieve'})
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
+                                                       cod=1,
                                                        manufacturing_year=2012,
                                                        infrastructure="random",
                                                        owner="random",
@@ -47,6 +49,7 @@ class CableStretchTest(TestCase):
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
                                                        manufacturing_year=2012,
+                                                       cod=1,
                                                        infrastructure="random",
                                                        owner="random",
                                                        fabricant='Potato Bread',
@@ -65,6 +68,7 @@ class CableStretchTest(TestCase):
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
                                                        manufacturing_year=2012,
+                                                       cod=1,
                                                        infrastructure="random",
                                                        owner="random",
                                                        fabricant='Potato Bread',
