@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
@@ -41,6 +41,28 @@ def login(request):
 
     token, _ = Token.objects.get_or_create(user=user)
     return Response({"username": username, "token": token.key})
+
+
+class CustomViewSet(viewsets.ModelViewSet):
+    class_name = ""
+    order_param_name = ""
+
+    def list(self, request):
+        queryset = self.class_name.objects.all().order_by(
+            self.order_param_name
+            )
+        if request.GET.get('all'):
+            self.pagination_class = None
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            paginator = pagination.PageNumberPagination()
+            queryset = paginator.paginate_queryset(
+                queryset=queryset,
+                request=request
+                )
+            serializer = self.get_serializer(queryset, many=True)
+            return paginator.get_paginated_response(serializer.data)
 
 
 @api_view(['GET'])

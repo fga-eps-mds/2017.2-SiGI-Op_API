@@ -1,5 +1,6 @@
 """
-This module manages the serialization of the CableStretchType, CableStretch and Tubeloose objects.
+This module manages the serialization of the CableStretchType,
+CableStretch and Tubeloose objects.
 """
 from rest_framework import serializers
 from .models import CableStretch, CableStretchType

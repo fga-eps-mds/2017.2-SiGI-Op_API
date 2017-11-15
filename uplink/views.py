@@ -1,20 +1,24 @@
-from rest_framework import viewsets
-from .serializers import UplinkSerializer
+from sigi_op.views import CustomViewSet
+from uplink.models import Uplink
+from uplink.serializers import UplinkSerializer
 from .serializers import SegmentsSerializer
-from .models import Uplink
 from .models import Segments
 from cable_stretch.models import CableStretch
 from rest_framework.response import Response
 from rest_framework import status
 
 
-class UplinkViewSet(viewsets.ModelViewSet):
-    queryset = Uplink.objects.all()
+class UplinkViewSet(CustomViewSet):
+    class_name = Uplink
+    order_param_name = 'name_vlan'
+    queryset = Uplink.objects.all().order_by('name_vlan')
     serializer_class = UplinkSerializer
 
 
-class SegmentsListViewSet(viewsets.ModelViewSet):
-    queryset = Segments.objects.all()
+class SegmentsListViewSet(CustomViewSet):
+    class_name = Segments
+    order_param_name = 'number'
+    queryset = Segments.objects.all().order_by('number')
     serializer_class = SegmentsSerializer
 
     def create(self, request):
