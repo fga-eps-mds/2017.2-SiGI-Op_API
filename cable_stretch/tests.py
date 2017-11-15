@@ -4,6 +4,7 @@ from .models import Tubeloose
 from .views import CableStretchListViewSet
 from .views import TubelooseListViewSet
 from rest_framework.test import APIRequestFactory
+from django.utils import timezone
 
 
 # Create your tests here.
@@ -24,6 +25,13 @@ class CableStretchTest(TestCase):
                                                        updated_date="2017-10-12")
         response = cable_stretch_detail(request, pk=CableStretchtest.pk)
         self.assertEqual(response.status_code, 200)
+
+    def test_CableStretch_method_save(self):
+        cableStretch = CableStretch(cod=111)
+        self.assertIsNone(cableStretch.creation_date)
+        cableStretch.save()
+        self.assertIsNotNone(cableStretch.creation_date)
+        
 
     def test_wrong_test_CableStretch_view_set(self):
         request = APIRequestFactory().get("")
