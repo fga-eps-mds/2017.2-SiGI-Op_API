@@ -2,7 +2,6 @@
 This module manages fields for cable stretch and its type, and Tubelooses.
 """
 from django.db import models
-from django.utils import timezone
 from dgo.models import GOD, AccessCable
 from uplink.models import Segments
 
@@ -41,13 +40,6 @@ class CableStretch(models.Model):
     # dgo some pk issue to solve
     # segment
     # access cable
-
-    def save(self, *args, **kwargs):
-        ''' On save, update timestamps '''
-        if not self.id:
-            self.creation_date = timezone.now()
-        self.updated_date = timezone.now()
-        return super(CableStretch, self).save(*args, **kwargs)
 
 
 class Tubeloose(models.Model):
