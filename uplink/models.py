@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-
+from dgo.models import GOD
+from emendation_box.models import EmendationBox
 
 # Create your models here.
 class Uplink(models.Model):
@@ -13,3 +14,6 @@ class Uplink(models.Model):
 class Segments(models.Model):
     number = models.IntegerField(null=False)
     length = models.FloatField(default=0)
+    dgos = models.ManyToManyField(GOD, blank=True)
+    emendation_boxes = models.ManyToManyField(EmendationBox, blank=True)
+    
