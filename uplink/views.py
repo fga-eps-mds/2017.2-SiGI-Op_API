@@ -24,7 +24,9 @@ class SegmentsListViewSet(CustomViewSet):
     def create(self, request):
         segment_data = {
             'number': request.data['number'],
-            'length': request.data['length']
+            'length': request.data['length'],
+            'dgos': request.data['dgos'],
+            'emendation_boxes': request.data['emendation_boxes']
         }
         serializer = SegmentsSerializer(data=segment_data)
         if(serializer.is_valid()):
