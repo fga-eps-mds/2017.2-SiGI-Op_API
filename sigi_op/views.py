@@ -44,11 +44,16 @@ def login(request):
 
 
 class CustomViewSet(viewsets.ModelViewSet):
+    class_name = ""
+    order_param_name = ""
+
     def list(self, request):
-        queryset = self.queryset
+        queryset = self.class_name.objects.all().order_by(
+            self.order_param_name
+            )
         if request.GET.get('all'):
             self.pagination_class = None
-            serializer = self.serializer_class(queryset, many=True)
+            serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
         else:
             paginator = pagination.PageNumberPagination()
@@ -56,7 +61,7 @@ class CustomViewSet(viewsets.ModelViewSet):
                 queryset=queryset,
                 request=request
                 )
-            serializer = self.serializer_class(queryset, many=True)
+            serializer = self.get_serializer(queryset, many=True)
             return paginator.get_paginated_response(serializer.data)
 
 
