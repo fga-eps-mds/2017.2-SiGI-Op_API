@@ -1,6 +1,6 @@
+from rest_framework import serializers
 from .models import CableStretch, CableStretchType
 from .models import Tubeloose
-from rest_framework import serializers
 
 
 class CableStretchTypeSerializer(serializers.ModelSerializer):
