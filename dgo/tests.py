@@ -1,6 +1,6 @@
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
-from gbic.models import GBIC, GBIC_Type
+from gbic.models import GBIC, GBICType
 from ipa.models import Site, SiteType, ParticipantInstitution, InstitutionType
 from .views import GODListViewSet, GODPortConnectionTypeListViewSet, GODPortListViewSet
 from .views import JumperViewSet, AccessCableListViewSet
@@ -83,7 +83,7 @@ class GODTest(TestCase):
         request = APIRequestFactory().get("")
         godport_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
         tipo = GODPortConnectionType.objects.create(code="abcd")
-        gbictipo = GBIC_Type.objects.create(description="testechato")
+        gbictipo = GBICType.objects.create(description="testechato")
         gbic = GBIC.objects.create(serial="huehue", patrimony_number="123", gbic_type=gbictipo)
         ipatype = InstitutionType.objects.create(description='BestEver')
         ipa = ParticipantInstitution.objects.create(name='Uns Paranauês Maneiros',
@@ -131,7 +131,7 @@ class JumperTest(TestCase):
         request = APIRequestFactory().get("")
         jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
         tipo = GODPortConnectionType.objects.create(code="abcd")
-        gbictipo = GBIC_Type.objects.create(description="tipoteste")
+        gbictipo = GBICType.objects.create(description="tipoteste")
         gbic = GBIC.objects.create(serial="huehue",
                                    patrimony_number="123",
                                    gbic_type=gbictipo)
@@ -168,7 +168,7 @@ class JumperTest(TestCase):
         request = APIRequestFactory().get("")
         jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
         tipo = GODPortConnectionType.objects.create(code="abcd")
-        gbictipo = GBIC_Type.objects.create(description="tipoteste")
+        gbictipo = GBICType.objects.create(description="tipoteste")
         gbic = GBIC.objects.create(serial="huehue",
                                    patrimony_number="123",
                                    gbic_type=gbictipo)
