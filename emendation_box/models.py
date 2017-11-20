@@ -15,7 +15,7 @@ class EmendationBox(models.Model):
     longitude = models.FloatField(blank=False)
     designNumber = models.IntegerField(blank=False, unique=True)
     access_box = models.BooleanField(blank=False)
-    creation_date = models.DateField(blank=False)
+    creation_date = models.DateField(blank=False, auto_now_add=True)
     extinction_date = models.DateField(null=True)
     emendation_type = models.ForeignKey(EmendationBoxType, null=False)
     emendation_structure = models.ForeignKey(EmendationBoxStructure,
