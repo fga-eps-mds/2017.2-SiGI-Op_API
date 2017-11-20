@@ -129,6 +129,7 @@ class SlotSerializer(serializers.ModelSerializer):
                 'number',
                 'patrimony',
                 'band',
+                'slot_port_quantity',
                 'switch_id',
         ]
 
