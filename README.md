@@ -8,6 +8,8 @@
 <img src="https://github.com/fga-gpp-mds/2017.2-SiGI-Op_API/wiki/logo_gigacandanga.png" alt="GigaCandanga logo">
 </p>
 
+Clique [aqui](https://sigi-op.herokuapp.com/) para acessar o SiGI-Op em produção
+
 ### O Que é a GigaCandanga
 <p align=justify>
 A GigaCandanga, rede metropolitana de educação e pesquisa, integra instituições de pesquisa e de ensino superior no Distrito Federal. É baseada numa infraestrutura de fibras ópticas própria, gerenciada em condomínio pelas instituições participantes. Começou a operar em 18 de dezembro de 2007, contando com a adesão até 2016 de 33 instituições.
@@ -15,7 +17,7 @@ A GigaCandanga, rede metropolitana de educação e pesquisa, integra instituiç�
 
 ### Qual Objetivo
 <p align=justify>
-O objetivo de promover a implantação de uma infraestrutura de fibras ópticas adequada à demanda de alta capacidade e atualização tecnológica, característica das instituições de pesquisa e de ensino superior. 
+O objetivo de promover a implantação de uma infraestrutura de fibras ópticas adequada à demanda de alta capacidade e atualização tecnológica, característica das instituições de pesquisa e de ensino superior.
 </p>
 
 ### Como Funciona
