@@ -162,7 +162,7 @@ class ViewSetTest(TestCase):
         slot = Slot.objects.create(serie='AAAAA11111',
                                    number=1,
                                    patrimony='500',
-                                   port_quantity=3,
+                                   slot_port_quantity=3,
                                    band = 2,
                                    switch_id=switch)
         response = view(request, pk=slot.pk)
@@ -190,10 +190,10 @@ class ViewSetTest(TestCase):
         slot = Slot.objects.create(serie='AAAAA11111',
                                    number=1,
                                    patrimony='500',
-                                   port_quantity=3,
+                                   slot_port_quantity=3,
                                    band = 2,
                                    switch_id=switch)
-        slot_port = SlotPort.objects.create(type='AAAAA11111',
+        slot_port = SlotPort.objects.create(port_type='AAAAA11111',
                                             port='1',
                                             slot_id=slot)
         response = view(request, pk=slot_port.pk)
