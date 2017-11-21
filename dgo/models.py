@@ -15,7 +15,6 @@ class GOD(models.Model):
 class GODPortConnectionType(models.Model):
     code = models.CharField(blank=False, max_length=50)
 
-
 class GODPort(models.Model):
     code = models.CharField(blank=False, max_length=50)
     connection_type = models.ForeignKey(GODPortConnectionType)

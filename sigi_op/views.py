@@ -10,7 +10,8 @@ from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
-
+from uplink.models import Segments
+from uplink.models import GODSegment, EmendationBoxSegment
 
 @api_view(['POST'])
 def create_auth(request):
@@ -99,10 +100,28 @@ def networkmap(request):
         underground_box_dic['longitude'] = underground_box.longitude
         underground_boxes.append(underground_box_dic)
 
+    segments = []
+    for segment in Segments.objects.all():
+        segment_dic = {}
+        segment_dic['name'] = segment.number
+        segment_dic['dgos'] = []
+        segment_dic['emendation_boxes'] = []
+        for god_segment in GODSegment.objects.raw("SELECT * FROM uplink_segments_dgos"):
+            if god_segment.segments_id == segment.id:
+                segment_dic['dgos'] += [god_segment.god_id]
+
+        for emendation_box_segment in EmendationBoxSegment.objects.raw("SELECT * from uplink_segments_emendation_boxes"):
+            if emendation_box_segment.segments_id == segment.id:
+                segment_dic['emendation_boxes'] += [emendation_box_segment.emendationbox_id]
+
+        if len(segment_dic['dgos']) or len(segment_dic['emendation_boxes']):
+            segments.append(segment_dic)
+
     response = {
         'emendation_box': emendation_boxes,
         'site': sites,
         'technical_reserve': technical_reserves,
-        'underground_box': underground_boxes}
+        'underground_box': underground_boxes,
+        'segment': segments}
 
     return Response(response)

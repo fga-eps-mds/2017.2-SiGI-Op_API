@@ -14,6 +14,13 @@ class Uplink(models.Model):
 class Segments(models.Model):
     number = models.IntegerField(null=False)
     length = models.FloatField(default=0)
-    dgos = models.ManyToManyField(GOD, blank=True)
-    emendation_boxes = models.ManyToManyField(EmendationBox, blank=True)
-    
+    dgos = models.ManyToManyField(GOD, null=True, blank=True)
+    emendation_boxes = models.ManyToManyField(EmendationBox, null=True, blank=True)
+
+class GODSegment(models.Model):
+    segments_id = Segments()
+    god_id = GOD()
+
+class EmendationBoxSegment(models.Model):
+    segments_id = Segments()
+    emendationbox_id = EmendationBox()
