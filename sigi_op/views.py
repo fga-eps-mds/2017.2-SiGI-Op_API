@@ -1,31 +1,33 @@
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
-from .serializers import UserSerializer
-from django.contrib.auth.models import User
-
 from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
+from .serializers import UserSerializer
 
 
 @api_view(['POST'])
 def create_auth(request):
     serialized = UserSerializer(data=request.data)
 
+    response = 0
+
     if serialized.is_valid():
         User.objects.create_user(serialized.data['username'],
                                  serialized.data['email'],
-                                 serialized.data['password']
-                                 )
-        return Response({'username': serialized.data['username'],
-                        'email': serialized.data['email']},
-                        status=status.HTTP_201_CREATED)
+                                 serialized.data['password'])
+        response = Response({'username': serialized.data['username'],
+                             'email': serialized.data['email']},
+                            status=status.HTTP_201_CREATED)
     else:
-        return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
+        response = Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    return response
 
 
 @api_view(['POST'])
@@ -46,22 +48,25 @@ def login(request):
 class CustomViewSet(viewsets.ModelViewSet):
     def list(self, request):
         queryset = self.queryset
+        response = 0
         if request.GET.get('all'):
             self.pagination_class = None
-            serializer = self.serializer_class(queryset, many=True)
-            return Response(serializer.data)
+            serializer = self.serializer_class(queryset, many=True) #pylint: disable=not-callable
+            response = Response(serializer.data)
         else:
             paginator = pagination.PageNumberPagination()
             queryset = paginator.paginate_queryset(
                 queryset=queryset,
                 request=request
                 )
-            serializer = self.serializer_class(queryset, many=True)
-            return paginator.get_paginated_response(serializer.data)
+            serializer = self.serializer_class(queryset, many=True) #pylint: disable=not-callable
+            response = paginator.get_paginated_response(serializer.data)
+
+        return response
 
 
 @api_view(['GET'])
-def networkmap(request):
+def networkmap(_request):
     emendation_boxes = []
     for emendation_box in EmendationBox.objects.all():
         emendation_box_dic = {}
