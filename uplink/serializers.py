@@ -15,9 +15,12 @@ class UplinkSerializer(serializers.ModelSerializer):
 
 
 class SegmentsSerializer(serializers.ModelSerializer):
+    slug_field = 'number'
+
     class Meta:
         model = Segments
         fields = [
+            'id',
             'number',
             'length',
         ]

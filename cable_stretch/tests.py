@@ -4,6 +4,7 @@ from .models import Tubeloose
 from .views import CableStretchListViewSet
 from .views import TubelooseListViewSet
 from rest_framework.test import APIRequestFactory
+from django.utils import timezone
 
 
 # Create your tests here.
@@ -12,7 +13,8 @@ class CableStretchTest(TestCase):
         request = APIRequestFactory().get("")
         cable_stretch_detail = CableStretchListViewSet.as_view(actions={'get':'retrieve'})
         cabletype = CableStretchType.objects.create(description="random")
-        CableStretchtest = CableStretch.objects.create(length=1,
+        CableStretchtest = CableStretch.objects.create(cod=1,
+                                                       length=1,
                                                        manufacturing_year=2012,
                                                        infrastructure="random",
                                                        owner="random",
@@ -24,11 +26,19 @@ class CableStretchTest(TestCase):
         response = cable_stretch_detail(request, pk=CableStretchtest.pk)
         self.assertEqual(response.status_code, 200)
 
+    def test_CableStretch_method_save(self):
+        cableStretch = CableStretch(cod=111)
+        self.assertIsNone(cableStretch.creation_date)
+        cableStretch.save()
+        self.assertIsNotNone(cableStretch.creation_date)
+        
+
     def test_wrong_test_CableStretch_view_set(self):
         request = APIRequestFactory().get("")
         cable_stretch_detail = CableStretchListViewSet.as_view(actions={'get':'retrieve'})
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
+                                                       cod=1,
                                                        manufacturing_year=2012,
                                                        infrastructure="random",
                                                        owner="random",
@@ -47,6 +57,7 @@ class CableStretchTest(TestCase):
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
                                                        manufacturing_year=2012,
+                                                       cod=1,
                                                        infrastructure="random",
                                                        owner="random",
                                                        fabricant='Potato Bread',
@@ -65,6 +76,7 @@ class CableStretchTest(TestCase):
         cabletype = CableStretchType.objects.create(description="random")
         CableStretchtest = CableStretch.objects.create(length=1,
                                                        manufacturing_year=2012,
+                                                       cod=1,
                                                        infrastructure="random",
                                                        owner="random",
                                                        fabricant='Potato Bread',
