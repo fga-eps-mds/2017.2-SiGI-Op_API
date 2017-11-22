@@ -138,6 +138,7 @@ class SlotPortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SlotPort
+        slot_id = SlotSerializer(read_only=True)
         fields = [
                 'id',
                 'port_type',

@@ -168,6 +168,33 @@ class ViewSetTest(TestCase):
         response = view(request, pk=slot.pk)
         self.assertEqual(response.status_code, 200)
 
+    def test_save_method(self):
+      instituion_type = InstitutionType.objects.create(
+                                            description="RandomInstitution")
+      ipa = ParticipantInstitution.objects.create(name='UnB',
+                                            institution_type=instituion_type)
+      site_type = SiteType.objects.create(description="RandomSiteType")
+      site_id = Site.objects.create(name='RandomSite',
+                                    lattitude=42,
+                                    longitude=42,
+                                    bandwidth=42,
+                                    ipa_code=ipa,
+                                    site_type=site_type)
+      switch = Switch.objects.create(serial_number='AAAAA11111',
+                                     manufacturer='RandomManufacturer',
+                                     slots_quantity='500',
+                                     patrimony_number='AAAAA11111',
+                                     site_id=site_id)
+      slot = Slot(serie='AAAAA11111',
+                                   number=1,
+                                   patrimony='500',
+                                   slot_port_quantity=3,
+                                   band = 2,
+                                   switch_id=switch)
+      slot.save()
+      saved_slot = Slot.objects.get(pk=slot.pk)
+      self.assertEqual(saved_slot,slot)
+
     def test_slot_port_view_set(self):
         request = APIRequestFactory().get("")
         view = SlotPortViewSet.as_view(actions={'get': 'retrieve'})
