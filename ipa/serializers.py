@@ -122,13 +122,14 @@ class SlotSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Slot
+        switch_id = SwitchSerializer(read_only=True)
         fields = [
                 'id',
                 'serie',
                 'number',
                 'patrimony',
-                'port_quantity',
                 'band',
+                'slot_port_quantity',
                 'switch_id',
         ]
 
@@ -137,9 +138,10 @@ class SlotPortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = SlotPort
+        slot_id = SlotSerializer(read_only=True)
         fields = [
                 'id',
-                'type',
+                'port_type',
                 'port',
                 'slot_id',
         ]

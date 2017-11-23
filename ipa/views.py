@@ -114,6 +114,6 @@ class SlotViewSet(CustomViewSet):
 
 class SlotPortViewSet(CustomViewSet):
     class_name = SlotPort
-    order_param_name = 'type'
-    queryset = SlotPort.objects.all().order_by('type')
+    order_param_name = 'port_type'
+    queryset = SlotPort.objects.all().order_by('port_type')
     serializer_class = SlotPortSerializer
