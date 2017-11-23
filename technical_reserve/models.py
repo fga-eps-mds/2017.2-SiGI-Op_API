@@ -6,6 +6,6 @@ from django.db import models
 
 class TechnicalReserve(models.Model):
     code = models.IntegerField(null=False, default=0, unique=True)
-    length = models.FloatField(blank=False)
-    lattitude = models.FloatField(blank=False)
-    longitude = models.FloatField(blank=False)
+    length = models.FloatField(blank=True)
+    lattitude = models.FloatField(blank=True)
+    longitude = models.FloatField(blank=True)

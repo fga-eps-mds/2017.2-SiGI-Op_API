@@ -9,7 +9,7 @@ class GBIC_Type(models.Model):
 
 
 class GBIC(models.Model):
-    serial = models.CharField(max_length=30, blank=False, unique=True)
+    serial = models.CharField(max_length=30, blank=True, unique=True)
     patrimony_number = models.CharField(max_length=30, unique=True)
     gbic_type = models.ForeignKey(GBIC_Type)
     # slot_port = models.ForeignKey(Slot_Port, blank=False)

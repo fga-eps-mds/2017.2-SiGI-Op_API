@@ -46,5 +46,5 @@ class Tubeloose(models.Model):
     """
     This class manages Tubeloose table.
     """
-    number = models.IntegerField(blank=False)
+    number = models.IntegerField(blank=True)
     stretch_id = models.ForeignKey(CableStretch, null=False)

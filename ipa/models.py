@@ -17,10 +17,10 @@ class SiteType(models.Model):
 
 
 class Site(models.Model):
-    name = models.CharField(blank=False, max_length=100)
-    lattitude = models.FloatField(blank=False)
-    longitude = models.FloatField(blank=False)
-    bandwidth = models.PositiveIntegerField(blank=False)
+    name = models.CharField(blank=True, max_length=100)
+    lattitude = models.FloatField(blank=True)
+    longitude = models.FloatField(blank=True)
+    bandwidth = models.PositiveIntegerField(blank=True)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
     site_type = models.ForeignKey(SiteType, null=False)
 
@@ -34,36 +34,38 @@ class Contact(models.Model):
     phone_number = models.CharField(max_length=15)
     email_validator = EmailValidator()
     email = models.CharField(validators=[email_validator], max_length=40)
-    priority = models.IntegerField(blank=False)
+    priority = models.IntegerField(blank=True)
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
 
 class Generator(models.Model):
     power = models.FloatField(blank=False)
-    manufacturer = models.CharField(max_length=50, blank=False)
-    patrimony = models.CharField(max_length=20, blank=False, unique=True)
+    manufacturer = models.CharField(max_length=50, blank=True)
+    patrimony = models.CharField(max_length=20, blank=True, unique=True)
     site = models.ForeignKey(Site, null=False)
 
 
 class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
-    proprietary = models.CharField(max_length=50, null=False)
-    patrimony_number = models.CharField(max_length=20, null=False, unique=True)
+    proprietary = models.CharField(max_length=50, blank=True)
+    patrimony_number = models.CharField(max_length=20,
+                                        blank=False,
+                                        unique=True)
     site_id = models.ForeignKey(Site, on_delete=models.CASCADE, null=False)
 
 
 class Switch(models.Model):
-    serial_number = models.CharField(max_length=30, null=False, unique=True)
-    manufacturer = models.CharField(max_length=30, null=False)
-    slots_quantity = models.PositiveIntegerField(blank=False)
-    patrimony_number = models.CharField(max_length=30, null=False, unique=True)
+    serial_number = models.CharField(max_length=30, blank=True, unique=True)
+    manufacturer = models.CharField(max_length=30, blank=True)
+    slots_quantity = models.PositiveIntegerField(blank=True)
+    patrimony_number = models.CharField(max_length=30, blank=True, unique=True)
     site_id = models.ForeignKey(Site, null=False)
 
 
 class Slot(models.Model):
-    serie = models.CharField(max_length=50, null=False)
-    number = models.IntegerField(blank=False)
+    serie = models.CharField(max_length=50, blank=True)
+    number = models.IntegerField(blank=True)
     patrimony = models.CharField(max_length=30)
     port_quantity = models.IntegerField()
     band = models.CharField(max_length=20)
@@ -72,5 +74,5 @@ class Slot(models.Model):
 
 class SlotPort(models.Model):
     type = models.CharField(max_length=10)
-    port = models.CharField(max_length=50, null=False)
+    port = models.CharField(max_length=50, blank=True)
     slot_id = models.ForeignKey(Slot, null=False)
