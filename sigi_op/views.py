@@ -34,13 +34,17 @@ def login(request):
     password = request.data.get('password')
 
     user = authenticate(username=username, password=password)
-
+    print(user.password)
     if not user:
         return Response({'error', 'Login failed'},
                         status=status.HTTP_401_UNAUTHORIZED)
 
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({"username": username, "token": token.key})
+    return Response({
+        "username": username,
+        "token": token.key,
+        "email": user.email,
+        "pk": user.pk})
 
 
 class CustomViewSet(viewsets.ModelViewSet):
