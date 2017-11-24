@@ -29,6 +29,22 @@ def create_auth(request):
 
 
 @api_view(['POST'])
+def update_auth(request):
+    user = User.objects.get(pk=request.data['pk'])
+    if user.check_password(request.data['currentpassword']):
+        user.name = request.data['username']
+        user.name = request.data['email']
+        if request.data['password'] != '':
+            user.set_password = request.data['password']
+        user.save()
+        return Response({'username': request.data['username'],
+                        'email': request.data['email']},
+                        status=status.HTTP_200_OK)
+    else:
+        return Response(request._errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
 def login(request):
     username = request.data.get('username')
     password = request.data.get('password')
