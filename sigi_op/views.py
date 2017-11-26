@@ -46,8 +46,11 @@ def login(request):
 
 
 class CustomViewSet(viewsets.ModelViewSet):
+    class_name = ""
+    order_param_name = ""
+
     def list(self, request):
-        queryset = self.queryset
+        queryset = self.class_name.objects.all().order_by(self.order_param_name)
         response = 0
         if request.GET.get('all'):
             self.pagination_class = None

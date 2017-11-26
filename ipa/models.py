@@ -65,12 +65,18 @@ class Slot(models.Model):
     serie = models.CharField(max_length=50, null=False)
     number = models.IntegerField(blank=False)
     patrimony = models.CharField(max_length=30)
-    port_quantity = models.IntegerField()
     band = models.CharField(max_length=20)
+    slot_port_quantity = models.IntegerField(null=False)
     switch_id = models.ForeignKey(Switch, null=False)
+
+    def save(self, **kwargs): # pylint: disable=arguments-differ
+        super(Slot, self).save(**kwargs)
+        for _ in range(self.slot_port_quantity):
+            slot_port = SlotPort(slot_id=self)
+            slot_port.save()
 
 
 class SlotPort(models.Model):
-    type = models.CharField(max_length=10)
+    port_type = models.CharField(max_length=10)
     port = models.CharField(max_length=50, null=False)
     slot_id = models.ForeignKey(Slot, null=False)
