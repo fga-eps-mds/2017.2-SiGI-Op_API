@@ -18,3 +18,4 @@ ratings:
 exclude_paths:
 - "**/migrations/**"
 - "**/tests.py"
+- ".pylintrc"

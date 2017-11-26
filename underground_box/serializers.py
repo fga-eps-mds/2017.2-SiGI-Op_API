@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import UndergroundBox, UndergroundBoxType
 from emendation_box.serializers import EmendationBoxSerializer
 from technical_reserve.serializers import TechnicalReserveSerializer
+from .models import UndergroundBox, UndergroundBoxType
 
 
 class UndergroundBoxTypeSerializer(serializers.ModelSerializer):
@@ -21,12 +21,12 @@ class UndergroundBoxSerializer(serializers.ModelSerializer):
         technical_reserve = TechnicalReserveSerializer(many=True,
                                                        read_only=True)
         fields = [
-                'id',
-                'code',
-                'box_type',
-                'lattitude',
-                'longitude',
-                'cover_type',
-                'emendation_box',
-                'technical_reserve',
+            'id',
+            'code',
+            'box_type',
+            'lattitude',
+            'longitude',
+            'cover_type',
+            'emendation_box',
+            'technical_reserve',
         ]

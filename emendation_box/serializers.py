@@ -1,5 +1,5 @@
-from .models import EmendationBoxStructure, EmendationBoxType, EmendationBox
 from rest_framework import serializers
+from .models import EmendationBoxStructure, EmendationBoxType, EmendationBox
 
 
 class EmendationBoxTypeSerializer(serializers.ModelSerializer):
