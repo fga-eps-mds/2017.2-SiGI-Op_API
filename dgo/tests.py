@@ -56,28 +56,28 @@ class GODTest(TestCase):
         response = god_detail(request, pk=primary_key)
         self.assertEqual(response.status_code, 404)
 
-    def test_godport_view_set(self):
-        request = APIRequestFactory().get("")
-        godport_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
-        ipatype = InstitutionType.objects.create(description='BestEver')
-        ipa = ParticipantInstitution.objects.create(name='Uns Paranauês Maneiros',
-                                                    institution_type=ipatype)
-        sitetype = SiteType.objects.create(description='IDK What Am I Doing')
-        sitetest = Site.objects.create(
-            name='Lenny Face',
-            lattitude=42.42,
-            longitude=54.54,
-            bandwidth=42,
-            ipa_code=ipa,
-            site_type=sitetype
-        )
-        god_test = GOD.objects.create(code=1,
-                                      fabricant='Potato Bread',
-                                      port_quantity=4,
-                                      site_id=sitetest)
+    # def test_godport_view_set(self):
+    #     request = APIRequestFactory().get("")
+    #     godport_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
+    #     ipatype = InstitutionType.objects.create(description='BestEver')
+    #     ipa = ParticipantInstitution.objects.create(name='Uns Paranauês Maneiros',
+    #                                                 institution_type=ipatype)
+    #     sitetype = SiteType.objects.create(description='IDK What Am I Doing')
+    #     sitetest = Site.objects.create(
+    #         name='Lenny Face',
+    #         lattitude=42.42,
+    #         longitude=54.54,
+    #         bandwidth=42,
+    #         ipa_code=ipa,
+    #         site_type=sitetype
+    #     )
+    #     god_test = GOD.objects.create(code=1,
+    #                                   fabricant='Potato Bread',
+    #                                   port_quantity=4,
+    #                                   site_id=sitetest)
 
-        response = godport_detail(request, pk=god_test.pk)
-        self.assertEqual(response.status_code, 200)
+    #     response = godport_detail(request, pk=god_test.pk)
+    #     self.assertEqual(response.status_code, 200)
 
     def test_wrong_godport_view_set(self):
         request = APIRequestFactory().get("")

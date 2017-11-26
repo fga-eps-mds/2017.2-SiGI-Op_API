@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import TechnicalReserve
 
+
 class TechnicalReserveSerializer(serializers.ModelSerializer):
     class Meta:
         model = TechnicalReserve

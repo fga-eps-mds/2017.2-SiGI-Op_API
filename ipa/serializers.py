@@ -9,6 +9,7 @@ from .models import Slot
 from .models import SlotPort
 from .models import Contact
 
+
 class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = InstitutionType
@@ -127,11 +128,11 @@ class SlotSerializer(serializers.ModelSerializer):
             'serie',
             'number',
             'patrimony',
-            'port_quantity',
             'band',
             'slot_port_quantity',
             'switch_id',
         ]
+
 
 class SlotPortSerializer(serializers.ModelSerializer):
 

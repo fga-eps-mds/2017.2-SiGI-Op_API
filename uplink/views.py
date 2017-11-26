@@ -21,7 +21,7 @@ class SegmentsListViewSet(CustomViewSet):
     queryset = Segments.objects.all().order_by('number')
     serializer_class = SegmentsSerializer
 
-    def create(self, request): #pylint: disable=arguments-differ
+    def create(self, request):  # pylint: disable=arguments-differ
         segment_data = {
             'number': request.data['number'],
             'length': request.data['length']
@@ -39,8 +39,10 @@ class SegmentsListViewSet(CustomViewSet):
             CableStretch.objects.bulk_create(stretch_list)
             # Saves a list of cable stretch
             serializer.save()
-            response = Response(serializer.data, status=status.HTTP_201_CREATED)
+            response = Response(serializer.data,
+                                status=status.HTTP_201_CREATED)
         else:
-            response = Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            response = Response(serializer.errors,
+                                status=status.HTTP_400_BAD_REQUEST)
 
         return response

@@ -25,7 +25,8 @@ def create_auth(request):
                              'email': serialized.data['email']},
                             status=status.HTTP_201_CREATED)
     else:
-        response = Response(serialized.errors, status=status.HTTP_400_BAD_REQUEST)
+        response = Response(serialized.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
 
     return response
 
@@ -50,11 +51,14 @@ class CustomViewSet(viewsets.ModelViewSet):
     order_param_name = ""
 
     def list(self, request):
-        queryset = self.class_name.objects.all().order_by(self.order_param_name)
+        queryset = self.class_name.objects.all().order_by(
+            self.order_param_name)
         response = 0
         if request.GET.get('all'):
             self.pagination_class = None
-            serializer = self.serializer_class(queryset, many=True) #pylint: disable=not-callable
+            serializer = self.serializer_class(  # pylint: disable=not-callable
+                queryset,
+                many=True)
             response = Response(serializer.data)
         else:
             paginator = pagination.PageNumberPagination()
@@ -62,7 +66,9 @@ class CustomViewSet(viewsets.ModelViewSet):
                 queryset=queryset,
                 request=request
                 )
-            serializer = self.serializer_class(queryset, many=True) #pylint: disable=not-callable
+            serializer = self.serializer_class(  # pylint: disable=not-callable
+                queryset,
+                many=True)
             response = paginator.get_paginated_response(serializer.data)
 
         return response

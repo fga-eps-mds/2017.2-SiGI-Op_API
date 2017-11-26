@@ -82,7 +82,7 @@ ROUTER.register(r'tubelooses', TubelooseListViewSet,
                 base_name='tubeloose')
 ROUTER.register(r'segments', SegmentsListViewSet, base_name='segments')
 
-urlpatterns = [ #pylint: disable=invalid-name
+urlpatterns = [  # pylint: disable=invalid-name
     url(r'^', include(ROUTER.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^login', login),

@@ -3,6 +3,7 @@ from emendation_box.serializers import EmendationBoxSerializer
 from technical_reserve.serializers import TechnicalReserveSerializer
 from .models import UndergroundBox, UndergroundBoxType
 
+
 class UndergroundBoxTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = UndergroundBoxType

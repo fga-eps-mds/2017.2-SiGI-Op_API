@@ -10,6 +10,7 @@ class GBICListViewSet(CustomViewSet):
     queryset = GBIC.objects.all().order_by('serial')
     serializer_class = GBICSerializer
 
+
 class GBICTypeListViewSet(CustomViewSet):
     class_name = GBICType
     order_param_name = 'description'
