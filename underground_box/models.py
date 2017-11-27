@@ -4,7 +4,7 @@ from technical_reserve.models import TechnicalReserve
 
 
 class UndergroundBoxType(models.Model):
-    name = models.CharField(blank=False, max_length=100)
+    name = models.CharField(blank=True, max_length=100)
 
 
 class UndergroundBox(models.Model):

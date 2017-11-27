@@ -11,11 +11,11 @@ class EmendationBoxType(models.Model):
 
 
 class EmendationBox(models.Model):
-    lattitude = models.FloatField(blank=False)
-    longitude = models.FloatField(blank=False)
-    designNumber = models.IntegerField(blank=False, unique=True)
-    access_box = models.BooleanField(blank=False)
-    creation_date = models.DateField(blank=False)
+    lattitude = models.FloatField(blank=True)
+    longitude = models.FloatField(blank=True)
+    designNumber = models.IntegerField(blank=True, unique=True)
+    access_box = models.BooleanField(blank=True)
+    creation_date = models.DateField(blank=True)
     extinction_date = models.DateField(null=True)
     emendation_type = models.ForeignKey(EmendationBoxType, null=False)
     emendation_structure = models.ForeignKey(EmendationBoxStructure,

@@ -11,5 +11,5 @@ class Uplink(models.Model):
 
 
 class Segments(models.Model):
-    number = models.IntegerField(null=False)
+    number = models.IntegerField(blank=True)
     length = models.FloatField(default=0)

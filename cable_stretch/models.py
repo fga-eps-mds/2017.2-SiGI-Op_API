@@ -38,7 +38,6 @@ class CableStretch(models.Model):
                                          blank=True)
     updated_date = models.DateTimeField(null=True, auto_now=True, blank=True)
     # dgo some pk issue to solve
-    # segment
     # access cable
 
 

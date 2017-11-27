@@ -13,7 +13,7 @@ class ParticipantInstitution(models.Model):
 
 
 class SiteType(models.Model):
-    description = models.CharField(blank=False, max_length=20)
+    description = models.CharField(blank=True, max_length=20)
 
 
 class Site(models.Model):
@@ -40,7 +40,7 @@ class Contact(models.Model):
 
 
 class Generator(models.Model):
-    power = models.FloatField(blank=False)
+    power = models.FloatField(blank=True)
     manufacturer = models.CharField(max_length=50, blank=True)
     patrimony = models.CharField(max_length=20, blank=True, unique=True)
     site = models.ForeignKey(Site, null=False)
@@ -50,7 +50,7 @@ class NoBreak(models.Model):
     power = models.FloatField(max_length=6, null=False)
     proprietary = models.CharField(max_length=50, blank=True)
     patrimony_number = models.CharField(max_length=20,
-                                        blank=False,
+                                        blank=True,
                                         unique=True)
     site_id = models.ForeignKey(Site, on_delete=models.CASCADE, null=False)
 
@@ -74,5 +74,5 @@ class Slot(models.Model):
 
 class SlotPort(models.Model):
     type = models.CharField(max_length=10)
-    port = models.CharField(max_length=50, blank=True)
+    port = models.CharField(max_length=50, null=False)
     slot_id = models.ForeignKey(Slot, null=False)
