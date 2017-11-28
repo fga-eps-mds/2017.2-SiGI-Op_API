@@ -1,22 +1,22 @@
+from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
+from sigi_op.serializers import UserSerializer
+from sigi_op.views import CustomViewSet
+from django.contrib.auth.models import User, Group, Permission
 from .serializers import ParticipantInstitutionSerializer
 from .serializers import ParticipantInstitutionTypeSerializer
 from .serializers import ContactSerializer
 from .serializers import ContactTypeSerializer, GeneratorSerializer
-from .models import InstitutionType, ParticipantInstitution, Site, SiteType
-from .models import Contact, ContactType, Generator
 from .serializers import SwitchSerializer
 from .serializers import NoBreakSerializer
 from .serializers import SlotSerializer
 from .serializers import SlotPortSerializer
+from .serializers import GroupSerializer, PermissionSerializer
+from .models import InstitutionType, ParticipantInstitution, Site, SiteType
+from .models import Contact, ContactType, Generator
 from .models import NoBreak
 from .models import Switch
 from .models import Slot
 from .models import SlotPort
-from sigi_op.serializers import SiteTypeSerializer, SiteSerializer
-from sigi_op.views import CustomViewSet
-from django.contrib.auth.models import User, Group, Permission
-from .serializers import GroupSerializer, PermissionSerializer
-from sigi_op.serializers import UserSerializer
 
 # Create your views here.
 
@@ -114,6 +114,6 @@ class SlotViewSet(CustomViewSet):
 
 class SlotPortViewSet(CustomViewSet):
     class_name = SlotPort
-    order_param_name = 'type'
-    queryset = SlotPort.objects.all().order_by('type')
+    order_param_name = 'port_type'
+    queryset = SlotPort.objects.all().order_by('port_type')
     serializer_class = SlotPortSerializer
