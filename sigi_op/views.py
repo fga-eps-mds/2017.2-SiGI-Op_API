@@ -51,6 +51,11 @@ class CustomViewSet(viewsets.ModelViewSet):
         queryset = self.class_name.objects.all().order_by(
             self.order_param_name
             )
+        if request.GET.get('search'):
+            queryset = self.class_name.objects.all()
+            param = self.request.query_params.get('search', None)
+            if param is not None:
+                queryset = queryset.filter(all=param)
         if request.GET.get('all'):
             self.pagination_class = None
             serializer = self.get_serializer(queryset, many=True)
