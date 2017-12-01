@@ -1,31 +1,50 @@
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
-from .serializers import UserSerializer
-from django.contrib.auth.models import User
-
 from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
+from .serializers import UserSerializer
 
 
 @api_view(['POST'])
 def create_auth(request):
     serialized = UserSerializer(data=request.data)
 
+    response = 0
+
     if serialized.is_valid():
         User.objects.create_user(serialized.data['username'],
                                  serialized.data['email'],
-                                 serialized.data['password']
-                                 )
-        return Response({'username': serialized.data['username'],
-                        'email': serialized.data['email']},
-                        status=status.HTTP_201_CREATED)
+                                 serialized.data['password'])
+        response = Response({'username': serialized.data['username'],
+                             'email': serialized.data['email']},
+                            status=status.HTTP_201_CREATED)
     else:
-        return Response(serialized._errors, status=status.HTTP_400_BAD_REQUEST)
+        response = Response(serialized.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+
+    return response
+
+
+@api_view(['POST'])
+def update_auth(request):
+    user = User.objects.get(pk=request.data['pk'])
+    if user.check_password(request.data['currentpassword']):
+        user.username = request.data['username']
+        user.email = request.data['email']
+        if request.data['password'] != '':
+            user.set_password(request.data['password'])
+        user.save()
+        return Response({'username': user.username,
+                        'email': user.email},
+                        status=status.HTTP_200_OK)
+    else:
+        return Response('error', status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
@@ -34,17 +53,49 @@ def login(request):
     password = request.data.get('password')
 
     user = authenticate(username=username, password=password)
-
+    print(user.password)
     if not user:
         return Response({'error', 'Login failed'},
                         status=status.HTTP_401_UNAUTHORIZED)
 
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({"username": username, "token": token.key})
+    return Response({
+        "username": username,
+        "token": token.key,
+        "email": user.email,
+        "pk": user.pk})
+
+
+class CustomViewSet(viewsets.ModelViewSet):
+    class_name = ""
+    order_param_name = ""
+
+    def list(self, request):
+        queryset = self.class_name.objects.all().order_by(
+            self.order_param_name)
+        response = 0
+        if request.GET.get('all'):
+            self.pagination_class = None
+            serializer = self.serializer_class(  # pylint: disable=not-callable
+                queryset,
+                many=True)
+            response = Response(serializer.data)
+        else:
+            paginator = pagination.PageNumberPagination()
+            queryset = paginator.paginate_queryset(
+                queryset=queryset,
+                request=request
+                )
+            serializer = self.serializer_class(  # pylint: disable=not-callable
+                queryset,
+                many=True)
+            response = paginator.get_paginated_response(serializer.data)
+
+        return response
 
 
 @api_view(['GET'])
-def networkmap(request):
+def networkmap(_request):
     emendation_boxes = []
     for emendation_box in EmendationBox.objects.all():
         emendation_box_dic = {}
