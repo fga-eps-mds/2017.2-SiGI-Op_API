@@ -32,18 +32,38 @@ def create_auth(request):
 
 
 @api_view(['POST'])
+def update_auth(request):
+    user = User.objects.get(pk=request.data['pk'])
+    if user.check_password(request.data['currentpassword']):
+        user.username = request.data['username']
+        user.email = request.data['email']
+        if request.data['password'] != '':
+            user.set_password(request.data['password'])
+        user.save()
+        return Response({'username': user.username,
+                        'email': user.email},
+                        status=status.HTTP_200_OK)
+    else:
+        return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
 def login(request):
     username = request.data.get('username')
     password = request.data.get('password')
 
     user = authenticate(username=username, password=password)
-
+    print(user.password)
     if not user:
         return Response({'error', 'Login failed'},
                         status=status.HTTP_401_UNAUTHORIZED)
 
     token, _ = Token.objects.get_or_create(user=user)
-    return Response({"username": username, "token": token.key})
+    return Response({
+        "username": username,
+        "token": token.key,
+        "email": user.email,
+        "pk": user.pk})
 
 
 class CustomViewSet(viewsets.ModelViewSet):
