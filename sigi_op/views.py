@@ -5,14 +5,12 @@ from rest_framework.response import Response
 from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
-from django.contrib.auth.models import User
 from django.db.models import Q, CharField
 
 from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
-from .serializers import UserSerializer
 
 
 @api_view(['POST'])
