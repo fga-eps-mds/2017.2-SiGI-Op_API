@@ -5,6 +5,8 @@ from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
 from django.contrib.auth.models import User
+from django.db.models import Q, CharField
+
 
 from emendation_box.models import EmendationBox
 from ipa.models import Site
@@ -52,10 +54,30 @@ class CustomViewSet(viewsets.ModelViewSet):
             self.order_param_name
             )
         if request.GET.get('search'):
-            queryset = self.class_name.objects.all()
+            queryset = []
             param = self.request.query_params.get('search', None)
             if param is not None:
-                queryset = queryset.filter(all=param)
+                fieldsChar = [
+                    f for f in self.class_name._meta.fields
+                    if isinstance(f, CharField)]
+                fields = [
+                    f for f in self.class_name._meta.fields
+                    if not isinstance(f, CharField)]
+                queriesChar = [
+                    Q(**{f.name+'__contains': param})
+                    for f in fieldsChar]
+                try:
+                    paramNum = int(param)
+                except ValueError:
+                    paramNum = 0
+                queries = [Q(**{f.name: paramNum}) for f in fields]
+                print(fields)
+                qs = Q()
+                for query in queries:
+                    qs = qs | query
+                for query in queriesChar:
+                    qs = qs | query
+                queryset = self.class_name.objects.filter(qs)
         if request.GET.get('all'):
             self.pagination_class = None
             serializer = self.get_serializer(queryset, many=True)
