@@ -38,7 +38,6 @@ class CableStretch(models.Model):
                                          blank=True)
     updated_date = models.DateTimeField(null=True, auto_now=True, blank=True)
     # dgo some pk issue to solve
-    # segment
     # access cable
 
 
@@ -46,5 +45,5 @@ class Tubeloose(models.Model):
     """
     This class manages Tubeloose table.
     """
-    number = models.IntegerField(blank=False)
+    number = models.IntegerField(blank=True)
     stretch_id = models.ForeignKey(CableStretch, null=False)
