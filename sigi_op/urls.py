@@ -37,7 +37,7 @@ from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
-from .views import login, create_auth, networkmap
+from .views import login, create_auth, networkmap, update_auth
 
 ROUTER = DefaultRouter()
 ROUTER.register(r'permissions', PermissionViewSet, base_name='permissions')
@@ -87,5 +87,6 @@ urlpatterns = [  # pylint: disable=invalid-name
     url(r'^admin/', admin.site.urls),
     url(r'^login', login),
     url(r'^users/register', create_auth),
+    url(r'^users/update', update_auth),
     url(r'^networkmap/', networkmap),
 ]
