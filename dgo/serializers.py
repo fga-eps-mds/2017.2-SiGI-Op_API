@@ -1,6 +1,6 @@
-from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
 from ipa.serializers import SiteSerializer
 from rest_framework import serializers
+from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
 
 
 class GODSerializer(serializers.ModelSerializer):

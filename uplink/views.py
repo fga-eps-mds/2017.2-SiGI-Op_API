@@ -1,11 +1,11 @@
 from sigi_op.views import CustomViewSet
 from uplink.models import Uplink
 from uplink.serializers import UplinkSerializer
-from .serializers import SegmentsSerializer
-from .models import Segments
 from cable_stretch.models import CableStretch
 from rest_framework.response import Response
 from rest_framework import status
+from .serializers import SegmentsSerializer
+from .models import Segments
 
 
 class UplinkViewSet(CustomViewSet):
@@ -21,7 +21,7 @@ class SegmentsListViewSet(CustomViewSet):
     queryset = Segments.objects.all().order_by('number')
     serializer_class = SegmentsSerializer
 
-    def create(self, request):
+    def create(self, request):  # pylint: disable=arguments-differ
         segment_data = {
             'number': request.data['number'],
             'length': request.data['length'],
@@ -29,7 +29,10 @@ class SegmentsListViewSet(CustomViewSet):
             'emendation_boxes': request.data['emendation_boxes']
         }
         serializer = SegmentsSerializer(data=segment_data)
-        if(serializer.is_valid()):
+
+        response = 0
+
+        if serializer.is_valid():
             cable_stretch_quantity = request.data['cable_stretch_quantity']
             number = request.data['number']
             stretch_list = []
@@ -38,7 +41,10 @@ class SegmentsListViewSet(CustomViewSet):
             CableStretch.objects.bulk_create(stretch_list)
             # Saves a list of cable stretch
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            response = Response(serializer.data,
+                                status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors,
-                            status=status.HTTP_400_BAD_REQUEST)
+            response = Response(serializer.errors,
+                                status=status.HTTP_400_BAD_REQUEST)
+
+        return response
