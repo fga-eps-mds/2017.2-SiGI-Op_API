@@ -9,26 +9,26 @@ from .views import SegmentsListViewSet
 
 class SegmentsTest(TestCase):
 
-    def test_Segments_view_set(self):
+    def test_segments_view_set(self):
         request = APIRequestFactory().get("")
         segments_detail = SegmentsListViewSet.as_view(actions={'get': 'retrieve'})
-        Segmentstest = Segments.objects.create(
+        segments_test = Segments.objects.create(
             number='404',
             length='25'
-    )
-        response = segments_detail(request, pk=Segmentstest.pk)
+        )
+        response = segments_detail(request, pk=segments_test.pk)
         self.assertEqual(response.status_code, 200)
 
 
 class UplinkTest(TestCase):
 
-    def test_Uplink_view_set(self):
+    def test_uplink_view_set(self):
         request = APIRequestFactory().get("")
         uplink_detail = UplinkViewSet.as_view(actions={'get': 'retrieve'})
-        Uplinktest = Uplink.objects.create(
-            name_vlan = 'xablau',
-            band = '66',
-            code = '42'
-    )
-        response = uplink_detail(request, pk=Uplinktest.pk)
+        uplink_test = Uplink.objects.create(
+            name_vlan='xablau',
+            band='66',
+            code='42'
+        )
+        response = uplink_detail(request, pk=uplink_test.pk)
         self.assertEqual(response.status_code, 200)

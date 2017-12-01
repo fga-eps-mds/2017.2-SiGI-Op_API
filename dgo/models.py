@@ -13,11 +13,11 @@ class GOD(models.Model):
 
 
 class GODPortConnectionType(models.Model):
-    code = models.CharField(blank=False, max_length=50)
+    code = models.CharField(blank=True, max_length=50)
 
 
 class GODPort(models.Model):
-    code = models.CharField(blank=False, max_length=50)
+    code = models.CharField(blank=True, max_length=50)
     connection_type = models.ForeignKey(GODPortConnectionType)
     god_id = models.ForeignKey(GOD, null=False)
     gbic_id = models.ForeignKey(GBIC, null=True)
@@ -30,7 +30,7 @@ class Jumper(models.Model):
 
 class AccessCable(models.Model):
     cod = models.CharField(null=False, max_length=50)
-    length = models.FloatField(blank=False)
+    length = models.FloatField(blank=True)
     fiber_quantity = models.IntegerField(default=1)
     god_id = models.ForeignKey(GOD, null=False)
     site_id = models.ForeignKey(Site, null=False)

@@ -7,58 +7,58 @@ from .views import SlotViewSet
 from .views import SlotPortViewSet
 
 
-site = SiteListViewSet.as_view({
+SITE = SiteListViewSet.as_view({
     'get': 'list',
     'post': 'create',
 })
 
-site_detail = SiteListViewSet.as_view({
+SITE_DETAIL = SiteListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
 })
 
-sitetype = SiteTypeListViewSet.as_view({
+SITE_TYPE = SiteTypeListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
 })
 
-nobreak = NoBreakViewSet.as_view({
+NOBREAK = NoBreakViewSet.as_view({
     'get': 'list',
     'post': 'create',
 })
 
-switch = SwitchViewSet.as_view({
-    'get': 'list',
-    'post': 'create',
-    'delete': 'destroy',
-})
-
-user = UserViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-    })
-
-group = GroupViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-    })
-
-permission = PermissionViewSet.as_view({
-    'get': 'list',
-    'post': 'create'
-    })
-
-slot = SlotViewSet.as_view({
+SWITCH = SwitchViewSet.as_view({
     'get': 'list',
     'post': 'create',
     'delete': 'destroy',
 })
 
-slotPort = SlotPortViewSet.as_view({
+USER = UserViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+    })
+
+GROUP = GroupViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+    })
+
+PERMISSION = PermissionViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+    })
+
+SLOT = SlotViewSet.as_view({
+    'get': 'list',
+    'post': 'create',
+    'delete': 'destroy',
+})
+
+SLOT_PORT = SlotPortViewSet.as_view({
     'get': 'list',
     'post': 'create',
     'delete': 'destroy',

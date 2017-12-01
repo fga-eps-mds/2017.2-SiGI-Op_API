@@ -1,15 +1,13 @@
+import emendation_box.models
+import ipa.models
+import underground_box.models
+from technical_reserve.models import TechnicalReserve
 from django.test import TestCase
 from rest_framework.test import APIRequestFactory
 from .views import networkmap
 
-import emendation_box.models
-import ipa.models
-from technical_reserve.models import TechnicalReserve
-import underground_box.models
-
-
 class MapTest(TestCase):
-    def setUp(self):
+    def set_up(self):
         emendationbox_type = emendation_box.models.EmendationBoxType.objects.create(
             description="RandomType")
         emendationbox_structure = emendation_box.models.EmendationBoxStructure.objects.create(
@@ -46,16 +44,16 @@ class MapTest(TestCase):
         undergroundbox_type = underground_box.models.UndergroundBoxType.objects.create(
             name="Random undergroundBox")
         underground_box.models.UndergroundBox.objects.create(
-                    box_type=undergroundbox_type,
-                    code=1,
-                    lattitude=42,
-                    cover_type="Cover type",
-                    longitude=42,
-                    emendation_box=emendationbox,
-                    technical_reserve=technical_reserve
-                )
+            box_type=undergroundbox_type,
+            code=1,
+            lattitude=42,
+            cover_type="Cover type",
+            longitude=42,
+            emendation_box=emendationbox,
+            technical_reserve=technical_reserve
+        )
 
-        def testMapView(self):
+        def test_map_view(self): #pylint: disable=unused-variable
             request = APIRequestFactory().get("")
             self.setUp()
             view = networkmap.as_view(actions={'get': 'retrieve'})
