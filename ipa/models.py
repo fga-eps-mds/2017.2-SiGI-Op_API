@@ -69,11 +69,11 @@ class Slot(models.Model):
     slot_port_quantity = models.IntegerField(null=False)
     switch_id = models.ForeignKey(Switch, null=False)
 
-    def save(self, **kwargs):
+    def save(self, **kwargs):  # pylint: disable=arguments-differ
         super(Slot, self).save(**kwargs)
-        for i in range(self.slot_port_quantity):
-            slotPort = SlotPort(slot_id=self)
-            slotPort.save()
+        for _ in range(self.slot_port_quantity):
+            slot_port = SlotPort(slot_id=self)
+            slot_port.save()
 
 
 class SlotPort(models.Model):

@@ -1,10 +1,10 @@
-from .models import GBIC, GBIC_Type
 from rest_framework import serializers
+from .models import GBIC, GBICType
 
 
-class GBIC_TypeSerializer(serializers.ModelSerializer):
+class GBICTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GBIC_Type
+        model = GBICType
         fields = [
             'id',
             'description',

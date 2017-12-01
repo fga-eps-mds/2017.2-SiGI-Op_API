@@ -1,34 +1,34 @@
 from django.test import TestCase
-from .models import GBIC, GBIC_Type
 from rest_framework.test import APIRequestFactory
-from .views import GBIC_TypeListViewSet, GBICListViewSet
+from .models import GBIC, GBICType
+from .views import GBICListViewSet
 
 
 # Create your tests here.
 class GBICTest(TestCase):
 
-    def test_GBIC_view_set(self):
+    def test_gbic_view_set(self):
         request = APIRequestFactory().get("")
-        GBIC_detail = GBICListViewSet.as_view(actions={'get': 'retrieve'})
-        GbicTypeTest = GBIC_Type.objects.create(description='muito_bom')
-        GBICtest = GBIC.objects.create(
+        gbic_detail = GBICListViewSet.as_view(actions={'get': 'retrieve'})
+        gbic_type_test = GBICType.objects.create(description='muito_bom')
+        gbic_test = GBIC.objects.create(
             serial='showdaxuxa',
             patrimony_number='666',
-            gbic_type = GbicTypeTest
+            gbic_type=gbic_type_test
         )
-        response = GBIC_detail(request, pk=GBICtest.pk)
+        response = gbic_detail(request, pk=gbic_test.pk)
         self.assertEqual(response.status_code, 200)
 
 
-    def test_deleted_GBIC_view_set(self):
+    def test_deleted_gbic_view_set(self):
         request = APIRequestFactory().get("")
-        GBIC_detail = GBICListViewSet.as_view(actions={'get': 'retrieve'})
-        GbicTypeTest = GBIC_Type.objects.create(description='muitoruim')
-        GBICtest = GBIC.objects.create(
+        gbic_detail = GBICListViewSet.as_view(actions={'get': 'retrieve'})
+        gbic_type_test = GBICType.objects.create(description='muitoruim')
+        gbic_test = GBIC.objects.create(
             serial='showdomilhao',
             patrimony_number='777',
-            gbic_type = GbicTypeTest
+            gbic_type=gbic_type_test
         )
-        GBICtest.delete()
-        response = GBIC_detail(request, pk=GBICtest.pk)
+        gbic_test.delete()
+        response = gbic_detail(request, pk=gbic_test.pk)
         self.assertEqual(response.status_code, 404)
