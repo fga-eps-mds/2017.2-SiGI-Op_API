@@ -4,11 +4,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
+from .serializers import UserSerializer
+from django.db.models import Q, CharField
+
 from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
-from .serializers import UserSerializer
 
 
 @api_view(['POST'])
@@ -72,8 +74,33 @@ class CustomViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         queryset = self.class_name.objects.all().order_by(
-            self.order_param_name)
-        response = 0
+            self.order_param_name
+            )
+        if request.GET.get('search'):
+            queryset = []
+            param = self.request.query_params.get('search', None)
+            if param is not None:
+                fieldsChar = [
+                    f for f in self.class_name._meta.fields
+                    if isinstance(f, CharField)]
+                fields = [
+                    f for f in self.class_name._meta.fields
+                    if not isinstance(f, CharField)]
+                queriesChar = [
+                    Q(**{f.name+'__contains': param})
+                    for f in fieldsChar]
+                try:
+                    paramNum = int(param)
+                except ValueError:
+                    paramNum = 0
+                queries = [Q(**{f.name: paramNum}) for f in fields]
+                print(fields)
+                qs = Q()
+                for query in queries:
+                    qs = qs | query
+                for query in queriesChar:
+                    qs = qs | query
+                queryset = self.class_name.objects.filter(qs)
         if request.GET.get('all'):
             self.pagination_class = None
             serializer = self.serializer_class(  # pylint: disable=not-callable
