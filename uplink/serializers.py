@@ -23,4 +23,6 @@ class SegmentsSerializer(serializers.ModelSerializer):
             'id',
             'number',
             'length',
+            'dgos',
+            'emendation_boxes',
         ]
