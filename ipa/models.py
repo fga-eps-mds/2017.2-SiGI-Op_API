@@ -10,16 +10,32 @@ class InstitutionType(models.Model):
 class ParticipantInstitution(models.Model):
     name = models.CharField(max_length=255, null=False)
     institution_type = models.ForeignKey(InstitutionType, null=False)
+    cnpj = models.CharField(blank=True, null=True, max_length=100)
+    sigla = models.CharField(blank=True, null=True, max_length=20)
 
 
 class SiteType(models.Model):
     description = models.CharField(blank=True, max_length=20)
 
 
+class Event(models.Model):
+    ipa_code = models.ForeignKey(InstitutionType, null=False)
+    description = models.CharField(null=False, max_length=100)
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+
+class Address(models.Model):
+    lattitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
+    City = models.CharField(max_length=300, null=True, blank=True)
+    State = models.CharField(max_length=2, null=True, blank=True)
+    address = models.CharField(max_length=200, blank=True, null=True)
+
+
 class Site(models.Model):
     name = models.CharField(blank=True, max_length=100)
-    lattitude = models.FloatField(blank=True)
-    longitude = models.FloatField(blank=True)
+    lattitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     bandwidth = models.PositiveIntegerField(blank=True)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
     site_type = models.ForeignKey(SiteType, null=False)

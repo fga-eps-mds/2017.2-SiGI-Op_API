@@ -5,15 +5,15 @@ from emendation_box.models import EmendationBox
 
 
 class Uplink(models.Model):
-    name_vlan = models.CharField(blank=False, max_length=50)
-    band = models.FloatField(blank=True)
+    name_vlan = models.CharField(blank=True, max_length=50, null=True)
+    band = models.FloatField(blank=True, null=True)
     code = models.IntegerField(blank=False, validators=[MinValueValidator(0)],
                                unique=True)
 
 
 class Segments(models.Model):
-    number = models.IntegerField(blank=True)
-    length = models.FloatField(default=0)
+    number = models.IntegerField(blank=True, null=True)
+    length = models.FloatField(default=0, null=True)
     dgos = models.ManyToManyField(GOD, null=True, blank=True)
     emendation_boxes = models.ManyToManyField(
         EmendationBox,
