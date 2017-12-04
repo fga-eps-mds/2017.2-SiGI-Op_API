@@ -82,8 +82,10 @@ ROUTER.register(r'cable_stretch_types', CableStretchTypeListViewSet,
 ROUTER.register(r'tubelooses', TubelooseListViewSet,
                 base_name='tubeloose')
 ROUTER.register(r'segments', SegmentsListViewSet, base_name='segments')
-ROUTER.register(r'god_fabricants', GODFabricantListViewSet, base_name='godfabricant')
-ROUTER.register(r'god_fabricant_models', GODFabricantModelListViewSet, base_name='godfabricantmodel')
+ROUTER.register(r'god_fabricants', GODFabricantListViewSet,
+                base_name='godfabricant')
+ROUTER.register(r'god_fabricant_models', GODFabricantModelListViewSet,
+                base_name='godfabricantmodel')
 
 
 urlpatterns = [  # pylint: disable=invalid-name

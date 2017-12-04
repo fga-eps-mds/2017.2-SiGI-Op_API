@@ -6,7 +6,7 @@ from ipa.models import Site
 
 
 class GODFabricant(models.Model):
-    description = models.CharField(max_length = 50, null=False)
+    description = models.CharField(max_length=50, null=False)
 
 
 class GODFabricantModel(models.Model):

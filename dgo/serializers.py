@@ -11,6 +11,7 @@ class GODFabricantSerializer(serializers.ModelSerializer):
             'description',
         ]
 
+
 class GODFabricantModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODFabricantModel
@@ -19,6 +20,7 @@ class GODFabricantModelSerializer(serializers.ModelSerializer):
             'port_quantity',
             'name',
         ]
+
 
 class GODSerializer(serializers.ModelSerializer):
     class Meta:
@@ -46,7 +48,7 @@ class GODPortConnectionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODPortConnectionType
         fields = [
-            'code'
+            'code',
         ]
 
 
