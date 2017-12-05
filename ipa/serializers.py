@@ -19,22 +19,26 @@ class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
         ]
 
 
+
 class ParticipantInstitutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParticipantInstitution
         institution_type = ParticipantInstitutionTypeSerializer(many=True,
                                                                 read_only=True)
+
         fields = [
             'id',
             'name',
             'institution_type',
+            'cnpj',
+            'sigla',
         ]
-
 
 class ContactTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactType
         fields = ['id', 'description']
+
 
 
 class ContactSerializer(serializers.ModelSerializer):
