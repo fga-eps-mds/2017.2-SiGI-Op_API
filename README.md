@@ -20,7 +20,7 @@ A GigaCandanga, rede metropolitana de educação e pesquisa, integra instituiç�
 
 ### Qual Objetivo
 <p align=justify>
-O objetivo de promover a implantação de uma infraestrutura de fibras ópticas adequada à demanda de alta capacidade e atualização tecnológica, característica das instituições de pesquisa e de ensino superior. 
+O objetivo de promover a implantação de uma infraestrutura de fibras ópticas adequada à demanda de alta capacidade e atualização tecnológica, característica das instituições de pesquisa e de ensino superior.
 </p>
 
 ### Como Funciona
@@ -58,6 +58,11 @@ Para subir a aplicação no endereço `0.0.0.0` e na porta 8000 utilize o seguin
 $ [sudo] docker run -it -p 8000:8000 my_env python3 sigiop-API/manage.py runserver 0.0.0.0:8000
 ```
 
+Acessar o endereço através de um Browser deve renderizar a API Django REST, como ilustrado abaixo:
+![GitHub Logo](https://image.ibb.co/dVDokG/back.png)
+
+Para visualizar o Fron End, acesse nosso [outro repositório](https://github.com/fga-gpp-mds/2017.2-SiGI-Op)
+
 ### Testes
 
 Para executar todos os testes habilitados pelas flags contidas na lista `NOSE_ARGS` do arquivo `sigi_op/settings.py` basta executar:
@@ -86,7 +91,7 @@ Caso queira verificar um app específico execute:
 $ flake8 app_name
 ```
 
-Também é utilizado neste projeto a ferramenta [pylint](https://www.pylint.org/) para análise estática de código em geral, 
+Também é utilizado neste projeto a ferramenta [pylint](https://www.pylint.org/) para análise estática de código em geral,
 para executar a ferramenta siga os mesmos passos da flake8, tanto para executar utilizando todos os arquivos de código-fonte
 do projeto como para um app específico, obviamente substituindo pelo comando `pylint`.
 
