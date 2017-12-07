@@ -11,12 +11,12 @@ class GODFabricant(models.Model):
 
 class GODFabricantModel(models.Model):
     fabricant_id = models.ForeignKey(GODFabricant, null=False)
-    port_quantity = models.IntegerField(null=False)
     name = models.CharField(max_length=50)
+    port_quantity = models.IntegerField(null=False)
 
 
 class GOD(models.Model):
-    code = models.IntegerField(default=0, unique=True)
+    code = models.CharField(max_length=50, unique=True)
     god_model = models.ForeignKey(GODFabricantModel, null=False)
     site_id = models.ForeignKey(Site, null=False)
 

@@ -127,7 +127,7 @@ class GODTest(TestCase):
             ipa_code=ipa,
             site_type=sitetype
         )
-        dgo = GOD.objects.create(code=198,
+        dgo = GOD.objects.create(code='198',
                                  god_model=model,
                                  site_id=sitetest)
 
@@ -182,7 +182,7 @@ class JumperTest(TestCase):
             ipa_code=ipa,
             site_type=sitetype
         )
-        dgo = GOD.objects.create(code=198,
+        dgo = GOD.objects.create(code='198',
                                  god_model=model,
                                  site_id=sitetest)
         godport_test = GODPort.objects.create(code=999,
@@ -221,7 +221,7 @@ class JumperTest(TestCase):
             ipa_code=ipa,
             site_type=sitetype
         )
-        dgo = GOD.objects.create(code=198,
+        dgo = GOD.objects.create(code='198',
                                  god_model=model,
                                  site_id=sitetest)
 

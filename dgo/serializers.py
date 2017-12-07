@@ -8,6 +8,7 @@ class GODFabricantSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODFabricant
         fields = [
+            'id',
             'description',
         ]
 
@@ -16,9 +17,10 @@ class GODFabricantModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODFabricantModel
         fields = [
+            'id',
             'fabricant_id',
-            'port_quantity',
             'name',
+            'port_quantity',
         ]
 
 
