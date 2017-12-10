@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import EmailValidator
-from rest_framework.response import Response
 # Create your models here.
 
 
@@ -14,10 +13,6 @@ class ParticipantInstitution(models.Model):
     cnpj = models.CharField(blank=True, null=True, max_length=100)
     sigla = models.CharField(blank=True, null=True, max_length=20)
 
-    def save(self, **kwargs):  # pylint: disable=arguments-differ
-        super(ParticipantInstitution, self).save(**kwargs)
-        print(self.pk)
-        return Response(self)
 
 class SiteType(models.Model):
     description = models.CharField(blank=True, max_length=20)

@@ -19,7 +19,6 @@ class ParticipantInstitutionTypeSerializer(serializers.ModelSerializer):
         ]
 
 
-
 class ParticipantInstitutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParticipantInstitution
@@ -34,11 +33,11 @@ class ParticipantInstitutionSerializer(serializers.ModelSerializer):
             'sigla',
         ]
 
+
 class ContactTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactType
         fields = ['id', 'description']
-
 
 
 class ContactSerializer(serializers.ModelSerializer):
