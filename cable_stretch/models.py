@@ -29,7 +29,7 @@ class CableStretch(models.Model):
     cable_stretch_type = models.ForeignKey(CableStretchType,
                                            blank=True,
                                            null=True)
-    access = models.NullBooleanField(blank=True)
+    access = models.NullBooleanField(blank=True, default=False)
     god_id = models.ForeignKey(GOD, null=True, blank=True)
     segment_id = models.ForeignKey(Segments, null=True, blank=True)
     access_cable_id = models.ForeignKey(AccessCable, null=True, blank=True)

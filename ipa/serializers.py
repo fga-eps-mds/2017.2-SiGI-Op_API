@@ -24,10 +24,13 @@ class ParticipantInstitutionSerializer(serializers.ModelSerializer):
         model = ParticipantInstitution
         institution_type = ParticipantInstitutionTypeSerializer(many=True,
                                                                 read_only=True)
+
         fields = [
             'id',
             'name',
             'institution_type',
+            'cnpj',
+            'sigla',
         ]
 
 

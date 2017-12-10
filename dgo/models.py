@@ -30,7 +30,7 @@ class Jumper(models.Model):
 
 class AccessCable(models.Model):
     cod = models.CharField(null=False, max_length=50)
-    length = models.FloatField(blank=True)
-    fiber_quantity = models.IntegerField(default=1)
+    length = models.FloatField(blank=True, null=True)
+    fiber_quantity = models.IntegerField(default=1, null=True)
     god_id = models.ForeignKey(GOD, null=False)
     site_id = models.ForeignKey(Site, null=False)
