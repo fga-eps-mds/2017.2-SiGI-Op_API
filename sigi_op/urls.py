@@ -28,7 +28,7 @@ from gbic.views import GBICListViewSet, GBIC_TypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
 from emendation_box.views import EmendationBoxStructureListViewSet
-from post.views import PostListViewSet
+from emendation_box.views import PostListViewSet
 from uplink.views import UplinkViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth

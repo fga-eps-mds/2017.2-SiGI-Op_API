@@ -1,4 +1,5 @@
 from .models import EmendationBoxStructure, EmendationBoxType, EmendationBox
+from .models import Post
 from rest_framework import serializers
 
 
@@ -37,4 +38,16 @@ class EmendationBoxSerializer(serializers.ModelSerializer):
             'extinction_date',
             'emendation_type',
             'emendation_structure',
+        ]
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            'id',
+            'cable_length',
+            'stretch',
+            'emendation_box',
+            'god',
         ]

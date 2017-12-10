@@ -1,4 +1,5 @@
 from django.db import models
+from dgo.models import GOD
 
 
 # Create your models here.
@@ -20,3 +21,10 @@ class EmendationBox(models.Model):
     emendation_type = models.ForeignKey(EmendationBoxType, null=False)
     emendation_structure = models.ForeignKey(EmendationBoxStructure,
                                              null=False)
+
+
+class Post(models.Model):
+    cable_length = models.FloatField(blank=False)
+    stretch = models.IntegerField(blank=False)
+    emendation_box = models.ForeignKey(EmendationBox, null=False)
+    god = models.ForeignKey(GOD, null=False)
