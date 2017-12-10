@@ -1,6 +1,27 @@
 from ipa.serializers import SiteSerializer
 from rest_framework import serializers
 from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
+from .models import GODFabricant, GODFabricantModel
+
+
+class GODFabricantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GODFabricant
+        fields = [
+            'id',
+            'description',
+        ]
+
+
+class GODFabricantModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GODFabricantModel
+        fields = [
+            'id',
+            'fabricant_id',
+            'name',
+            'port_quantity',
+        ]
 
 
 class GODSerializer(serializers.ModelSerializer):
@@ -9,8 +30,7 @@ class GODSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'code',
-            'fabricant',
-            'port_quantity',
+            'god_model',
             'site_id',
         ]
 
@@ -30,7 +50,7 @@ class GODPortConnectionTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = GODPortConnectionType
         fields = [
-            'code'
+            'code',
         ]
 
 

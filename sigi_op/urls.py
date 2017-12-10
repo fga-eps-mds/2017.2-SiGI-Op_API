@@ -38,6 +38,7 @@ from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth, networkmap, update_auth
+from dgo.views import GODFabricantListViewSet, GODFabricantModelListViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r'permissions', PermissionViewSet, base_name='permissions')
@@ -81,6 +82,11 @@ ROUTER.register(r'cable_stretch_types', CableStretchTypeListViewSet,
 ROUTER.register(r'tubelooses', TubelooseListViewSet,
                 base_name='tubeloose')
 ROUTER.register(r'segments', SegmentsListViewSet, base_name='segments')
+ROUTER.register(r'god_fabricants', GODFabricantListViewSet,
+                base_name='godfabricant')
+ROUTER.register(r'god_fabricant_models', GODFabricantModelListViewSet,
+                base_name='godfabricantmodel')
+
 
 urlpatterns = [  # pylint: disable=invalid-name
     url(r'^', include(ROUTER.urls)),
