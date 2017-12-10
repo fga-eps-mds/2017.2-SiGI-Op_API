@@ -3,10 +3,25 @@ from sigi_op.views import CustomViewSet
 # from rest_framework.response import Response
 from .serializers import GODSerializer, GODPortSerializer, JumperSerializer
 from .serializers import GODPortConnectionTypeSerializer, AccessCableSerializer
+from .serializers import GODFabricantSerializer, GODFabricantModelSerializer
 from .models import GOD, GODPort, GODPortConnectionType, Jumper, AccessCable
+from .models import GODFabricant, GODFabricantModel
 
 
 # Create your views here.
+
+class GODFabricantListViewSet(CustomViewSet):
+    class_name = GODFabricant
+    order_param_name = 'pk'
+    queryset = GODFabricant.objects.all().order_by('pk')
+    serializer_class = GODFabricantSerializer
+
+
+class GODFabricantModelListViewSet(CustomViewSet):
+    class_name = GODFabricantModel
+    order_param_name = 'pk'
+    queryset = GODFabricantModel.objects.all().order_by('pk')
+    serializer_class = GODFabricantModelSerializer
 
 
 class GODListViewSet(CustomViewSet):
