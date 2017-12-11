@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from sigi_op.views import CustomViewSet
 from .serializers import EmendationBoxSerializer
 from .serializers import EmendationBoxTypeSerializer
 from .serializers import EmendationBoxStructureSerializer
@@ -8,18 +8,24 @@ from .models import Post
 
 
 # Create your views here.
-class EmendationBoxListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBox.objects.all()
+class EmendationBoxListViewSet(CustomViewSet):
+    class_name = EmendationBox
+    order_param_name = 'designNumber'
+    queryset = EmendationBox.objects.all().order_by('designNumber')
     serializer_class = EmendationBoxSerializer
 
 
-class EmendationBoxTypeListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBoxType.objects.all()
+class EmendationBoxTypeListViewSet(CustomViewSet):
+    class_name = EmendationBoxType
+    order_param_name = 'description'
+    queryset = EmendationBoxType.objects.all().order_by('description')
     serializer_class = EmendationBoxTypeSerializer
 
 
-class EmendationBoxStructureListViewSet(viewsets.ModelViewSet):
-    queryset = EmendationBoxStructure.objects.all()
+class EmendationBoxStructureListViewSet(CustomViewSet):
+    class_name = EmendationBoxStructure
+    order_param_name = 'description'
+    queryset = EmendationBoxStructure.objects.all().order_by('description')
     serializer_class = EmendationBoxStructureSerializer
 
 

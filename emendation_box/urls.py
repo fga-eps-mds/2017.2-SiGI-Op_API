@@ -5,26 +5,26 @@ from .views import PostListViewSet
 
 
 # from rest_framework import renderers
-emendation_box = EmendationBoxListViewSet.as_view({
+EMENDATION_BOX = EmendationBoxListViewSet.as_view({
     'get': 'list',
     'post': 'create',
 })
 
-emendation_box_detail = EmendationBoxListViewSet.as_view({
+EMENDATION_BOX_DETAIL = EmendationBoxListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
 })
 
-emendation_box_type = EmendationBoxTypeListViewSet.as_view({
+EMENDATION_BOX_TYPE = EmendationBoxTypeListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
 })
 
-emendation_box_structure = EmendationBoxStructureListViewSet.as_view({
+EMENDATION_BOX_STRUCTURE = EmendationBoxStructureListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',

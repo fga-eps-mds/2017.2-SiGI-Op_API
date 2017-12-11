@@ -1,19 +1,19 @@
 from .views import GODListViewSet, GODPortListViewSet
 from .views import GODPortConnectionTypeListViewSet
 
-god = GODListViewSet.as_view({
+GOD = GODListViewSet.as_view({
     'get': 'list',
     'post': 'create'
 })
 
-god_port = GODPortListViewSet.as_view({
+GOD_PORT = GODPortListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',
     'delete': 'destroy',
 })
 
-god_port_connection_type = GODPortConnectionTypeListViewSet.as_view({
+GOD_PORT_CONNECTION_TYPE = GODPortConnectionTypeListViewSet.as_view({
     'get': 'list',
     'patch': 'partial_update',
     'put': 'update',

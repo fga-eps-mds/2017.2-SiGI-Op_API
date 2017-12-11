@@ -1,11 +1,9 @@
 from django.test import TestCase
 # Create your tests here.
 
-from .models import EmendationBox
+from rest_framework.test import APIRequestFactory
 from .models import EmendationBoxType
 from .models import EmendationBoxStructure
-from rest_framework.test import APIRequestFactory
-from .views import EmendationBoxListViewSet
 from .views import EmendationBoxTypeListViewSet
 from .views import EmendationBoxStructureListViewSet
 from .models import Post
@@ -14,7 +12,7 @@ from .views import PostListViewSet
 
 class EmendationBoxTest(TestCase):
 
-    def test_emendationbox_type_view_set(self):
+    def test_emendationbox_type(self):
         request = APIRequestFactory().get("")
         view = EmendationBoxTypeListViewSet.as_view(actions={'get': 'retrieve'})
         emendationbox_type = EmendationBoxType.objects.create(
@@ -23,7 +21,7 @@ class EmendationBoxTest(TestCase):
         response = view(request, pk=emendationbox_type.pk)
         self.assertEqual(response.status_code, 200)
 
-    def test_emendationbox_structure_view_set(self):
+    def test_emendationbox_structure(self):
         request = APIRequestFactory().get("")
         view = EmendationBoxStructureListViewSet.as_view(actions={'get': 'retrieve'})
         emendationbox_structure = EmendationBoxStructure.objects.create(

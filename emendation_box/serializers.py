@@ -1,6 +1,6 @@
+from rest_framework import serializers
 from .models import EmendationBoxStructure, EmendationBoxType, EmendationBox
 from .models import Post
-from rest_framework import serializers
 
 
 class EmendationBoxTypeSerializer(serializers.ModelSerializer):

@@ -4,12 +4,12 @@ from django.db import models
 # Create your models here.
 
 
-class GBIC_Type(models.Model):
+class GBICType(models.Model):
     description = models.CharField(max_length=10, blank=False)
 
 
 class GBIC(models.Model):
-    serial = models.CharField(max_length=30, blank=False)
-    patrimony_number = models.CharField(max_length=30)
-    gbic_type = models.ForeignKey(GBIC_Type)
+    serial = models.CharField(max_length=30, blank=True, unique=True)
+    patrimony_number = models.CharField(max_length=30, unique=True)
+    gbic_type = models.ForeignKey(GBICType)
     # slot_port = models.ForeignKey(Slot_Port, blank=False)

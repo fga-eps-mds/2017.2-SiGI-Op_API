@@ -1,5 +1,5 @@
-from .models import TechnicalReserve
 from rest_framework import serializers
+from .models import TechnicalReserve
 
 
 class TechnicalReserveSerializer(serializers.ModelSerializer):
@@ -9,6 +9,6 @@ class TechnicalReserveSerializer(serializers.ModelSerializer):
             'id',
             'code',
             'length',
-            'latitude',
+            'lattitude',
             'longitude',
         ]
