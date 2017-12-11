@@ -4,6 +4,7 @@ This module manages fields for cable stretch and its type, and Tubelooses.
 from django.db import models
 from dgo.models import GOD, AccessCable
 from uplink.models import Segments
+from emendation_box.models import EmendationBox
 
 # from dgo.models import GOD
 
@@ -47,3 +48,10 @@ class Tubeloose(models.Model):
     """
     number = models.IntegerField(blank=True)
     stretch_id = models.ForeignKey(CableStretch, null=False)
+
+
+class Post(models.Model):
+    cable_length = models.FloatField(blank=False)
+    cable_stretch = models.ForeignKey(CableStretch, null=False)
+    emendation_box = models.ForeignKey(EmendationBox, null=False)
+    god = models.ForeignKey(GOD, null=False)

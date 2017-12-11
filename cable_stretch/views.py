@@ -3,8 +3,9 @@ from sigi_op.views import CustomViewSet
 from .serializers import CableStretchSerializer
 from .serializers import CableStretchTypeSerializer
 from .serializers import TubelooseSerializer
+from .serializers import PostSerializer
 from .models import CableStretch, CableStretchType
-from .models import Tubeloose
+from .models import Tubeloose, Post
 
 
 # Create your views here.
@@ -27,3 +28,10 @@ class TubelooseListViewSet(CustomViewSet):
     order_param_name = 'stretch_id'
     queryset = Tubeloose.objects.all().order_by('stretch_id')
     serializer_class = TubelooseSerializer
+
+
+class PostListViewSet(CustomViewSet):
+    class_name = Post
+    order_param_name = 'cable_length'
+    queryset = Post.objects.all().order_by('cable_length')
+    serializer_class = PostSerializer
