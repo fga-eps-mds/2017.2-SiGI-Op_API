@@ -5,6 +5,7 @@ CableStretch and Tubeloose objects.
 from rest_framework import serializers
 from .models import CableStretch, CableStretchType
 from .models import Tubeloose
+from .models import Post
 
 
 class CableStretchTypeSerializer(serializers.ModelSerializer):
@@ -62,4 +63,16 @@ class TubelooseSerializer(serializers.ModelSerializer):
             'id',
             'number',
             'stretch_id',
+        ]
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            'id',
+            'cable_length',
+            'cable_stretch',
+            'emendation_box',
+            'god',
         ]
