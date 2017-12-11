@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 from emendation_box.models import EmendationBox
 from ipa.models import Site
@@ -15,12 +15,14 @@ from underground_box.models import UndergroundBox
 @api_view(['POST'])
 def create_auth(request):
     serialized = UserSerializer(data=request.data)
-
     if serialized.is_valid():
-        User.objects.create_user(serialized.data['username'],
-                                 serialized.data['email'],
-                                 serialized.data['password']
-                                 )
+        user = User.objects.create_user(
+            serialized.data['username'],
+            serialized.data['email'],
+            serialized.data['password'],
+            )
+        user.save()
+        user.groups = request.data['groups']
         return Response({'username': serialized.data['username'],
                         'email': serialized.data['email']},
                         status=status.HTTP_201_CREATED)
