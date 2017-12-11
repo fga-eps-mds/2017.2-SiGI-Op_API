@@ -47,10 +47,14 @@ class ContactType(models.Model):
 
 class Contact(models.Model):
     name = models.CharField(max_length=40)
-    phone_number = models.CharField(max_length=15)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
     email_validator = EmailValidator()
-    email = models.CharField(validators=[email_validator], max_length=40)
-    priority = models.IntegerField(blank=True)
+    email = models.CharField(
+        validators=[email_validator],
+        max_length=40,
+        blank=True,
+        null=True)
+    priority = models.IntegerField(blank=True, null=True)
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 
