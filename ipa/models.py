@@ -54,7 +54,7 @@ class Contact(models.Model):
         max_length=40,
         blank=True,
         null=True)
-    priority = models.IntegerField(blank=True,null=True)
+    priority = models.IntegerField(blank=True, null=True)
     contact_type = models.ForeignKey(ContactType, null=False)
     ipa_code = models.ForeignKey(ParticipantInstitution, null=False)
 

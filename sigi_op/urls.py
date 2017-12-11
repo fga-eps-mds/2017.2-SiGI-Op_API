@@ -36,6 +36,7 @@ from uplink.views import SegmentsListViewSet
 from cable_stretch.views import CableStretchListViewSet
 from cable_stretch.views import CableStretchTypeListViewSet
 from cable_stretch.views import TubelooseListViewSet
+from cable_stretch.views import PostListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth, networkmap, update_auth
 from dgo.views import GODFabricantListViewSet, GODFabricantModelListViewSet
@@ -61,6 +62,7 @@ ROUTER.register(r'emendation_box_types',
                 EmendationBoxTypeListViewSet, base_name='emendation_type')
 ROUTER.register(r'emendation_box_structures',
                 EmendationBoxStructureListViewSet, base_name='structure')
+ROUTER.register(r'posts', PostListViewSet, base_name='post')
 ROUTER.register(r'technicalreserves', TechnicalReserveListViewSet,
                 base_name='technical_reserve')
 ROUTER.register(r'sites', SiteListViewSet, base_name="site")
