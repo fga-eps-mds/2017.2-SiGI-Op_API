@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -55,7 +56,8 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic, segments'
+    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic, uplink,\
+    emendation_box, cable_stretch'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -99,11 +101,16 @@ WSGI_APPLICATION = 'sigi_op.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
+if 'test' in sys.argv:
+    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -120,6 +127,7 @@ REST_FRAMEWORK = {
 
 DB_FROM_ENV = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(DB_FROM_ENV)
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
