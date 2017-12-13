@@ -10,8 +10,11 @@
   [![Build Status](https://travis-ci.org/fga-gpp-mds/2017.2-SiGI-Op_API.svg?branch=master)](https://travis-ci.org/fga-gpp-mds/2017.2-SiGI-Op_API) [![Coverage Status](https://coveralls.io/repos/github/fga-gpp-mds/2017.2-SiGI-Op_API/badge.svg?branch=master)](https://coveralls.io/github/fga-gpp-mds/2017.2-SiGI-Op_API?branch=master) ![Python Version](https://img.shields.io/badge/python-3.5-blue.svg) ![Django Version](https://img.shields.io/badge/Django-1.11.4-green.svg) [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 </p>
 
+Clique [aqui](https://sigi-op.herokuapp.com/) para acessar o SiGI-Op em produção
+
 <br></br>
 > API do projeto SiGI-Op - GigaCandanga
+
 
 ### O Que é a GigaCandanga
 <p align=justify>

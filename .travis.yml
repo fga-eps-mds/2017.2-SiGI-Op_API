@@ -21,3 +21,9 @@ script:
 
 after_success:
   - coveralls
+
+deploy:
+  provider: heroku
+  api_key: 2324c521-1c19-43c1-bf2d-8e7bd925630a
+  on:
+    tags: true
