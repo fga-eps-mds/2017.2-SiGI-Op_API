@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,11 +26,7 @@ SECRET_KEY = 'p_pj322n&jokp&qs!=btz=6a@q#%vuc%0$n&ap*2ouk7c*%4ou'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'obscure-escarpment-75407.herokuapp.com',
-    'localhost',
-]
-
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -46,17 +43,19 @@ INSTALLED_APPS = [
     'rest_framework',
     'underground_box',
     'dgo',
+    'gbic',
     'ipa',
     'emendation_box',
     'uplink',
     'technical_reserve',
+    'cable_stretch'
 ]
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve'
+    '--cover-package=ipa,underground_box,dgo,sigi_op, technical_reserve, gbic, segments'
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -113,13 +112,14 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
-import dj_database_url
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+DB_FROM_ENV = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(DB_FROM_ENV)
 
 AUTH_PASSWORD_VALIDATORS = [
     {

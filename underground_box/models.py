@@ -1,16 +1,18 @@
 from django.db import models
-from django.utils import timezone
+from emendation_box.models import EmendationBox
+from technical_reserve.models import TechnicalReserve
 
 
 class UndergroundBoxType(models.Model):
-    name = models.CharField(blank=False, max_length=100)
+    name = models.CharField(blank=True, max_length=100)
 
 
 class UndergroundBox(models.Model):
+    code = models.CharField(max_length=200, blank=False, default='none',
+                            unique=True)
     box_type = models.ForeignKey(UndergroundBoxType, null=False)
-    latitude = models.FloatField(blank=False)
-    cover_type = models.CharField(max_length=100, blank=False)
-    longitude = models.FloatField(blank=False)
-    created_at = models.DateTimeField(default=timezone.now, blank=True)
-    removed_at = models.DateTimeField(default=timezone.now, blank=True)
-    draw_number = models.IntegerField(blank=False)
+    lattitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    cover_type = models.CharField(max_length=20, blank=True, null=True)
+    emendation_box = models.ForeignKey(EmendationBox, null=True)
+    technical_reserve = models.ForeignKey(TechnicalReserve, null=True)
