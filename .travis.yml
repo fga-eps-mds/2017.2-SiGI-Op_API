@@ -1,29 +1,23 @@
 language: python
-
 python:
-  - 3.5
-
+- 3.5
 services: postgresql
-
 env:
-  - DJANGO=1.11.4
-
+- DJANGO=1.11.4
 install:
-  - pip install -r requirements.txt
-
+- pip install -r requirements.txt
 before_script:
-  - python manage.py makemigrations
-  - python manage.py migrate
-
+- python manage.py makemigrations
+- python manage.py migrate
 script:
-  - flake8
-  - coverage run manage.py test
-
+- flake8
+- coverage run manage.py test
 after_success:
-  - coveralls
-
+- coveralls
 deploy:
-  provider: heroku
-  api_key: 2324c521-1c19-43c1-bf2d-8e7bd925630a
-  on:
-    tags: true
+  api_key:
+    secure: gNc4tHbOv2Zxdl2A/pPcp99nLqYYHPQgV+VaLvl1eVs+imwof2YvZsDnV1uVi2Z5jGn3952cuWe4+UdaA06r5WRkKpT1THa+s0zFlILy3F1Ky6qPpGMQZOJPNDMvgdIkwqN35ZQss7xVAJqyuEfSBKnnPwxTLtJOxtPdFkA6dFbPldP8cSKcsguVG1OznKp/KYQlMTlPh4ibASwAa+6Lti0FQpVprB/on9AUGiN0kuf3Sp3qpb+kYTW60Jb6Ta7O66ijnmCjEV25CbxNSvd51Gq1PwFu2X4pVOCwixkgf5IZbRVkgReKtX03evHGLYTgjfF6Y/rp0q+BA3GOdfKdbDAFbNwwX+nXqN9bRkv853paLiX/HNdRft3b6QDdsWd0OLO6t2XDBW4nq2yVidF/j7plkMpk08XJAvLNgCTjbttNVbVJcDCtxP9CgiS2iT1NMf33Tt6DWf+naPZGjqv8/BNqkkl9GVtQ+RS4DjyjxFSK6avmNOSnQg8ooQn533aMnZwNAeFq01jHmCUjcIf0AvXk0W7yNvrvlBwxVD53XMBgsSN3Z6fL9/cVhCZf79YhMZ04Z0GLJ/CYo6UtvwJ6ncIP6qHE0xmYy1EqksK+t+Fp79fawwNmK+xJS94PY8oWbTJmHDF/kiEahf7hg2TmbEGodLTeqHqaWG7mydVKz58=
+  app: obscure-escarpment-75407
+  run:
+    - "python manage.py makemigrations"
+    - "python manage.py migrate"
