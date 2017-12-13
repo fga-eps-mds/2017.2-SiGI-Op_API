@@ -1,14 +1,6 @@
 version: '2'
 
 services:
-  db:
-    image: postgres
-    environment:
-      - PG_HOST=sigiop-API
-      - PG_USERNAME=postgres
-    volumes:
-      - ./tmp/data/postgresql:/postgresql
-      - ./tmp/data/postgresql:/var/lib/postgresql
   web:
     build: .
     command: /bin/bash -l -c "python3 manage.py makemigrations && python3 manage.py migrate && python3 initadmin.py && python3 manage.py runserver 0.0.0.0:8000"
@@ -16,5 +8,3 @@ services:
       - .:/code
     ports:
       - "8000:8000"
-    depends_on:
-      - db
