@@ -24,3 +24,4 @@ deploy:
     - "python manage.py migrate"
   on:
     tags: true
+    all_branches: true
