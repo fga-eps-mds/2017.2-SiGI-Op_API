@@ -1,18 +1,17 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from django.db.models import Q, CharField
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status, viewsets, pagination
 from rest_framework.authtoken.models import Token
-from .serializers import UserSerializer
-from django.db.models import Q, CharField
-
 from emendation_box.models import EmendationBox
 from ipa.models import Site
 from technical_reserve.models import TechnicalReserve
 from underground_box.models import UndergroundBox
 from uplink.models import Segments
 from uplink.models import GODSegment, EmendationBoxSegment
+from .serializers import UserSerializer
 
 
 @api_view(['POST'])
@@ -45,7 +44,7 @@ def update_auth(request):
             user.set_password(request.data['password'])
         user.save()
         return Response({'username': user.username,
-                        'email': user.email},
+                         'email': user.email},
                         status=status.HTTP_200_OK)
     else:
         return Response('error', status=status.HTTP_400_BAD_REQUEST)
@@ -73,35 +72,41 @@ class CustomViewSet(viewsets.ModelViewSet):
     class_name = ""
     order_param_name = ""
 
-    def list(self, request):
-        queryset = self.class_name.objects.all().order_by(
+    def list(self, request):  # pylint: disable=too-many-locals
+
+        query_objects = self.class_name.objects  # pylint: disable=no-member
+        queryset = query_objects.all().order_by(
             self.order_param_name
             )
         if request.GET.get('search'):
             queryset = []
             param = self.request.query_params.get('search', None)
             if param is not None:
-                fieldsChar = [
-                    f for f in self.class_name._meta.fields
+                fields_class = self.class_name
+                fields = fields_class._meta.fields  # pylint: disable=no-member
+
+                fields_char = [
+                    f for f in fields
                     if isinstance(f, CharField)]
                 fields = [
-                    f for f in self.class_name._meta.fields
+                    f for f in fields
                     if not isinstance(f, CharField)]
-                queriesChar = [
+                queries_char = [
                     Q(**{f.name+'__contains': param})
-                    for f in fieldsChar]
+                    for f in fields_char]
                 try:
-                    paramNum = int(param)
+                    param_num = int(param)
                 except ValueError:
-                    paramNum = 0
-                queries = [Q(**{f.name: paramNum}) for f in fields]
+                    param_num = 0
+                queries = [Q(**{f.name: param_num}) for f in fields]
                 print(fields)
-                qs = Q()
+                _queries = Q()
                 for query in queries:
-                    qs = qs | query
-                for query in queriesChar:
-                    qs = qs | query
-                queryset = self.class_name.objects.filter(qs)
+                    _queries = _queries | query
+                for query in queries_char:
+                    _queries = _queries | query
+                objects = self.class_name.objects  # pylint: disable=no-member
+                queryset = objects.filter(_queries)
         if request.GET.get('all'):
             self.pagination_class = None
             serializer = self.serializer_class(  # pylint: disable=not-callable
@@ -177,20 +182,20 @@ def networkmap(_request):
         segment_dic['dgos'] = []
         segment_dic['emendation_boxes'] = []
         for god_segment in GODSegment.objects.raw(
-            "SELECT * FROM uplink_segments_dgos"
+                "SELECT * FROM uplink_segments_dgos"
         ):
             if god_segment.segments_id == segment.id:
                 segment_dic['dgos'] += [god_segment.god_id]
 
         for emendation_box_segment in EmendationBoxSegment.objects.raw(
-            "SELECT * from uplink_segments_emendation_boxes"
+                "SELECT * from uplink_segments_emendation_boxes"
         ):
             if emendation_box_segment.segments_id == segment.id:
                 segment_dic['emendation_boxes'] += [
-                        emendation_box_segment.emendationbox_id
-                    ]
+                    emendation_box_segment.emendationbox_id
+                ]
 
-        if len(segment_dic['dgos']) or len(segment_dic['emendation_boxes']):
+        if segment_dic['dgos'] or segment_dic['emendation_boxes']:
             segments.append(segment_dic)
 
     response = {

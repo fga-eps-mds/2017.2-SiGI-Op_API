@@ -14,8 +14,8 @@ class GODTest(TestCase):
         request = APIRequestFactory().get("")
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         ipa = ParticipantInstitution.objects.create(name='Uns Paranauês Maneiros',
                                                     institution_type=ipatype)
@@ -41,8 +41,8 @@ class GODTest(TestCase):
         request = APIRequestFactory().get("")
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         ipatype = InstitutionType.objects.create(description='BestEver')
         ipa = ParticipantInstitution.objects.create(name='Uns Paranauês Maneiros',
@@ -72,7 +72,7 @@ class GODTest(TestCase):
         response = fabricant_detail(request, pk=fabricant.pk)
         self.assertEqual(response.status_code, 200)
 
-    def test_wring_godfabricant_view_set(self):
+    def test_wrong_fabricant_view_set(self):
         request = APIRequestFactory().get("")
         fabricant_detail = GODFabricantListViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description="random")
@@ -81,23 +81,23 @@ class GODTest(TestCase):
         response = fabricant_detail(request, pk=primary_key)
         self.assertEqual(response.status_code, 404)
 
-    def test_godfabricantmodel_view_set(self):
+    def test_fabricantmodel_view_set(self):
         request = APIRequestFactory().get("")
         model_detail = GODFabricantModelListViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description="random")
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         response = model_detail(request, pk=model.pk)
         self.assertEqual(response.status_code, 200)
 
-    def test_wring_godfabricantmodel_view_set(self):
+    def test_wrong_fabmodel_view_set(self):
         request = APIRequestFactory().get("")
         model_detail = GODFabricantModelListViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description="random")
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         primary_key = model.pk
         model.delete()
         response = model_detail(request, pk=primary_key)
@@ -109,8 +109,8 @@ class GODTest(TestCase):
         godport_detail = GODPortListViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         tipo = GODPortConnectionType.objects.create(code="abcd")
         gbictipo = GBICType.objects.create(description="testechato")
@@ -156,13 +156,13 @@ class GODTest(TestCase):
 
 class JumperTest(TestCase):
 
-    def test_jumper_view_set(self):
+    def test_jumper_view_set(self): # pylint: disable=too-many-locals
         request = APIRequestFactory().get("")
         jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         tipo = GODPortConnectionType.objects.create(code="abcd")
         gbictipo = GBICType.objects.create(description="tipoteste")
@@ -197,13 +197,13 @@ class JumperTest(TestCase):
         response = jumper_detail(request, pk=jumper_test.pk)
         self.assertEqual(response.status_code, 200)
 
-    def test_wrong_jumper_view_set(self):
+    def test_wrong_jumper_view_set(self): # pylint: disable=too-many-locals
         request = APIRequestFactory().get("")
         jumper_detail = JumperViewSet.as_view(actions={'get':'retrieve'})
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         tipo = GODPortConnectionType.objects.create(code="abcd")
         gbictipo = GBICType.objects.create(description="tipoteste")
@@ -249,8 +249,8 @@ class AccessCableTest(TestCase):
         site_type = SiteType.objects.create(description="RandomSiteType")
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         ipatype = InstitutionType.objects.create(description='random')
         ipa = ParticipantInstitution.objects.create(name='UnB',
                                                     institution_type=ipatype)
@@ -281,8 +281,8 @@ class AccessCableTest(TestCase):
         site_type = SiteType.objects.create(description="RandomSiteType")
         fabricant = GODFabricant.objects.create(description='random')
         model = GODFabricantModel.objects.create(fabricant_id=fabricant,
-                                                port_quantity=1,
-                                                name='random')
+                                                 port_quantity=1,
+                                                 name='random')
         instituion_type = InstitutionType.objects.create(description="RandomInstitution")
         ipa = ParticipantInstitution.objects.create(name='UnB', institution_type=instituion_type)
         site = Site.objects.create(name='RandomSite',
