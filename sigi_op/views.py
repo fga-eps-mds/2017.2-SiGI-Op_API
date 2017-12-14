@@ -57,7 +57,6 @@ def login(request):
     password = request.data.get('password')
 
     user = authenticate(username=username, password=password)
-    print(user.password)
     if not user:
         return Response({'error', 'Login failed'},
                         status=status.HTTP_401_UNAUTHORIZED)
