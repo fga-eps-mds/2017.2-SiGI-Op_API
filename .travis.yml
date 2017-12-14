@@ -1,19 +1,16 @@
+sudo: required
 language: python
 python:
   - 3.5
-services: postgresql
-env:
-  - DJANGO=1.11.4
+services:
+  - docker
 install:
-  - pip install -r requirements.txt
-before_script:
-  - python manage.py makemigrations
-  - python manage.py migrate
+  - docker-compose up --build -d
 script:
-  - flake8
-  - coverage run manage.py test
+  - docker exec 20172sigiopapi_web_1 flake8
+  - docker exec 20172sigiopapi_web_1 coverage run manage.py test
 after_success:
-  - coveralls
+  - docker exec 20172sigiopapi_web_1 coveralls
 deploy:
   provider: heroku
   api_key:
@@ -24,4 +21,6 @@ deploy:
     - "python manage.py migrate"
   on:
     tags: true
-    all_branches: true
+
+after_script:
+  - docker-compose down
