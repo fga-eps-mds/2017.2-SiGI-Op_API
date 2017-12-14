@@ -27,6 +27,7 @@ from ipa.views import SlotViewSet
 from ipa.views import SlotPortViewSet
 from dgo.views import GODListViewSet, JumperViewSet, AccessCableListViewSet
 from dgo.views import GODPortListViewSet, GODPortConnectionTypeListViewSet
+from dgo.views import GODFabricantListViewSet, GODFabricantModelListViewSet
 from gbic.views import GBICListViewSet, GBICTypeListViewSet
 from emendation_box.views import EmendationBoxListViewSet
 from emendation_box.views import EmendationBoxTypeListViewSet
@@ -39,7 +40,6 @@ from cable_stretch.views import TubelooseListViewSet
 from cable_stretch.views import PostListViewSet
 from technical_reserve.views import TechnicalReserveListViewSet
 from .views import login, create_auth, networkmap, update_auth
-from dgo.views import GODFabricantListViewSet, GODFabricantModelListViewSet
 
 ROUTER = DefaultRouter()
 ROUTER.register(r'permissions', PermissionViewSet, base_name='permissions')
